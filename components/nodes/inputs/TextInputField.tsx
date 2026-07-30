@@ -11,10 +11,11 @@ import {
 import { useTheme } from "../../../hooks/use-theme-provider";
 
 import {
+  field_data,
   FieldNode,
   StandardFieldProps,
-  TextField,
-} from "../../../constants/NodeTypes";
+  TextData,
+} from "../../../constants/DataTypes";
 
 export default function TextInputField({
   id,
@@ -24,12 +25,12 @@ export default function TextInputField({
   field,
   locked = false,
   onChange,
-}: StandardFieldProps<TextField>) {
+}: StandardFieldProps<TextData>) {
 
   const theme = useTheme();
 
   const [text, setText] = useState(
-    field.value ?? ""
+    field.field.data.value ?? ""
   );
 
   /**
@@ -70,9 +71,14 @@ export default function TextInputField({
             {
               id: id,
               type: "field",
-              field: field,
-              value: newText,
-            } as FieldNode
+              field: {
+                ...field.field,
+                data: {
+                  ...field.field.data,
+                  value: newText,
+                } as TextData,
+              } as field_data<TextData>,
+            } as FieldNode<TextData>
           );
         }}
         style={[

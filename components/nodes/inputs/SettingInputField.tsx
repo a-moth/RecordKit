@@ -1,4 +1,4 @@
-import { FieldNode, SettingsField } from '../../../constants/NodeTypes';
+import { field_data, FieldNode, SettingsData } from '../../../constants/DataTypes';
 import { useTheme } from '../../../hooks/use-theme-provider';
 import { useSettings } from '../../../utils/SettingsProvider';
 import { Text, TextInput, View } from 'react-native';
@@ -29,12 +29,13 @@ export default function SettingInputField({ template, id, field, onChange, field
                 id: id,
                 type: "field",
                 field: {
-                  type: field.field.type,
-                  label: field.field.label,
-                  visible: field.field.visible,
-                  value: text
-                } as SettingsField,
-              } as FieldNode
+                  ...field.field,
+                  data: {
+                    ...field.field.data,
+                    value: text
+                  } as SettingsData,
+                } as field_data<SettingsData>,
+              } as FieldNode<SettingsData>
             );
           }
         }}

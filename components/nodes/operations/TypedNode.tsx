@@ -1,4 +1,4 @@
-import { FieldData, FieldNode, template } from '../../../constants/DataTypes';
+import { data_container_types, DataContainer, DateData, DurationData, FieldData, FieldNode, ScaleData, SelectionData, TextData, ToggleImageButtonData } from '../../../constants/DataTypes';
 import BooleanInputField from '../inputs/BooleanInputField';
 import DateInputField from '../inputs/DateInputField';
 import DurationInputField from '../inputs/DurationInputField';
@@ -7,12 +7,12 @@ import SelectionInputField from '../inputs/SelectionInputField';
 import TextInputField from '../inputs/TextInputField';
 
 export default function TypedNode({ field, template, id, locked, onChange }: {
-    template: template,
+    template: DataContainer<data_container_types>,
     id: string,
     field: FieldNode<FieldData>,
     locked: boolean,
     onChange: (
-        template: template,
+        template: DataContainer<data_container_types>,
         defaultShown: boolean,
         value: FieldNode<FieldData>
     ) => void
@@ -24,7 +24,7 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}
-                    field={field.field}
+                    field={field as FieldNode<TextData>}
                     defaultShown={field.field.data.visible}
                     locked={locked}
                     onChange={onChange}
@@ -37,7 +37,7 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}
-                    field={field.field}
+                    field={field as FieldNode<DateData>}
                     defaultShown={field.field.data.visible}
                     locked={locked}
                     onChange={onChange}
@@ -50,7 +50,7 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}
-                    field={field.field}
+                    field={field as FieldNode<DurationData>}
                     defaultShown={field.field.data.visible}
                     locked={locked}
                     onChange={onChange}
@@ -63,7 +63,7 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}
-                    field={field.field}
+                    field={field as FieldNode<SelectionData>}
                     defaultShown={field.field.data.visible}
                     locked={locked}
                     onChange={onChange}
@@ -76,7 +76,7 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}
-                    field={field.field}
+                    field={field as FieldNode<ScaleData>}
                     defaultShown={field.field.data.visible}
                     locked={locked}
                     onChange={onChange}
@@ -89,7 +89,7 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}
-                    field={field.field}
+                    field={field as FieldNode<ToggleImageButtonData>}
                     defaultShown={field.field.data.visible}
                     locked={locked}
                     onChange={onChange}

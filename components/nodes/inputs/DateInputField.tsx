@@ -9,10 +9,12 @@ import {
 import { useTheme } from "../../../hooks/use-theme-provider";
 
 import {
+  DateData,
   DateField,
+  field_data,
   FieldNode,
   StandardFieldProps,
-} from "../../../constants/NodeTypes";
+} from "../../../constants/DataTypes";
 
 import { useSettings } from "../../../utils/SettingsProvider";
 
@@ -24,7 +26,7 @@ export default function DateInputField({
   field,
   locked = false,
   onChange,
-}: StandardFieldProps<DateField>) {
+}: StandardFieldProps<DateData>) {
 
   const theme = useTheme();
 
@@ -41,7 +43,7 @@ export default function DateInputField({
    */
 
   const dateFormat =
-    field.format ??
+    field.field.data.format ??
     settings["**dayFormat"] ??
     "dd-MM-yyyy";
 
@@ -52,14 +54,14 @@ export default function DateInputField({
 
   function buildDisplayValue() {
 
-    if (!field.value) {
+    if (!field.field.data.value) {
       return "";
     }
 
     try {
 
       const parsed =
-        new Date(field.value);
+        new Date(field.field.data.value);
 
       if (!isValid(parsed)) {
         return "";
@@ -116,6 +118,8 @@ export default function DateInputField({
     return null;
   }
 
+  const fieldData = field.field.data as DateData;
+
   return (
     <View style={theme.sizes.default.container}>
 
@@ -160,13 +164,16 @@ export default function DateInputField({
             template,
             defaultShown,
             {
-              id: id,
+              id,
               type: "field",
               field: {
-                ...field,
-                value: isoValue,
-              } as DateField,
-            } as FieldNode
+                ...field.field,
+                data: {
+                  ...fieldData,
+                  value: text === "" ? null : isoValue,
+                } as DateData,
+              } as field_data<DateData>,
+            } as FieldNode<DateData>
           );
         }}
         style={[

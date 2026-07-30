@@ -1,5 +1,5 @@
 import { Text, TextStyle, View } from "react-native";
-import { StandardFieldProps, SelectionField } from "../../../constants/NodeTypes";
+import { StandardFieldProps, SelectionData } from "../../../constants/DataTypes";
 import SelectionInput from "./SelectionInput";
 import { useTheme } from "../../../hooks/use-theme-provider";
 
@@ -11,7 +11,7 @@ export default function SelectionInputField({
   onChange,
   field,
   locked,
-}: StandardFieldProps<SelectionField>) {
+}: StandardFieldProps<SelectionData>) {
   const theme = useTheme();
 
   const textStyling: TextStyle = {
@@ -44,10 +44,8 @@ export default function SelectionInputField({
         template={template}
         style={baseStyling}
         textStyle={textStyling}
-        selected={field.selected}
-        newItems={field.options}
+        field={field}
         locked={locked}
-        multi={field.multiple}
         fieldKey={fieldKey}
         defaultShown={defaultShown}
         onChange={onChange}

@@ -1,4 +1,4 @@
-import { FieldNode, NumberField } from '../../../constants/NodeTypes';
+import { field_data, FieldNode, NumberData } from '../../../constants/DataTypes';
 import { useTheme } from '../../../hooks/use-theme-provider';
 import { useSettings } from '../../../utils/SettingsProvider';
 import { Text, TextInput, View } from 'react-native';
@@ -11,6 +11,8 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
   if (!defaultShown) return null;
 
   const value = settings[fieldKey] ?? "";
+
+  const fieldData = field.field.data as NumberData;
 
   return (
     <View style={theme.sizes.default.container}>
@@ -30,15 +32,18 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
                 id: id,
                 type: "field",
                 field: {
-                  type: field.field.type,
-                  label: field.field.label,
-                  visible: field.field.visible,
-                  value: Number(text)
-                } as NumberField,
-              } as FieldNode
+                  ...field.field,
+                  data: {
+                    ...fieldData,
+                    value: Number(text),
+                  } as NumberData,
+                } as field_data<NumberData>,
+              } as FieldNode<NumberData>
             );
           }
         }}
+        keyboardType="numeric"
+        returnKeyType="done"
         editable={fieldKey.startsWith("**") ? true : false}
       />
     </View>

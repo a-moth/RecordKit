@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, View } from "react-native";
 import BooleanImageInput from "./BooleanImageInput";
 import { useTheme } from "../../../hooks/use-theme-provider";
-import { ScaleField, StandardFieldProps } from "../../../constants/NodeTypes";
+import { field_data, FieldNode, ScaleData, StandardFieldProps } from "../../../constants/DataTypes";
 
 export default function ScaleInputField({
   template,
@@ -11,11 +11,11 @@ export default function ScaleInputField({
   field,
   onChange,
   locked = false,
-}: StandardFieldProps<ScaleField>) {
+}: StandardFieldProps<ScaleData>) {
   const theme = useTheme();
 
   // 0 = nothing selected
-  const [which, setWhich] = useState<number>(field.value);
+  const [which, setWhich] = useState<number>(field.field.data.value);
 
   const handleSelect = (selection: number) => {
     const nextValue = which === selection ? 0 : selection;
@@ -29,17 +29,13 @@ export default function ScaleInputField({
         id: id,
         type: "field",
         field: {
-          id: id,
-          type: "scale",
-          field: field,
-          imageBased: true,
-          min: field.min,
-          max: field.max,
-          value: nextValue,
-          label: field.label,
-          visible: field.visible
-        } as ScaleField
-      }
+          ...field.field,
+          data: {
+            ...field.field.data,
+            value: nextValue,
+          } as ScaleData,
+        } as field_data<ScaleData>
+      } as FieldNode<ScaleData>
     );
   };
 

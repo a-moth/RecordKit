@@ -3,7 +3,9 @@ import {
   StandardFieldProps,
   DurationField,
   FieldNode,
-} from "../../../constants/NodeTypes";
+  DurationData,
+  field_data,
+} from "../../../constants/DataTypes";
 import { useTheme } from "../../../hooks/use-theme-provider";
 
 export default function DurationInputField({
@@ -14,8 +16,10 @@ export default function DurationInputField({
   field,
   locked = false,
   onChange,
-}: StandardFieldProps<DurationField>) {
+}: StandardFieldProps<DurationData>) {
   const theme = useTheme();
+
+  const fieldData = field.field.data as DurationData;
 
   return (
     <>
@@ -38,19 +42,22 @@ export default function DurationInputField({
         ]}
       >
         <TextInput
-          value={String(field.valueA)}
+          value={String(field.field.data.valueA)}
           onChangeText={(newText) => {
             onChange?.(
               template,
               defaultShown,
               {
-                id: id,
+                id,
                 type: "field",
                 field: {
-                  ...field,
-                  valueA: Number(newText),
-                } as DurationField,
-              } as FieldNode
+                  ...field.field,
+                  data: {
+                    ...fieldData,
+                    valueA: Number(newText),
+                  } as DurationData,
+                } as field_data<DurationData>,
+              } as FieldNode<DurationData>
             );
           }}
           style={[
@@ -74,24 +81,27 @@ export default function DurationInputField({
             },
           ]}
         >
-          {field.unitA}
+          {field.field.data.unitA}
         </Text>
 
         <TextInput
-          value={String(field.valueB)}
+          value={String(field.field.data.valueB)}
           onChangeText={(newText) => {
             onChange?.(
               template,
               defaultShown,
               {
-                id: id,
+                id,
                 type: "field",
                 field: {
-                  ...field,
-                  valueB: Number(newText),
-                } as DurationField,
-              } as FieldNode
-            )
+                  ...field.field,
+                  data: {
+                    ...fieldData,
+                    valueB: Number(newText),
+                  } as DurationData,
+                } as field_data<DurationData>,
+              } as FieldNode<DurationData>
+            );
           }}
           style={[
             theme.sizes.default.input,
@@ -114,7 +124,7 @@ export default function DurationInputField({
             },
           ]}
         >
-          {field.unitB}
+          {field.field.data.unitB}
         </Text>
       </View>
     </>

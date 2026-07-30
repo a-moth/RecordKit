@@ -3,7 +3,7 @@ import { Button, View, Text } from "react-native";
 import { useTheme } from "../../hooks/use-theme-provider";
 import { useSettings } from "../../utils/SettingsProvider";
 import { deleteEntry, deleteTemplate, getData, getEntries, getTemplates, saveData, } from '../../utils/StorageUtil';
-import { Template, Templates, Entries, Entry, FieldValue, SectionNode, TextField, SelectionField, FieldNode, Node } from "../../constants/NodeTypes"
+import { entry, template, DataContainer, data_container_types, FieldData, SectionData, TextData, SelectionData, FieldNode } from '../../constants/DataTypes';
 import valueOf from "../../utils/generic-calls";
 import { useRouter } from "expo-router";
 import { createId } from "../../utils/NodeUtils";
@@ -43,7 +43,7 @@ export default function ListViewer({
     const theme = useTheme();
     const router = useRouter();
     const { settings } = useSettings();
-    const [data, setData] = useState<Templates | Entries>();
+    let data: template | entry;
     const [_isLoading, setLoading] = useState(false);
 
     const [entryCountState] = useState(() =>
@@ -60,14 +60,12 @@ export default function ListViewer({
         async function load() {
             setLoading(true);
             try {
-                let data;
                 if (type == "entry") {
                     data = await getEntries();
                 } else {
                     data = await getTemplates();
                 }
                 if (cancelled) return;
-                setData(data);
             } catch (err) {
                 console.error("Failed to load items:", err);
             } finally {

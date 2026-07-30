@@ -1,5 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { defaultTemplate, Template } from '../constants/NodeTypes';
+import {
+  defaultTemplate,
+  DataContainer,
+  data_container_types,
+} from '../constants/DataTypes';
 
 export async function saveData(data: any) {
   await AsyncStorage.setItem('appData', JSON.stringify(data));
@@ -42,7 +46,9 @@ export async function deleteEntry(entryId: string) {
   await saveData(data);
 }
 
-export async function editTemplate(template: Template) {
+export async function editTemplate(
+  template: DataContainer<data_container_types>,
+) {
   const data = await getData();
 
   const templateId = template.metadata.templateId;

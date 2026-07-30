@@ -7,7 +7,6 @@ export type container_data = {
         templateId: string;
         name: string;
         lastModified: number;
-        usedTime: number | null;
         order: string[];
     };
 
@@ -17,6 +16,7 @@ export type container_data = {
 export type template = container_data & {
     metadata: container_data["metadata"] & {
         type: "template";
+        usedTime: number;
     }
 }
 
@@ -34,7 +34,23 @@ export type data_container_types = entry | template;
  */
 
 export abstract class DataContainer<T extends data_container_types> {
-    private data: T;
+    protected data: T;
+
+    public get metadata() {
+        return this.data.metadata;
+    }
+
+    public set metadata(value) {
+        this.data.metadata = value;
+    }
+
+    public get fields() {
+        return this.data.fields;
+    }
+
+    public set fields(value) {
+        this.data.fields = value;
+    }
 
     initialiseOrder() {
         let index = 0;
@@ -65,7 +81,7 @@ export abstract class DataContainer<T extends data_container_types> {
     }
 
     public getOrderedNodes(tree: DataContainer<data_container_types>): FieldNode<FieldData>[] {
-        return tree.data.metadata.order.map(id => tree.data.fields[id]).filter(Boolean);
+        return tree.getData().metadata.order.map(id => tree.getData().fields[id]).filter(Boolean);
     }
 
     public insertNodeAfter(
@@ -273,18 +289,25 @@ export abstract class DataContainer<T extends data_container_types> {
     ) {
         if (!template) return template;
 
-        const updated = {
-            ...template,
-            [value.id]: {
-                ...template.data.fields,
-                fields: this.updateFieldByPath(template.data.fields, value),
-                metadata: {
-                    ...template.data.metadata,
-                },
+        const nextData = {
+            ...template.getData(),
+            fields: { ...template.getData().fields },
+            metadata: {
+                ...template.getData().metadata,
             },
         };
 
-        return updated;
+        const updated = this.updateFieldByPath(nextData.fields, value);
+
+        if (!updated) {
+            return template;
+        }
+
+        if (template.getData().metadata.type === "template") {
+            return new TemplateContainer(nextData as template);
+        }
+
+        return new EntryContainer(nextData as entry);
     }
 
     public validateTree(nodes: container_data["fields"]) {
@@ -368,6 +391,7 @@ export type SelectionData = BaseData & {
 
 export type ScaleData = BaseData & {
     type: 'scale';
+    value: number;
     imageBased: boolean; // create more varied range for 1-10 instead of just 1-5
     min: number; // unsigned int, allowed to be 0
     max: number; // unsigned int, allowed to be 0
@@ -376,6 +400,7 @@ export type ScaleData = BaseData & {
 
 export type ToggleButtonData = BaseData & {
     type: 'boolean';
+    value: boolean;
     label: string;
     labelSelected: string;
     labelUnselected: string;
@@ -383,6 +408,7 @@ export type ToggleButtonData = BaseData & {
 
 export type ToggleImageButtonData = BaseData & {
     type: 'image-boolean';
+    value: boolean;
     imageSelected: typeof Image;
     imageUnselected: typeof Image;
 };
@@ -411,14 +437,15 @@ export type FieldData =
 
 export abstract class field_data<T extends FieldData> {
     constructor(
-        public readonly data: T
+        public data: T
     ) { }
+
+    public moveUp(): void { }
+    public moveDown(): void { }
+    public deleteNode(): void { }
 
     abstract setData(newData: any): void;
     abstract getData(): any;
-    abstract moveUp: () => void;
-    abstract moveDown: () => void;
-    abstract deleteNode: () => void;
 }
 
 export type FieldNode<T extends FieldData> = {
@@ -426,6 +453,8 @@ export type FieldNode<T extends FieldData> = {
     type: 'field';
     field: field_data<T>;
 };
+
+export type field_node<T extends FieldData> = FieldNode<T>;
 
 export class TextField extends field_data<TextData> {
     constructor(data: TextData) {
@@ -437,6 +466,24 @@ export class TextField extends field_data<TextData> {
         });
     }
 
+    setData(newData: any) {
+        this.data.value = newData;
+    }
+
+    getData() {
+        return this.data.value;
+    }
+}
+
+export class NumberField extends field_data<NumberData> {
+    constructor(data: NumberData) {
+        super({
+            type: "number",
+            label: data.label,
+            visible: data.visible,
+            value: data.value,
+        });
+    }
 
     setData(newData: any) {
         this.data.value = newData;
@@ -445,9 +492,151 @@ export class TextField extends field_data<TextData> {
     getData() {
         return this.data.value;
     }
-    moveUp: () => void;
-    moveDown: () => void;
-    deleteNode: () => void;
+}
+
+export class TimeField extends field_data<TimeData> {
+    constructor(data: TimeData) {
+        super({
+            type: "time",
+            label: data.label,
+            visible: data.visible,
+            value: data.value,
+            format: data.format,
+        });
+    }
+
+    setData(newData: any) {
+        this.data.value = newData;
+    }
+
+    getData() {
+        return this.data.value;
+    }
+}
+
+export class DateField extends field_data<DateData> {
+    constructor(data: DateData) {
+        super({
+            type: "date",
+            label: data.label,
+            visible: data.visible,
+            value: data.value,
+            format: data.format,
+        });
+    }
+
+    setData(newData: any) {
+        this.data.value = newData;
+    }
+
+    getData() {
+        return this.data.value;
+    }
+}
+
+export class DurationField extends field_data<DurationData> {
+    constructor(data: DurationData) {
+        super({
+            type: "duration",
+            label: data.label,
+            visible: data.visible,
+            valueA: data.valueA,
+            valueB: data.valueB,
+            unitA: data.unitA,
+            unitB: data.unitB,
+        });
+    }
+
+    setData(newData: any) {
+        this.data.valueA = newData;
+    }
+
+    getData() {
+        return {
+            valueA: this.data.valueA,
+            valueB: this.data.valueB,
+            unitA: this.data.unitA,
+            unitB: this.data.unitB,
+        };
+    }
+
+    getDataA() {
+        return {
+            valueA: this.data.valueA,
+            unitA: this.data.unitA,
+        };
+    }
+
+    getDataB() {
+        return {
+            valueB: this.data.valueB,
+            unitB: this.data.unitB,
+        };
+    }
+}
+
+export class ScaleField extends field_data<ScaleData> {
+    constructor(data: ScaleData) {
+        super({
+            type: "scale",
+            label: data.label,
+            visible: data.visible,
+            imageBased: data.imageBased,
+            min: data.min,
+            max: data.max,
+            value: data.value,
+        });
+    }
+
+    setData(newData: any) {
+        this.data.value = newData;
+    }
+
+    getData() {
+        return this.data.value;
+    }
+}
+
+export class ToggleButtonField extends field_data<ToggleButtonData> {
+    constructor(data: ToggleButtonData) {
+        super({
+            type: "boolean",
+            label: data.label,
+            visible: data.visible,
+            labelSelected: data.labelSelected,
+            labelUnselected: data.labelUnselected,
+            value: data.value,
+        });
+    }
+
+    setData(newData: any) {
+        this.data.value = newData;
+    }
+
+    getData() {
+        return this.data.value;
+    }
+}
+
+export class ToggleImageButtonField extends field_data<ToggleImageButtonData> {
+    constructor(data: ToggleImageButtonData) {
+        super({
+            type: "image-boolean",
+            label: data.label,
+            visible: data.visible,
+            imageSelected: data.imageSelected,
+            imageUnselected: data.imageUnselected,
+            value: data.value,
+        });
+    }
+
+    setData(newData: any) {
+        this.data.value = newData;
+    }
+
+    getData() {
+        return this.data.value;
+    }
 }
 
 export class SectionField extends field_data<SectionData> {
@@ -462,7 +651,6 @@ export class SectionField extends field_data<SectionData> {
         });
     }
 
-
     setData(newData: any) {
         this.data.childNodes = newData;
     }
@@ -470,9 +658,6 @@ export class SectionField extends field_data<SectionData> {
     getData() {
         return this.data.childNodes;
     }
-    moveUp: () => void;
-    moveDown: () => void;
-    deleteNode: () => void;
 }
 
 export class SelectionField extends field_data<SelectionData> {
@@ -487,7 +672,6 @@ export class SelectionField extends field_data<SelectionData> {
         });
     }
 
-
     setData(newData: any) {
         this.data.selected = newData;
     }
@@ -495,9 +679,6 @@ export class SelectionField extends field_data<SelectionData> {
     getData() {
         return this.data.selected;
     }
-    moveUp: () => void;
-    moveDown: () => void;
-    deleteNode: () => void;
 }
 
 /**
@@ -519,13 +700,13 @@ export class SelectionField extends field_data<SelectionData> {
 
 export type BaseFieldProps = {
     id: string;
-    template: template;
+    template: DataContainer<data_container_types>;
     fieldKey: string;
     defaultShown: boolean;
     locked: boolean;
 
     onChange?: (
-        template: template,
+        template: DataContainer<data_container_types>,
         defaultShown: boolean,
         newValue: FieldNode<FieldData>,
     ) => void;
@@ -535,7 +716,7 @@ export type BaseFieldProps = {
  * Generic Typed Props
  */
 
-export type StandardFieldProps =
+export type StandardFieldProps<T extends FieldData = FieldData> =
     BaseFieldProps & {
-        field: FieldNode<FieldData>;
+        field: FieldNode<T>;
     };

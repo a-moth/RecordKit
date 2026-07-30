@@ -4,7 +4,7 @@
 import { Component } from "react";
 import { TextStyle, View, Text } from 'react-native';
 import MultiSelect from "react-native-multiple-select";
-import { FieldNode, SelectionField, Template } from "../../../constants/NodeTypes";
+import { FieldNode, DataContainer, data_container_types, SelectionData, field_node, field_data } from "../../../constants/DataTypes";
 
 export interface Item {
   id: string;
@@ -14,20 +14,18 @@ export interface Item {
 interface Props {
   style?: TextStyle;
   textStyle?: TextStyle;
-  template: Template;
+  template: DataContainer<data_container_types>;
   id: string;
-  selected: SelectionField["selected"];
-  newItems: SelectionField["options"];
+  field: FieldNode<SelectionData>;
   locked: boolean;
-  multi: SelectionField["multiple"];
 
   onChange?: (
-    template: Template,
+    template: DataContainer<data_container_types>,
     defaultShown: boolean,
-    newValue: FieldNode
+    newValue: FieldNode<SelectionData>
   ) => void;
 
-  fieldKey: SelectionField["label"];
+  fieldKey: SelectionData["label"];
   defaultShown: boolean;
 }
 
@@ -47,21 +45,22 @@ export default class SelectionInput extends Component<Props> {
 
     this.lastSentSelected = [...newItemsList];
 
+    const fieldData = this.props.field.field.data as SelectionData;
+
     this.props.onChange(
       this.props.template,
       this.props.defaultShown,
       {
-        id: this.props.id,
+        id: this.props.field.id,
         type: "field",
         field: {
-          type: "selection",
-          label: this.props.fieldKey,
-          selected: [...newItemsList],
-          multiple: this.props.multi,
-          options: this.props.newItems,
-        } as SelectionField,
-      } as FieldNode
-
+          ...this.props.field.field,
+          data: {
+            ...fieldData,
+            selected: newItemsList,
+          } as SelectionData,
+        } as field_data<SelectionData>,
+      } as FieldNode<SelectionData>
     );
   };
 
@@ -88,17 +87,17 @@ export default class SelectionInput extends Component<Props> {
       <>
         <MultiSelect
           hideTags
-          items={this.props.newItems}
+          items={this.props.field.field.data.options}
           uniqueKey="id"
           ref={(component) => {
             this.multiSelect = component;
           }}
-          single={!this.props.multi}
+          single={!this.props.field.field.data.multiple}
           onSelectedItemsChange={(items: string[]) => {
             if (isLocked) return;
             this.onSelectedItemsChange(items);
           }}
-          selectedItems={this.props.selected}
+          selectedItems={this.props.field.field.data.selected}
           selectText={isLocked ? "Pick items disabled" : "Pick Items"}
           searchInputPlaceholderText="Search Items..."
           displayKey="name"
@@ -122,8 +121,8 @@ export default class SelectionInput extends Component<Props> {
         >
         </MultiSelect>
         <View style={baseStyle}>
-          {this.props.newItems
-            .filter(item => this.props.selected.includes(item.id))
+          {this.props.field.field.data.options
+            .filter(item => this.props.field.field.data.selected.includes(item.id))
             .map(item => (
               <Text key={item.id} style={textStyle}>
                 {item.name}

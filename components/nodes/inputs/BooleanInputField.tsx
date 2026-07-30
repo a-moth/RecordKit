@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import BooleanInput from "./BooleanInput";
 import { useTheme } from "../../../hooks/use-theme-provider";
-import { ToggleButtonField, StandardFieldProps, FieldNode } from "../../../constants/NodeTypes";
+import { StandardFieldProps, FieldNode, ToggleImageButtonData, FieldData, field_data } from "../../../constants/DataTypes";
 
 export default function BooleanInputField({
   template,
@@ -11,23 +11,28 @@ export default function BooleanInputField({
   field,
   locked = false,
   onChange,
-}: StandardFieldProps<ToggleButtonField>) {
+}: StandardFieldProps<ToggleImageButtonData>) {
   const theme = useTheme();
 
-  const displayedValue = field.value ?? false;
+  const displayedValue = field.field.data.value ?? false;
+
+  const fieldData = field.field.data as ToggleImageButtonData;
 
   function handleChange(selected: boolean) {
     onChange?.(
       template,
       defaultShown,
       {
-        id: id,
+        id,
         type: "field",
         field: {
-          ...field,
-          selected: selected,
-        },
-      } as FieldNode
+          ...field.field,
+          data: {
+            ...fieldData,
+            value: selected,
+          } as ToggleImageButtonData,
+        } as field_data<FieldData>,
+      } as FieldNode<FieldData>
     );
   }
 
@@ -38,8 +43,8 @@ export default function BooleanInputField({
       </Text>
 
       <BooleanInput
-        selected={field.value}
-        label={field.label}
+        selected={field.field.data.value}
+        label={field.field.data.label}
         value={displayedValue}
         locked={locked}
         onChange={handleChange}

@@ -1,4 +1,4 @@
-import { FieldNode, TimeField } from '../../../constants/NodeTypes';
+import { field_data, FieldNode, TimeData } from '../../../constants/DataTypes';
 import { useTheme } from '../../../hooks/use-theme-provider';
 import { useSettings } from '../../../utils/SettingsProvider';
 import { Text, TextInput, View } from 'react-native';
@@ -12,6 +12,8 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
     if (!defaultShown) return null;
 
     const value = settings[fieldKey] ?? "";
+
+    const fieldData = field.field.data as TimeData;
 
     return (
         <View style={theme.sizes.default.container}>
@@ -28,15 +30,16 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
                             template,
                             defaultShown,
                             {
-                                id: id,
+                                id,
                                 type: "field",
                                 field: {
-                                    type: field.field.type,
-                                    label: field.field.label,
-                                    visible: field.field.visible,
-                                    value: text
-                                } as TimeField,
-                            } as FieldNode
+                                    ...field.field,
+                                    data: {
+                                        ...fieldData,
+                                        value: text == null ? "6:00" : text === "" ? "" : text.includes(":") ? text : text + ":00"
+                                    } as TimeData,
+                                } as field_data<TimeData>,
+                            } as FieldNode<TimeData>
                         );
 
                     }
