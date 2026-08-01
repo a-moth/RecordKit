@@ -3,7 +3,7 @@ import { Button, View, Text } from "react-native";
 import { useTheme } from "../../hooks/use-theme-provider";
 import { useSettings } from "../../utils/SettingsProvider";
 import { deleteEntry, deleteTemplate, getData, getEntries, getTemplates, saveData, } from '../../utils/StorageUtil';
-import { entry, template, DataContainer, data_container_types, FieldData, SectionData, TextData, SelectionData, FieldNode } from '../../constants/DataTypes';
+import { entry, template, DataContainer, data_container_types, FieldData, FieldNode } from '../../constants/DataTypes';
 import valueOf from "../../utils/generic-calls";
 import { useRouter } from "expo-router";
 import { createId } from "../../utils/NodeUtils";
@@ -43,7 +43,7 @@ export default function ListViewer({
     const theme = useTheme();
     const router = useRouter();
     const { settings } = useSettings();
-    let data: template | entry;
+    const [data, setData] = useState<Record<string, DataContainer<data_container_types>> | null>(null);
     const [_isLoading, setLoading] = useState(false);
 
     const [entryCountState] = useState(() =>
@@ -60,12 +60,9 @@ export default function ListViewer({
         async function load() {
             setLoading(true);
             try {
-                if (type == "entry") {
-                    data = await getEntries();
-                } else {
-                    data = await getTemplates();
-                }
+                const result = type == "entry" ? await getEntries() : await getTemplates();
                 if (cancelled) return;
+                setData(result);
             } catch (err) {
                 console.error("Failed to load items:", err);
             } finally {
@@ -75,7 +72,7 @@ export default function ListViewer({
 
         load();
         return () => { cancelled = true; };
-    }, []);
+    }, [type]);
 
     // TODO make this make sense
     const sortedTemplateData = useMemo(() => {
@@ -99,62 +96,6 @@ export default function ListViewer({
     } else {
         listCount = Infinity;
     }
-
-    let count = showCountState;
-
-    // TODO this code does nothing now. fix.
-    async function renameTemplateTextOnly(id: string, name: string) {
-        if (!data) return;
-
-        // Keep the old lastModified so the list row order stays pinned while typing
-        const updatedData: Templates = {
-            ...data,
-            [id]: {
-                ...data[id],
-                metadata: {
-                    ...data[id].metadata,
-                    name: name,
-                },
-            },
-        };
-
-        setData(updatedData);
-    }
-
-    //TODO this borrowed code does nothing now. fix
-    const triggerSortUpdate = useDebounceCallback(async (id: string) => {
-        setData(prev => {
-            if (!prev || !prev[id]) return prev;
-            return {
-                ...prev,
-                [id]: {
-                    ...prev[id],
-                    metadata: {
-                        ...prev[id].metadata,
-                        lastModified: Date.now()
-                    }
-                }
-            };
-        });
-
-        // Persist the updated timestamp structure
-        try {
-            const appData = await getData();
-            if (type == "entry") {
-                if (appData.entries && appData.entries[id]) {
-                    appData.entries[id].metadata.lastModified = Date.now();
-                    setData(appData.entries);
-                }
-            } else {
-                if (appData.templates && appData.templates[id]) {
-                    appData.templates[id].metadata.lastModified = Date.now();
-                    setData(appData.templates);
-                }
-            }
-        } catch (err) {
-            console.error("Failed to save item sort timestamp:", err);
-        }
-    }, 1200);
 
     async function deleteId(id: string) {
         if (type === "entry") {
@@ -187,9 +128,9 @@ export default function ListViewer({
     }
 
     //TODO make this name make sense with a comment
-    function TemplateRow({ item }: { item: Template }) {
-        function onChange(template: Template | null, defaultShown: boolean, newValue: FieldNode) {
-            onHandleChange(template, defaultShown, newValue);
+    function TemplateRow({ item }: { item: DataContainer<template> }) {
+        function onChange(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
+            template?.onHandleChange(template, defaultShown, newValue);
         }
 
         return (
@@ -209,16 +150,16 @@ export default function ListViewer({
     }
 
     //TODO make this make sense with a comment
-    function EntryRow({ item }: { item: Entry }) {
-        function onChange(template: Template | null, defaultShown: boolean, newValue: FieldNode) {
-            onHandleChange(template, defaultShown, newValue);
+    function EntryRow({ item }: { item: DataContainer<entry> }) {
+        function onChange(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
+            template?.onHandleChange(template, defaultShown, newValue);
         }
 
         return (
             <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
                 <View style={theme.sizes.default.entryEditButton}>
-                    <Button title="Edit" onPress={() => { openEditor(item.metadata.entryId, item.metadata.templateId) }} />
-                    <Button title="Delete" onPress={() => { deleteId(item.metadata.entryId) }} />
+                    <Button title="Edit" onPress={() => { openEditor(item.metadata.name, item.metadata.templateId) }} />
+                    <Button title="Delete" onPress={() => { deleteId(item.metadata.name) }} />
                 </View>
 
                 <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.primary }]}>
@@ -229,7 +170,7 @@ export default function ListViewer({
     }
     // check if listItems is empty, return default script if it is
 
-    if ((!sortedTemplateData || sortedTemplateData.length) === 0 && type == "entry") {
+    if ((!sortedTemplateData || sortedTemplateData.length === 0) && type == "entry") {
         return (
             <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
                 <Text style={[theme.sizes.default.text, { color: theme.colors.text }]}>
@@ -239,7 +180,7 @@ export default function ListViewer({
         );
     }
 
-    if ((!sortedTemplateData || sortedTemplateData.length) === 0 && type == "template") {
+    if ((!sortedTemplateData || sortedTemplateData.length === 0) && type == "template") {
         return (
             <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
                 <Text style={[theme.sizes.default.text, { color: theme.colors.text }]}>
@@ -256,15 +197,15 @@ export default function ListViewer({
                 if (type === "entry") {
                     return (
                         <EntryRow
-                            key={(value as Entry).metadata.name}
-                            item={value as Entry}
+                            key={value.metadata.name}
+                            item={value as DataContainer<entry>}
                         />
                     );
                 } else {
                     return (
                         <TemplateRow
-                            key={(value as Template).metadata.templateId}
-                            item={value as Template}
+                            key={value.metadata.templateId}
+                            item={value as DataContainer<template>}
                         />
                     );
                 }

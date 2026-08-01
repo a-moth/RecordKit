@@ -1,10 +1,10 @@
-import { Node } from "../../../constants/NodeTypes";
+import { FieldNode, FieldData } from "../../../constants/DataTypes";
 import { Text } from "react-native";
 
-export default function ValidationPreview({ field }: { field: Node }) {
+export default function ValidationPreview({ field }: { field: FieldNode<FieldData> }) {
     switch (field.type) {
         case "field":
-            switch (field.field.type) {
+            switch (field.field.data.type) {
                 case "boolean":
                     return <Text>Boolean Text</Text>
                 case "date":
@@ -23,13 +23,11 @@ export default function ValidationPreview({ field }: { field: Node }) {
                     return <Text>Number</Text>
                 case "time":
                     return <Text>Time</Text>
+                case "section":
+                    return <Text>Section</Text>;
                 default:
                     return <Text>Error, incorrect field type.</Text>;
             }
-        case "section":
-            return <Text>Section</Text>;
-        default:
-            return <></>;
     }
     return <></>;
 }

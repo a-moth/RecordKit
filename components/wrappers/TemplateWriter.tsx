@@ -16,17 +16,19 @@ import {
     saveData,
 } from "../../utils/StorageUtil";
 
+import { defaultTemplate } from "../../hooks/NodeRegistry";
 import {
-    defaultTemplate,
-    Template,
+    DataContainer,
+    data_container_types,
+    FieldData,
     FieldNode,
-} from "../../constants/NodeTypes"
+} from "../../constants/DataTypes"
 
 import { useTheme }
     from "../../hooks/use-theme-provider";
 import { useRouter } from "expo-router";
 import TemplateEditorManager from "../managers/TemplateEditorManager";
-import { onHandleChange } from "../../utils/NodeUtils";
+
 
 type Props = {
     templateId: string;
@@ -37,7 +39,7 @@ export default function TemplateWriter({
 }: Props) {
 
     const [templateData, setTemplateData] =
-        useState<Template | null>(null);
+        useState<DataContainer<data_container_types> | null>(null);
 
     const [saving, setSaving] =
         useState(false);
@@ -78,9 +80,11 @@ export default function TemplateWriter({
         templateRef.current = templateData;
     }, [templateData]);
 
-    function updateField(template: Template | null, defaultShown: boolean, newValue: FieldNode) {
-        setTemplateData((prev: Template | null) => {
-            return onHandleChange(prev, defaultShown, newValue);
+    function updateField(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
+        setTemplateData((prev: DataContainer<data_container_types> | null) => {
+            prev?.onHandleChange(prev, defaultShown, newValue);
+
+            return prev;
         });
     }
 

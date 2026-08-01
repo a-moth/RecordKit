@@ -3,15 +3,15 @@ import { useSettings } from "../../utils/SettingsProvider";
 import SettingInputField from "../nodes/inputs/SettingInputField";
 import NumberInputField from "../nodes/inputs/NumberInputField";
 import TimeInputField from "../nodes/inputs/TimeInputField";
-import { Template, Node, FieldNode } from "../../constants/NodeTypes";
+import { DataContainer, FieldNode, FieldData, data_container_types } from "../../constants/DataTypes";
 
 export type CommonProps = { // put this in a constants file?
-    template: Template | null;
+    template: DataContainer<data_container_types> | null;
     id: string;
-    field: FieldNode | null;
+    field: FieldNode<FieldData> | null;
     fieldKey: string;
     defaultShown: boolean;
-    onChange?: (template: Template, defaultShown: boolean, newValue: Node) => void;
+    onChange?: (template: DataContainer<data_container_types>, defaultShown: boolean, newValue: FieldNode<FieldData>) => void;
 };
 
 export default function SettingManager({
@@ -30,7 +30,7 @@ export default function SettingManager({
         field,
         fieldKey,
         defaultShown,
-        onChange: (template: Template, defaultShown: boolean, newValue: Node) => onChange?.(template, defaultShown, newValue),
+        onChange: (template: DataContainer<data_container_types>, defaultShown: boolean, newValue: FieldNode<FieldData>) => onChange?.(template, defaultShown, newValue),
     };
     switch (SETTING[fieldKey]) {
         case "text":

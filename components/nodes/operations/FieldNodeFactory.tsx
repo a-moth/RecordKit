@@ -1,20 +1,20 @@
-import { FieldNode, Template } from "../../../constants/NodeTypes";
+import { data_container_types, DataContainer, FieldData, FieldNode } from "../../../constants/DataTypes";
 import TypedNode from "./TypedNode";
 import EditorControls from "./EditorControls";
 import ValidationPreview from "./ValidationPreview";
 import AddControls from "./AddControls";
 
 export default function FieldNodeFactory({ template, id, edit, nodeKey, locked, field, onChange, addField, addSection, moveUp, moveDown, deleteNode }: {
-    template: Template,
+    template: DataContainer<data_container_types>,
     id: string,
     edit: boolean,
     nodeKey: string,
     locked: boolean,
-    field: FieldNode,
+    field: FieldNode<FieldData>,
     onChange: (
-        template: Template,
+        template: DataContainer<data_container_types>,
         defaultShown: boolean,
-        value: FieldNode
+        value: FieldNode<FieldData>
     ) => void;
     addField: () => void;
     addSection: () => void;

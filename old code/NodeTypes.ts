@@ -1,5 +1,5 @@
 import { Image } from 'react-native';
-import { field_node, TextField } from './DataTypes';
+import { field_node, TextField } from '../constants/DataTypes';
 
 /**
  * Default Template Definitions
@@ -155,84 +155,4 @@ const Section1: SectionNode = createSectionNode('Testing Section', 'row', {
   TestText1: createFieldNode(TestText1),
 });
 
-/**
- * Public constant containing the initialisation of the core Journal Template
- */
-export const tempTemplate: Template = {
-  metadata: {
-    templateId: '9834fa2e-4392-407f-9672-95b82d2868a7',
-    entryId: null,
-    name: 'defaultTemplate',
-    lastModified: 0,
-    usedTime: null,
-    order: [],
-  },
-
-  fields: {
-    TextInput1: createFieldNode(TextInput1),
-    DurationInput1: createFieldNode(DurationInput1),
-    ScaleInput1: createFieldNode(ScaleInput1),
-    SelectionInput1: createFieldNode(SelectionInput1),
-    SelectionInput2: createFieldNode(SelectionInput2),
-    SelectionInput3: createFieldNode(SelectionInput3),
-    SelectionInput4: createFieldNode(SelectionInput4),
-    DateInput1: createFieldNode(DateInput1),
-    BooleanInput1: createFieldNode(BooleanInput1),
-    Section1,
-  },
-} as const;
-
-export const defaultTemplate = {
-  metadata: {
-    templateId: tempTemplate.metadata.templateId,
-    entryId: tempTemplate.metadata.entryId,
-    name: tempTemplate.metadata.name,
-    lastModified: tempTemplate.metadata.lastModified,
-    usedTime: tempTemplate.metadata.usedTime,
-    order: [
-      tempTemplate.fields.TextInput1.id,
-      tempTemplate.fields.DurationInput1.id,
-      tempTemplate.fields.ScaleInput1.id,
-      tempTemplate.fields.SelectionInput1.id,
-      tempTemplate.fields.SelectionInput2.id,
-      tempTemplate.fields.SelectionInput3.id,
-      tempTemplate.fields.SelectionInput4.id,
-      tempTemplate.fields.DateInput1.id,
-      tempTemplate.fields.BooleanInput1.id,
-      tempTemplate.fields.Section1.id,
-    ],
-  },
-  fields: {
-    TextInput1: tempTemplate.fields.TextInput1,
-    DurationInput1: tempTemplate.fields.DurationInput1,
-    ScaleInput1: tempTemplate.fields.ScaleInput1,
-    SelectionInput1: tempTemplate.fields.SelectionInput1,
-    SelectionInput2: tempTemplate.fields.SelectionInput2,
-    SelectionInput3: tempTemplate.fields.SelectionInput3,
-    SelectionInput4: tempTemplate.fields.SelectionInput4,
-    DateInput1: tempTemplate.fields.DateInput1,
-    BooleanInput1: tempTemplate.fields.BooleanInput1,
-    Section1: tempTemplate.fields.Section1,
-  },
-} as const;
-
 // default SelectionField
-
-export const selectionField: SelectionField = {
-  type: 'selection',
-  label: 'Add Field',
-  multiple: false,
-  selected: [
-    'text',
-    'number',
-    'time',
-    'date',
-    'duration',
-    'selection',
-    'scale',
-    'boolean',
-    'image-boolean',
-  ], // the actual value
-  options: [], // the choices
-  visible: true,
-};

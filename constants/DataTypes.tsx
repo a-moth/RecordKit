@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from 'react-native';
+
 /**
  * This is the default structure of the data, which can be extended for the purpose of Entries or Templates
  * as necessary.
@@ -286,7 +288,7 @@ export abstract class DataContainer<T extends data_container_types> {
         template: DataContainer<data_container_types>,
         defaultShown: boolean,
         value: FieldNode<FieldData>,
-    ) {
+    ): DataContainer<data_container_types> | null {
         if (!template) return template;
 
         const nextData = {
@@ -409,8 +411,8 @@ export type ToggleButtonData = BaseData & {
 export type ToggleImageButtonData = BaseData & {
     type: 'image-boolean';
     value: boolean;
-    imageSelected: typeof Image;
-    imageUnselected: typeof Image;
+    imageSelected: ImageSourcePropType;
+    imageUnselected: ImageSourcePropType;
 };
 
 export type SettingsData = TextData;

@@ -1,10 +1,10 @@
-import { selectionField, } from '../../constants/NodeTypes';
 import FieldNodeFactory from '../nodes/operations/FieldNodeFactory';
 import SectionNodeFactory from '../nodes/operations/SectionNodeFactory';
 import { createId, isSectionNode, } from '../../utils/NodeUtils';
 import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
 import { data_container_types, DataContainer, entry, field_data, FieldData, SectionData, SectionField, SelectionField, template, TextField, SelectionData, FieldNode } from '../../constants/DataTypes';
+import { selectionField } from '../../hooks/NodeRegistry';
 
 //You need:
 
@@ -97,14 +97,7 @@ export default function TemplateEditorManager({
 
           function addField() {
             // insert this after fieldnode of field
-            let nodeValue: SelectionField = new SelectionField({
-              type: "selection",
-              label: "Add Field to " + createId(),
-              multiple: selectionField.multiple,
-              selected: selectionField.selected,
-              options: selectionField.options,
-              visible: selectionField.visible,
-            });
+            let nodeValue: SelectionField = selectionField;
 
             let fieldValue: field_data<FieldData> | undefined;
             switch (nodeValue.data.selected[0]) {

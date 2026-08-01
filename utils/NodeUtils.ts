@@ -1,4 +1,4 @@
-import { Entry, Node, Template } from '../constants/NodeTypes';
+import { FieldNode, FieldData } from '../constants/DataTypes';
 
 /**
  * Creates a new UUID for any object
@@ -8,6 +8,6 @@ export function createId() {
   return crypto.randomUUID();
 }
 
-export function isSectionNode(node: Node) {
-  return node.type === 'section';
+export function isSectionNode(node: FieldNode<FieldData>) {
+  return node.field.data.type === 'section';
 }

@@ -17,11 +17,12 @@ import {
 } from "../../utils/StorageUtil";
 
 import {
-  Entry,
   FieldNode,
-  Template,
-  defaultTemplate
-} from "../../constants/NodeTypes"
+  FieldData,
+  DataContainer,
+  data_container_types,
+  entry,
+} from "../../constants/DataTypes"
 
 import { useTheme }
   from "../../hooks/use-theme-provider";
@@ -30,7 +31,7 @@ import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "expo-router";
 import TemplateEditorManager from "../managers/TemplateEditorManager";
-import { onHandleChange } from "../../utils/NodeUtils";
+import { defaultTemplate } from "../../hooks/NodeRegistry";
 
 type Props = {
   base?: string;
@@ -43,7 +44,7 @@ export default function EntryWriter({
 }: Props) {
 
   const [entryData, setEntryData] =
-    useState<Entry | Template | null>(null);
+    useState<DataContainer<entry> | null>(null);
 
   const [saving, setSaving] =
     useState(false);
@@ -73,12 +74,14 @@ export default function EntryWriter({
         );
 
       setEntryData({
+        ...templateData ?? defaultTemplate,
         metadata: {
+          ...templateData?.metadata ?? defaultTemplate.metadata,
           templateId: templateData?.metadata?.templateId ?? defaultTemplate.metadata.templateId,
-          entryId: base ?? "entry" + uuidv4(),
           name: base ?? "entry" + uuidv4(),
+          type: "entry",
           lastModified: Date.now(),
-          usedTime: Date.now(),
+          createdAt: Date.now(),
           order: templateData?.metadata?.order ?? defaultTemplate.metadata.order
         },
 
@@ -93,23 +96,16 @@ export default function EntryWriter({
   }, [base, template]);
 
   function updateField(
-    template: Template | null,
+    template: DataContainer<data_container_types> | null,
     defaultShown: boolean,
-    newValue: FieldNode
+    newValue: FieldNode<FieldData>
   ) {
 
-    setEntryData((prev) => {
-
-      if (!prev) {
-        return prev;
-      }
-
-      return onHandleChange(
-        template,
-        defaultShown,
-        newValue
-      );
-    });
+    template?.onHandleChange(
+      template,
+      defaultShown,
+      newValue
+    );
   }
 
   async function handleSave() {

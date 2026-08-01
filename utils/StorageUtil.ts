@@ -1,9 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  defaultTemplate,
-  DataContainer,
-  data_container_types,
-} from '../constants/DataTypes';
+import { DataContainer, data_container_types } from '../constants/DataTypes';
+import { defaultTemplate } from '../hooks/NodeRegistry';
 
 export async function saveData(data: any) {
   await AsyncStorage.setItem('appData', JSON.stringify(data));

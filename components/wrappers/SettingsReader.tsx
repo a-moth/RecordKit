@@ -1,7 +1,6 @@
 import SettingManager from "../managers/SettingManager";
 import { useSettings } from "../../utils/SettingsProvider";
 import { ScrollView } from "react-native";
-import { FieldNode } from "../../constants/NodeTypes";
 
 // so far all settings are arrays of strings under a string
 
