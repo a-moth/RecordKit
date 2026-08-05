@@ -12,8 +12,6 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
 
   const value = settings[fieldKey] ?? "";
 
-  const fieldData = field.field.data as NumberData;
-
   return (
     <View style={theme.sizes.default.container}>
       <Text style={[theme.sizes.default.text, { color: theme.colors.text, fontFamily: theme.fonts?.regular.fontFamily }]}>{fieldKey}</Text>
@@ -25,21 +23,14 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
             [fieldKey]: text == null ? "" : text === "" ? "" : Number(text) <= 0 ? 1 : Number(text)
           })
           if (template && field) {
-            onChange?.(
-              template,
-              defaultShown,
-              {
-                id: id,
-                type: "field",
-                field: {
-                  ...field.field,
-                  data: {
-                    ...fieldData,
-                    value: Number(text),
-                  } as NumberData,
-                } as field_data<NumberData>,
-              } as FieldNode<NumberData>
-            );
+            const newField = field.field.clone();
+            newField.setData(Number(text));
+
+            onChange?.(template, defaultShown, {
+              id: id,
+              type: "field",
+              field: newField,
+            });
           }
         }}
         keyboardType="numeric"

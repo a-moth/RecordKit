@@ -13,8 +13,6 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
 
     const value = settings[fieldKey] ?? "";
 
-    const fieldData = field.field.data as TimeData;
-
     return (
         <View style={theme.sizes.default.container}>
             <Text style={[theme.sizes.default.text, { color: theme.colors.text, fontFamily: theme.fonts?.regular.fontFamily }]}>{fieldKey}</Text>
@@ -23,25 +21,17 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
                 value={value == null ? "" : value}
                 onChangeText={(text) => {
                     updateSetting({
-                        [fieldKey]: text == null ? "6:00" : text === "" ? "" : text.includes(":") ? text : text + ":00"
+                        [fieldKey]: text == null ? "" : text === "" ? "" : text.includes(":") ? text : text + ":00"
                     })
                     if (template && field) {
-                        onChange?.(
-                            template,
-                            defaultShown,
-                            {
-                                id,
-                                type: "field",
-                                field: {
-                                    ...field.field,
-                                    data: {
-                                        ...fieldData,
-                                        value: text == null ? "6:00" : text === "" ? "" : text.includes(":") ? text : text + ":00"
-                                    } as TimeData,
-                                } as field_data<TimeData>,
-                            } as FieldNode<TimeData>
-                        );
+                        const newField = field.field.clone();
+                        newField.setData(text == null ? "" : text === "" ? "" : text.includes(":") ? text : text + ":00");
 
+                        onChange?.(template, defaultShown, {
+                            id,
+                            type: "field",
+                            field: newField,
+                        });
                     }
                 }}
                 editable={fieldKey.startsWith("**") ? true : false}

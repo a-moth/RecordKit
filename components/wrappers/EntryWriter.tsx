@@ -22,6 +22,7 @@ import {
   DataContainer,
   data_container_types,
   entry,
+  EntryContainer,
 } from "../../constants/DataTypes"
 
 import { useTheme }
@@ -44,7 +45,7 @@ export default function EntryWriter({
 }: Props) {
 
   const [entryData, setEntryData] =
-    useState<DataContainer<entry> | null>(null);
+    useState<DataContainer<data_container_types> | null>(null);
 
   const [saving, setSaving] =
     useState(false);
@@ -73,7 +74,7 @@ export default function EntryWriter({
           template
         );
 
-      setEntryData({
+      setEntryData(new EntryContainer({
         ...templateData ?? defaultTemplate,
         metadata: {
           ...templateData?.metadata ?? defaultTemplate.metadata,
@@ -85,10 +86,8 @@ export default function EntryWriter({
           order: templateData?.metadata?.order ?? defaultTemplate.metadata.order
         },
 
-        fields: structuredClone(
-          templateData?.fields ?? defaultTemplate.fields
-        )
-      });
+        fields: templateData?.fields ?? defaultTemplate.fields,
+      }));
     }
 
     load();
@@ -100,12 +99,17 @@ export default function EntryWriter({
     defaultShown: boolean,
     newValue: FieldNode<FieldData>
   ) {
+    if (!template) return;
 
-    template?.onHandleChange(
+    const updated = template.onHandleChange(
       template,
       defaultShown,
       newValue
     );
+
+    if (updated) {
+      setEntryData(updated);
+    }
   }
 
   async function handleSave() {
@@ -125,13 +129,7 @@ export default function EntryWriter({
       entries: {
         ...appData.entries,
 
-        [entryData.metadata.name]: {
-          ...entryData,
-          metadata: {
-            ...entryData.metadata,
-            time: Date.now(),
-          }
-        },
+        [entryData.getData().metadata.name]: entryData,
       },
     });
 
@@ -160,6 +158,9 @@ export default function EntryWriter({
         edit={false}
         onChange={
           updateField
+        }
+        onTreeChange={
+          setEntryData
         }
       />
 

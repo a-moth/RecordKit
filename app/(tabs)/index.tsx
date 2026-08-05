@@ -1,5 +1,7 @@
+import { useMemo, useState } from "react";
 import { ScrollView } from "react-native";
 import EntryListReader from "../../components/readers/EntryListReader";
+import SelectionInputField from "../../components/nodes/inputs/SelectionInputField";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -7,31 +9,76 @@ import { useSettings } from "../../utils/SettingsProvider";
 
 import { useRouter } from 'expo-router';
 import { getTemplates } from "../../utils/StorageUtil";
+import { defaultTemplate } from "../../hooks/NodeRegistry";
+import {
+    data_container_types,
+    DataContainer,
+    FieldData,
+    FieldNode,
+    SelectionData,
+    SelectionField,
+} from "../../constants/DataTypes";
+import { useTheme } from "../../hooks/use-theme-provider";
 
 export default function HomeScreen() {
     const { updateSetting, loading } = useSettings();
 
     const router = useRouter();
 
-    // TODO rename this dumb name to something useful
-    async function NewEntry1(templateId?: string) {
+    const theme = useTheme();
+
+    const [showTemplatePicker, setShowTemplatePicker] = useState(false);
+    const [templates, setTemplates] = useState<Record<string, DataContainer<data_container_types>> | null>(null);
+
+    async function NewEntry1(templateId: string) {
         let currentId = "entry" + uuidv4();
 
         updateSetting({ "**currentEntry": currentId });
-
-        if (templateId == null) {
-            let templates = await getTemplates();
-
-            templateId = templates?.[0]?.templateId ?? null;
-        }
 
         router.push({
             pathname: "/entry",
             params: {
                 entryId: currentId,
-                templateId: templateId ?? '9834fa2e-4392-407f-9672-95b82d2868a7',
+                templateId: templateId,
             },
         });
+    }
+
+    async function toggleTemplatePicker() {
+        if (!showTemplatePicker) {
+            setTemplates(await getTemplates());
+        }
+
+        setShowTemplatePicker((prev) => !prev);
+    }
+
+    const templatePickerField: FieldNode<SelectionData> = useMemo(() => ({
+        id: "template-picker",
+        type: "field",
+        field: new SelectionField({
+            type: "selection",
+            label: "Choose a Template",
+            multiple: false,
+            selected: [],
+            options: Object.values(templates ?? {}).map((template) => ({
+                id: template.metadata.templateId,
+                name: template.metadata.name || template.metadata.templateId,
+            })),
+            visible: true,
+        }),
+    }), [templates]);
+
+    function onTemplateSelected(
+        _template: DataContainer<data_container_types> | null,
+        _defaultShown: boolean,
+        newValue: FieldNode<FieldData>,
+    ) {
+        const selectedTemplateId = (newValue.field.data as SelectionData).selected[0];
+        console.log(selectedTemplateId);
+        if (selectedTemplateId) {
+            setShowTemplatePicker(false);
+            NewEntry1(selectedTemplateId);
+        }
     }
 
 
@@ -46,8 +93,34 @@ export default function HomeScreen() {
     return (
         <ScrollView>
             <EntryListReader
-                onPress={() => NewEntry1()}
-            />
+                onPress={toggleTemplatePicker}
+            >
+                {showTemplatePicker && (
+                    <SelectionInputField
+                        id="template-picker"
+                        style={{
+                            ...theme.sizes.default.alignCenter,
+                            ...theme.sizes.default.container,
+                            ...theme.sizes.default.fillContainer,
+                            backgroundColor: theme.colors.card,
+                            borderColor: theme.colors.border,
+                            color: theme.colors.text,
+                            fontFamily: theme.fonts?.regular.fontFamily,
+                        }}
+                        textStyle={{
+                            ...theme.sizes.default.text,
+                            color: theme.colors.text,
+                            fontFamily: theme.fonts?.regular.fontFamily,
+                        }}
+                        template={defaultTemplate}
+                        fieldKey="Choose a Template"
+                        field={templatePickerField}
+                        defaultShown={true}
+                        locked={false}
+                        onChange={onTemplateSelected}
+                    />
+                )}
+            </EntryListReader>
         </ScrollView>
     );
 }

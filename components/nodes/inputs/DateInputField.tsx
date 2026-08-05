@@ -160,21 +160,14 @@ export default function DateInputField({
             return;
           }
 
-          onChange?.(
-            template,
-            defaultShown,
-            {
-              id,
-              type: "field",
-              field: {
-                ...field.field,
-                data: {
-                  ...fieldData,
-                  value: text === "" ? null : isoValue,
-                } as DateData,
-              } as field_data<DateData>,
-            } as FieldNode<DateData>
-          );
+          const newField = field.field.clone();
+          newField.setData(text === "" ? null : isoValue);
+
+          onChange?.(template, defaultShown, {
+            id,
+            type: "field",
+            field: newField,
+          });
         }}
         style={[
           theme.sizes.default.input,

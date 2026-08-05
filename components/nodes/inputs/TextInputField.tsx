@@ -11,8 +11,6 @@ import {
 import { useTheme } from "../../../hooks/use-theme-provider";
 
 import {
-  field_data,
-  FieldNode,
   StandardFieldProps,
   TextData,
 } from "../../../constants/DataTypes";
@@ -65,20 +63,17 @@ export default function TextInputField({
 
           setText(newText);
 
+          const newField = field.field.clone();
+          newField.setData(newText);
+
           onChange?.(
             template,
             defaultShown,
             {
               id: id,
               type: "field",
-              field: {
-                ...field.field,
-                data: {
-                  ...field.field.data,
-                  value: newText,
-                } as TextData,
-              } as field_data<TextData>,
-            } as FieldNode<TextData>
+              field: newField,
+            }
           );
         }}
         style={[

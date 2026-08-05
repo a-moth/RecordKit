@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Button, View, Text } from "react-native";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Button, View, Text, TextInput } from "react-native";
 import { useTheme } from "../../hooks/use-theme-provider";
 import { useSettings } from "../../utils/SettingsProvider";
 import { deleteEntry, deleteTemplate, getData, getEntries, getTemplates, saveData, } from '../../utils/StorageUtil';
@@ -14,27 +14,6 @@ type ListViewerProps = {
 }; // TODO make listItems list of entries or templates
 
 //TODO: test this entire setup after refactoring into generic type
-
-// TODO: test this function, make it make sense
-function useDebounceCallback<T extends (...args: any[]) => void>(callback: T, delay: number) {
-    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const callbackRef = useRef(callback);
-
-    useEffect(() => {
-        callbackRef.current = callback;
-    }, [callback]);
-
-    return useMemo(() => {
-        return (...args: Parameters<T>) => {
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current);
-            }
-            timeoutRef.current = setTimeout(() => {
-                callbackRef.current(...args);
-            }, delay);
-        };
-    }, [delay]);
-}
 
 export default function ListViewer({
     type,
@@ -128,9 +107,14 @@ export default function ListViewer({
     }
 
     //TODO make this name make sense with a comment
-    function TemplateRow({ item }: { item: DataContainer<template> }) {
+    function TemplateRow({ item }: { item: DataContainer<data_container_types> }) {
         function onChange(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
-            template?.onHandleChange(template, defaultShown, newValue);
+            if (!template) return;
+
+            const updated = template.onHandleChange(template, defaultShown, newValue);
+            if (!updated) return;
+
+            setData(prev => prev && { ...prev, [updated.metadata.templateId]: updated });
         }
 
         return (
@@ -150,9 +134,14 @@ export default function ListViewer({
     }
 
     //TODO make this make sense with a comment
-    function EntryRow({ item }: { item: DataContainer<entry> }) {
-        function onChange(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
-            template?.onHandleChange(template, defaultShown, newValue);
+    function EntryRow({ item }: { item: DataContainer<data_container_types> }) {
+        function onChange(entry: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
+            if (!entry) return;
+
+            const updated = entry.onHandleChange(entry, defaultShown, newValue);
+            if (!updated) return;
+
+            setData(prev => prev && { ...prev, [updated.metadata.name]: updated });
         }
 
         return (
@@ -172,7 +161,7 @@ export default function ListViewer({
 
     if ((!sortedTemplateData || sortedTemplateData.length === 0) && type == "entry") {
         return (
-            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
+            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]} key={"entry-holder"}>
                 <Text style={[theme.sizes.default.text, { color: theme.colors.text }]}>
                     No entries found.
                 </Text>
@@ -182,7 +171,7 @@ export default function ListViewer({
 
     if ((!sortedTemplateData || sortedTemplateData.length === 0) && type == "template") {
         return (
-            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
+            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]} key={"template-holder"}>
                 <Text style={[theme.sizes.default.text, { color: theme.colors.text }]}>
                     No Templates Found, create a new one?
                 </Text>
@@ -191,7 +180,7 @@ export default function ListViewer({
     }
 
     return (
-        <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
+        <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]} key={"template-holder"}>
             {sortedTemplateData.slice(0, listCount).map((value) => {
                 if (!value?.metadata) return null;
                 if (type === "entry") {
@@ -203,10 +192,38 @@ export default function ListViewer({
                     );
                 } else {
                     return (
-                        <TemplateRow
-                            key={value.metadata.templateId}
-                            item={value as DataContainer<template>}
-                        />
+                        <Fragment key={value.metadata.templateId}>
+                            <View style={theme.sizes.default.container}>
+                                <Text
+                                    style={[
+                                        theme.sizes.default.text,
+                                        {
+                                            color: theme.colors.text,
+                                            fontFamily: theme.fonts?.regular.fontFamily,
+                                        },
+                                    ]}
+                                >
+                                    Template Name
+                                </Text>
+
+                                <TextInput
+                                    value={value.metadata.name}
+                                    style={[
+                                        theme.sizes.default.input,
+                                        {
+                                            backgroundColor: theme.colors.card,
+                                            borderColor: theme.colors.border,
+                                            color: theme.colors.text,
+                                            fontFamily: theme.fonts?.regular.fontFamily,
+                                        },
+                                    ]}
+                                />
+                            </View>
+                            <TemplateRow
+                                item={value as DataContainer<template>}
+                            />
+                            <View style={{ height: theme.sizes.default.container.height }} />
+                        </Fragment>
                     );
                 }
             })}

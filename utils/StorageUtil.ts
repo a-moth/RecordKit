@@ -1,25 +1,99 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DataContainer, data_container_types } from '../constants/DataTypes';
 import { defaultTemplate } from '../hooks/NodeRegistry';
+import { DataContainerFactory } from '../constants/DataTypes';
 
-export async function saveData(data: any) {
-  await AsyncStorage.setItem('appData', JSON.stringify(data));
-}
+type AppData = {
+  templates: Record<string, DataContainer<data_container_types>>;
+  entries: Record<string, DataContainer<data_container_types>>;
+};
 
-export async function getData() {
-  const raw = await AsyncStorage.getItem('appData');
-  const parsed = raw ? JSON.parse(raw) : null;
+export async function saveData(data: AppData) {
+  // process to save data AS JSON
+  let templates: Record<string, string> = {};
+  let entries: Record<string, string> = {};
 
-  if (!parsed) {
-    return {
-      templates: {
-        [defaultTemplate.metadata.templateId]: defaultTemplate,
-      },
-      entries: {},
-    };
+  for (const template in data.templates) {
+    let value = data.templates[template].toJSON();
+    if (value != '') {
+      templates[data.templates[template].metadata.templateId] = value;
+    }
   }
 
-  return parsed;
+  for (const entry in data.entries) {
+    let value = data.entries[entry].toJSON();
+    if (value != '') {
+      entries[data.entries[entry].metadata.name] = value;
+    }
+  }
+
+  await AsyncStorage.setItem(
+    'appData',
+    JSON.stringify({
+      templates: templates,
+      entries: entries,
+    }),
+  );
+}
+
+export async function getData(): Promise<AppData> {
+  // if raw exists, construct it into the correct record
+  const raw = await AsyncStorage.getItem('appData');
+
+  if (raw) {
+    let data = JSON.parse(raw);
+
+    if (!data) {
+      return {
+        templates: {
+          [defaultTemplate.metadata.templateId]: defaultTemplate,
+        },
+        entries: {},
+      };
+    }
+
+    if (!data.templates || !data.entries) {
+      return {
+        templates: {
+          [defaultTemplate.metadata.templateId]: defaultTemplate,
+        },
+        entries: {},
+      };
+    }
+    let templates: Record<string, DataContainer<data_container_types>> = {};
+    let entries: Record<string, DataContainer<data_container_types>> = {};
+
+    for (const template in data.templates) {
+      let templateList = DataContainerFactory.fromJSON(data.templates[template]);
+      if (templateList) {
+        templates[templateList.metadata.templateId] = templateList;
+      }
+    }
+
+    if (Object.keys(templates).length === 0) {
+      templates = {
+        [defaultTemplate.metadata.templateId]: defaultTemplate,
+      };
+    }
+
+    for (const entry in data.entries) {
+      let entryList = DataContainerFactory.fromJSON(data.entries[entry]);
+      if (entryList) {
+        entries[entryList.metadata.name] = entryList;
+      }
+    }
+    return {
+      templates: templates,
+      entries: entries,
+    } as AppData;
+  }
+
+  return {
+    templates: {
+      [defaultTemplate.metadata.templateId]: defaultTemplate,
+    },
+    entries: {},
+  };
 }
 
 export async function getEntry(entryId: string) {
@@ -78,7 +152,7 @@ export async function getTemplates() {
 export async function getTemplate(templateId: string) {
   const data = await getData();
 
-  const template = data.templates?.[templateId];
+  const template = data['templates'][templateId];
 
   if (!template) return null;
 

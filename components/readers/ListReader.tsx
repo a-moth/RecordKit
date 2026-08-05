@@ -11,9 +11,10 @@ export type ListReaderProps = {
     type: string,
     count?: number,
     onPress: () => void,
+    children?: React.ReactNode,
 };
 
-export default function ListReader({ type, count = Infinity, onPress }: ListReaderProps) {
+export default function ListReader({ type, count = Infinity, onPress, children }: ListReaderProps) {
     const theme = useTheme();
 
     return (
@@ -35,6 +36,7 @@ export default function ListReader({ type, count = Infinity, onPress }: ListRead
                     {`Create new ${type}`}
                 </Text>
             </Pressable>
+            {children}
             <ListViewer
                 type={type}
             />

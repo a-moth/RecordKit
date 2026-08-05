@@ -7,6 +7,8 @@ import {
 import {
     Button,
     ScrollView,
+    Text,
+    TextInput,
     View,
 } from "react-native";
 
@@ -20,6 +22,7 @@ import { defaultTemplate } from "../../hooks/NodeRegistry";
 import {
     DataContainer,
     data_container_types,
+    DataContainerFactory,
     FieldData,
     FieldNode,
 } from "../../constants/DataTypes"
@@ -44,6 +47,9 @@ export default function TemplateWriter({
     const [saving, setSaving] =
         useState(false);
 
+    const [nameText, setNameText] =
+        useState("");
+
     const theme = useTheme();
 
     const router = useRouter();
@@ -58,16 +64,27 @@ export default function TemplateWriter({
                 );
 
             if (template == null) {
-                template = {
-                    ...defaultTemplate,
-                    metadata: {
-                        ...defaultTemplate.metadata,
+                const base = await getTemplate(
+                    defaultTemplate.metadata.templateId
+                );
+
+                // clone so we don't mutate the stored default template,
+                // then reassign it to this new template's own id
+                template = base
+                    ? DataContainerFactory.fromJSON(base.toJSON())
+                    : null;
+
+                if (template) {
+                    template.metadata = {
+                        ...template.metadata,
                         templateId: templateId,
-                    }
+                        name: "",
+                    };
                 }
             }
 
             setTemplateData(template);
+            setNameText(template?.metadata.name || defaultTemplate.metadata.name);
         }
 
         load();
@@ -80,11 +97,24 @@ export default function TemplateWriter({
         templateRef.current = templateData;
     }, [templateData]);
 
+    function updateName(newText: string) {
+        setNameText(newText);
+
+        if (templateRef.current) {
+            templateRef.current.metadata = {
+                ...templateRef.current.metadata,
+                name: newText,
+            };
+        }
+    }
+
     function updateField(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
         setTemplateData((prev: DataContainer<data_container_types> | null) => {
-            prev?.onHandleChange(prev, defaultShown, newValue);
+            if (!prev) return prev;
 
-            return prev;
+            const updated = prev.onHandleChange(prev, defaultShown, newValue);
+
+            return updated ?? prev;
         });
     }
 
@@ -120,13 +150,44 @@ export default function TemplateWriter({
             }}
         >
 
+            <View style={theme.sizes.default.container}>
+                <Text
+                    style={[
+                        theme.sizes.default.text,
+                        {
+                            color: theme.colors.text,
+                            fontFamily: theme.fonts?.regular.fontFamily,
+                        },
+                    ]}
+                >
+                    Template Name
+                </Text>
+
+                <TextInput
+                    value={nameText}
+                    onChangeText={updateName}
+                    style={[
+                        theme.sizes.default.input,
+                        {
+                            backgroundColor: theme.colors.card,
+                            borderColor: theme.colors.border,
+                            color: theme.colors.text,
+                            fontFamily: theme.fonts?.regular.fontFamily,
+                        },
+                    ]}
+                />
+            </View>
+
             <TemplateEditorManager
                 isList={false}
-                template={templateRef.current}
+                template={templateData}
                 locked={false}
                 edit={true}
                 onChange={
                     updateField
+                }
+                onTreeChange={
+                    setTemplateData
                 }
             />
 

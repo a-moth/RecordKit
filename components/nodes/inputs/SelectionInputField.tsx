@@ -11,16 +11,18 @@ export default function SelectionInputField({
   onChange,
   field,
   locked,
-}: StandardFieldProps<SelectionData>) {
+  style,
+  textStyle
+}: StandardFieldProps<SelectionData> & { style?: any, textStyle?: TextStyle }) {
   const theme = useTheme();
 
-  const textStyling: TextStyle = {
+  const textStyling: TextStyle = textStyle ?? {
     ...theme.sizes.default.text,
     color: theme.colors.text,
     fontFamily: theme.fonts?.regular.fontFamily,
   };
 
-  let baseStyling = {
+  let baseStyling = style ?? {
     ...theme.sizes.default.input,
     backgroundColor: theme.colors.card,
     borderColor: theme.colors.border,

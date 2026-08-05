@@ -19,21 +19,14 @@ export default function BooleanInputField({
   const fieldData = field.field.data as ToggleImageButtonData;
 
   function handleChange(selected: boolean) {
-    onChange?.(
-      template,
-      defaultShown,
-      {
-        id,
-        type: "field",
-        field: {
-          ...field.field,
-          data: {
-            ...fieldData,
-            value: selected,
-          } as ToggleImageButtonData,
-        } as field_data<FieldData>,
-      } as FieldNode<FieldData>
-    );
+    const newField = field.field.clone();
+    newField.setData(selected);
+
+    onChange?.(template, defaultShown, {
+      id,
+      type: "field",
+      field: newField,
+    });
   }
 
   return (

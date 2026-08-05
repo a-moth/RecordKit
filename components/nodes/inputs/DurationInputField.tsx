@@ -44,21 +44,14 @@ export default function DurationInputField({
         <TextInput
           value={String(field.field.data.valueA)}
           onChangeText={(newText) => {
-            onChange?.(
-              template,
-              defaultShown,
-              {
-                id,
-                type: "field",
-                field: {
-                  ...field.field,
-                  data: {
-                    ...fieldData,
-                    valueA: Number(newText),
-                  } as DurationData,
-                } as field_data<DurationData>,
-              } as FieldNode<DurationData>
-            );
+            const newField = field.field.clone();
+            newField.setData(Number(newText)); // writes valueA, matches current behavior
+
+            onChange?.(template, defaultShown, {
+              id,
+              type: "field",
+              field: newField,
+            });
           }}
           style={[
             theme.sizes.default.input,
@@ -87,21 +80,14 @@ export default function DurationInputField({
         <TextInput
           value={String(field.field.data.valueB)}
           onChangeText={(newText) => {
-            onChange?.(
-              template,
-              defaultShown,
-              {
-                id,
-                type: "field",
-                field: {
-                  ...field.field,
-                  data: {
-                    ...fieldData,
-                    valueB: Number(newText),
-                  } as DurationData,
-                } as field_data<DurationData>,
-              } as FieldNode<DurationData>
-            );
+            const newField = field.field.clone() as DurationField;
+            newField.setDataB(Number(newText)); // writes valueB, matches current behavior
+
+            onChange?.(template, defaultShown, {
+              id,
+              type: "field",
+              field: newField,
+            });
           }}
           style={[
             theme.sizes.default.input,

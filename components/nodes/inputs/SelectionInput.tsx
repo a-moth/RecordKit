@@ -45,23 +45,14 @@ export default class SelectionInput extends Component<Props> {
 
     this.lastSentSelected = [...newItemsList];
 
-    const fieldData = this.props.field.field.data as SelectionData;
+    const newField = this.props.field.field.clone();
+    newField.setData(newItemsList);
 
-    this.props.onChange(
-      this.props.template,
-      this.props.defaultShown,
-      {
-        id: this.props.field.id,
-        type: "field",
-        field: {
-          ...this.props.field.field,
-          data: {
-            ...fieldData,
-            selected: newItemsList,
-          } as SelectionData,
-        } as field_data<SelectionData>,
-      } as FieldNode<SelectionData>
-    );
+    this.props.onChange(this.props.template, this.props.defaultShown, {
+      id: this.props.field.id,
+      type: "field",
+      field: newField,
+    });
   };
 
   render() {

@@ -70,8 +70,14 @@ export abstract class DataContainer<T extends data_container_types> {
     constructor(data: T) {
         this.data = data;
 
-        // Order nodes initially properly
-        this.initialiseOrder();
+        // Only derive order from field insertion order for containers that
+        // don't already carry an explicit order (e.g. brand-new containers).
+        // Callers that construct a container with a deliberately-computed
+        // order (moveNodeUp/moveNodeDown/insertNodeAfter/removeNode/fromJSON)
+        // must have that order preserved, not silently overwritten.
+        if (!this.data.metadata.order || this.data.metadata.order.length === 0) {
+            this.initialiseOrder();
+        }
     }
 
     setData(newData: T) {
@@ -80,6 +86,30 @@ export abstract class DataContainer<T extends data_container_types> {
 
     getData(): T {
         return this.data;
+    }
+
+    public toJSON(): string {
+        let metadata = this.data.metadata;
+        // for each value in template | entry, convert to JSON string
+        type jsonData = {
+            metadata: typeof metadata;
+            fields: Record<string, any>;
+        };
+
+        const jsonData = {
+            metadata: this.data.metadata,
+            fields: {}
+        } as jsonData;
+
+        for (const key in this.data.fields) {
+            const node = this.data.fields[key];
+            jsonData.fields[key] = {
+                id: node.id,
+                type: node.type,
+                field: node.field.toJSON(),
+            };
+        }
+        return JSON.stringify(jsonData);
     }
 
     public getOrderedNodes(tree: DataContainer<data_container_types>): FieldNode<FieldData>[] {
@@ -218,7 +248,6 @@ export abstract class DataContainer<T extends data_container_types> {
                     });
             }
         }
-        return null;
     }
 
     public moveNodeDown(
@@ -344,6 +373,113 @@ export class TemplateContainer extends DataContainer<template> {
     }
 }
 
+export class DataContainerFactory {
+    public static fromJSON(data: string): DataContainer<data_container_types> | null {
+        try {
+            const parsedData = JSON.parse(data);
+
+            if (!parsedData.metadata || !parsedData.fields) {
+                return null;
+            }
+
+            //parse fields first
+            for (const key in parsedData.fields) {
+                const node = parsedData.fields[key];
+                if (!node.id || !node.type || !node.field) {
+                    return null;
+                }
+
+                //parse field data
+                const fieldData = JSON.parse(node.field);
+                if (!fieldData.type || !fieldData.label || fieldData.visible === undefined) {
+                    return null;
+                }
+
+                function fromJSONField(id: string, type: 'field', fieldData: any): FieldNode<FieldData> {
+                    let fieldNew: FieldNode<FieldData> = {
+                        id,
+                        type,
+                        field: null as any, // will be set below
+                    };
+                    switch (fieldData.type) {
+                        case "text":
+                            fieldNew.field = new TextField(fieldData);
+                            break;
+                        case "number":
+                            fieldNew.field = new NumberField(fieldData);
+                            break;
+                        case "time":
+                            fieldNew.field = new TimeField(fieldData);
+                            break;
+                        case "date":
+                            fieldNew.field = new DateField(fieldData);
+                            break;
+                        case "duration":
+                            fieldNew.field = new DurationField(fieldData);
+                            break;
+                        case "selection":
+                            fieldNew.field = new SelectionField(fieldData);
+                            break;
+                        case "scale":
+                            fieldNew.field = new ScaleField(fieldData);
+                            break;
+                        case "boolean":
+                            fieldNew.field = new ToggleButtonField(fieldData);
+                            break;
+                        case "image-boolean":
+                            fieldNew.field = new ToggleImageButtonField(fieldData);
+                            break;
+                        case "section":
+                            fieldNew.field = new SectionField({
+                                ...fieldData,
+                                childNodes: Object.fromEntries(
+                                    Object.entries(fieldData.childNodes).map(([childKey, childNode]) => {
+                                        const child = childNode as { id: string; type: 'field'; field: string };
+                                        return [
+                                            childKey,
+                                            fromJSONField(child.id, child.type, JSON.parse(child.field)),
+                                        ];
+                                    })
+                                ),
+                            });
+                            break;
+                    }
+
+                    return fieldNew;
+                }
+
+                switch (fieldData.type) {
+                    case "text":
+                    case "number":
+                    case "time":
+                    case "date":
+                    case "duration":
+                    case "selection":
+                    case "scale":
+                    case "boolean":
+                    case "image-boolean":
+                    case "section":
+                        parsedData.fields[key] = fromJSONField(node.id, node.type, fieldData);
+                        break;
+                }
+            }
+
+            // assume metadata and fields are present.
+            //metadata.type to determine which datacontainer type
+            if (parsedData.metadata.type === "template") {
+                return new TemplateContainer(parsedData as template);
+            } else if (parsedData.metadata.type === "entry") {
+                return new EntryContainer(parsedData as entry);
+            }
+        } catch (error) {
+            console.error("Error parsing JSON:", error);
+            return null;
+        }
+
+        return null; // TODO: does this even matter
+    }
+}
+
 /**
  * Field Types
  */
@@ -446,8 +582,18 @@ export abstract class field_data<T extends FieldData> {
     public moveDown(): void { }
     public deleteNode(): void { }
 
+    public clone(): this {
+        return Object.assign(
+            Object.create(Object.getPrototypeOf(this)),
+            this,
+            { data: { ...this.data } },
+        ) as this;
+    }
+
     abstract setData(newData: any): void;
     abstract getData(): any;
+
+    abstract toJSON(): string;
 }
 
 export type FieldNode<T extends FieldData> = {
@@ -475,6 +621,15 @@ export class TextField extends field_data<TextData> {
     getData() {
         return this.data.value;
     }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            value: this.data.value,
+        });
+    }
 }
 
 export class NumberField extends field_data<NumberData> {
@@ -493,6 +648,15 @@ export class NumberField extends field_data<NumberData> {
 
     getData() {
         return this.data.value;
+    }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            value: this.data.value,
+        });
     }
 }
 
@@ -514,6 +678,16 @@ export class TimeField extends field_data<TimeData> {
     getData() {
         return this.data.value;
     }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            value: this.data.value,
+            format: this.data.format,
+        });
+    }
 }
 
 export class DateField extends field_data<DateData> {
@@ -534,6 +708,16 @@ export class DateField extends field_data<DateData> {
     getData() {
         return this.data.value;
     }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            value: this.data.value,
+            format: this.data.format,
+        });
+    }
 }
 
 export class DurationField extends field_data<DurationData> {
@@ -551,6 +735,10 @@ export class DurationField extends field_data<DurationData> {
 
     setData(newData: any) {
         this.data.valueA = newData;
+    }
+
+    setDataB(newData: any) {
+        this.data.valueB = newData;
     }
 
     getData() {
@@ -575,6 +763,18 @@ export class DurationField extends field_data<DurationData> {
             unitB: this.data.unitB,
         };
     }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            valueA: this.data.valueA,
+            valueB: this.data.valueB,
+            unitA: this.data.unitA,
+            unitB: this.data.unitB,
+        });
+    }
 }
 
 export class ScaleField extends field_data<ScaleData> {
@@ -597,6 +797,15 @@ export class ScaleField extends field_data<ScaleData> {
     getData() {
         return this.data.value;
     }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            value: this.data.value,
+        });
+    }
 }
 
 export class ToggleButtonField extends field_data<ToggleButtonData> {
@@ -617,6 +826,15 @@ export class ToggleButtonField extends field_data<ToggleButtonData> {
 
     getData() {
         return this.data.value;
+    }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            value: this.data.value,
+        });
     }
 }
 
@@ -639,6 +857,17 @@ export class ToggleImageButtonField extends field_data<ToggleImageButtonData> {
     getData() {
         return this.data.value;
     }
+
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            imageSelected: this.data.imageSelected,
+            imageUnselected: this.data.imageUnselected,
+            value: this.data.value,
+        });
+    }
 }
 
 export class SectionField extends field_data<SectionData> {
@@ -659,6 +888,30 @@ export class SectionField extends field_data<SectionData> {
 
     getData() {
         return this.data.childNodes;
+    }
+
+    toJSON(): string {
+        let jsonData = {
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            id: this.data.id,
+            orientation: this.data.orientation,
+            childNodes: {} as Record<string, any>,
+        }
+
+        jsonData.childNodes = Object.fromEntries(
+            Object.entries(this.data.childNodes).map(([key, node]) => [
+                key,
+                {
+                    id: node.id,
+                    type: node.type,
+                    field: node.field.toJSON(),
+                },
+            ])
+        );
+
+        return JSON.stringify(jsonData);
     }
 }
 
@@ -681,20 +934,18 @@ export class SelectionField extends field_data<SelectionData> {
     getData() {
         return this.data.selected;
     }
-}
 
-/**
- * Create:
-    | DateData
-    | DurationData
-    | SelectionData
-    | ScaleData
-    | ToggleButtonData
-    | ToggleImageButtonData
-    | TimeData
-    | NumberData
-    | SettingsData
- */
+    toJSON(): string {
+        return JSON.stringify({
+            type: this.data.type,
+            label: this.data.label,
+            visible: this.data.visible,
+            multiple: this.data.multiple,
+            selected: this.data.selected,
+            options: this.data.options
+        });
+    }
+}
 
 /**
  * Base Props

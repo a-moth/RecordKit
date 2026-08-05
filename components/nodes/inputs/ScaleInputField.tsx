@@ -22,21 +22,14 @@ export default function ScaleInputField({
 
     setWhich(nextValue);
 
-    onChange?.(
-      template,
-      locked,
-      {
-        id: id,
-        type: "field",
-        field: {
-          ...field.field,
-          data: {
-            ...field.field.data,
-            value: nextValue,
-          } as ScaleData,
-        } as field_data<ScaleData>
-      } as FieldNode<ScaleData>
-    );
+    const newField = field.field.clone();
+    newField.setData(nextValue);
+
+    onChange?.(template, locked, {
+      id: id,
+      type: "field",
+      field: newField,
+    });
   };
 
   const images = [

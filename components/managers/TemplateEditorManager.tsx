@@ -3,7 +3,7 @@ import SectionNodeFactory from '../nodes/operations/SectionNodeFactory';
 import { createId, isSectionNode, } from '../../utils/NodeUtils';
 import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
-import { data_container_types, DataContainer, entry, field_data, FieldData, SectionData, SectionField, SelectionField, template, TextField, SelectionData, FieldNode } from '../../constants/DataTypes';
+import { data_container_types, DataContainer, field_data, FieldData, SectionData, SectionField, SelectionField, TextField, FieldNode } from '../../constants/DataTypes';
 import { selectionField } from '../../hooks/NodeRegistry';
 
 //You need:
@@ -75,6 +75,7 @@ export default function TemplateEditorManager({
   edit,
   locked,
   onChange,
+  onTreeChange,
 }: {
   isList: boolean;
   template: DataContainer<data_container_types> | null;
@@ -85,6 +86,7 @@ export default function TemplateEditorManager({
     defaultShown: boolean,
     value: FieldNode<FieldData>
   ) => void;
+  onTreeChange?: (updated: DataContainer<data_container_types>) => void;
 }) {
   const { settings } = useSettings();
 
@@ -128,6 +130,7 @@ export default function TemplateEditorManager({
                   selected: [],
                   options: [],
                 });
+                break;
             }
 
             let fieldNode: FieldNode<FieldData> | undefined;
@@ -139,8 +142,10 @@ export default function TemplateEditorManager({
               }
             }
 
-            if (fieldValue)
-              template?.insertNodeAfter(template, nodeKey, fieldNode as FieldNode<FieldData>);
+            if (fieldValue && template) {
+              const updated = template.insertNodeAfter(template, nodeKey, fieldNode as FieldNode<FieldData>);
+              if (updated) onTreeChange?.(updated);
+            }
           }
 
           function addSection() {
@@ -159,17 +164,38 @@ export default function TemplateEditorManager({
               id: createId(),
             } as FieldNode<SectionData>;
 
-            template?.insertNodeAfter(template, nodeKey, sectionFieldNode);
+            if (template) {
+              const updated = template.insertNodeAfter(template, nodeKey, sectionFieldNode);
+              if (updated) onTreeChange?.(updated);
+            }
+          }
+
+          function moveUp() {
+            if (!template) return;
+            const updated = template.moveNodeUp(template, actualNode.id);
+            if (updated) onTreeChange?.(updated);
+          }
+
+          function moveDown() {
+            if (!template) return;
+            const updated = template.moveNodeDown(template, actualNode.id);
+            if (updated) onTreeChange?.(updated);
+          }
+
+          function deleteNode() {
+            if (!template) return;
+            const updated = template.removeNode(template, actualNode.id);
+            if (updated) onTreeChange?.(updated);
           }
 
           if (isSectionNode(actualNode)) {
             return (
-              <SectionNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={actualNode.field.moveUp} moveDown={actualNode.field.moveDown} deleteNode={actualNode.field.deleteNode} />
+              <SectionNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
             );
           }
 
           return (
-            <FieldNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} field={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={actualNode.field.moveUp} moveDown={actualNode.field.moveDown} deleteNode={actualNode.field.deleteNode} />
+            <FieldNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} field={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
           );
         })
       }

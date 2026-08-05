@@ -7,7 +7,7 @@ const nodeRegistry = {
 };
  */
 
-import { DataContainer, DateField, DurationField, FieldData, FieldNode, ScaleField, SectionField, SelectionField, template, TemplateContainer, TextData, TextField, ToggleButtonField, ToggleImageButtonField } from "../constants/DataTypes";
+import { DataContainer, DateField, DurationField, FieldData, FieldNode, ScaleField, SectionField, SelectionField, template, TemplateContainer, TextField, ToggleButtonField, ToggleImageButtonField } from "../constants/DataTypes";
 
 // the default values for defaultTemplate
 
@@ -200,6 +200,20 @@ export const selectionField: SelectionField = new SelectionField({
     'scale',
     'boolean',
     'image-boolean',
+    'hc-heart-rate',
+    'hc-blood-pressure',
+    'hc-oxygen-saturation',
+    'hc-body-temperature',
+    'hc-respiratory-rate',
+    'hc-steps',
+    'hc-distance',
+    'hc-active-calories',
+    'hc-floors-climbed',
+    'hc-exercise-session',
+    'hc-sleep-session',
+    'hc-weight',
+    'hc-height',
+    'hc-body-fat',
   ], // the actual value
   options: [], // the choices
   visible: true,
