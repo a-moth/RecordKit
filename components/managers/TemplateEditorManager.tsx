@@ -1,73 +1,11 @@
 import FieldNodeFactory from '../nodes/operations/FieldNodeFactory';
 import SectionNodeFactory from '../nodes/operations/SectionNodeFactory';
+import AddControls, { AddFieldPicker, useAddFieldPicker } from '../nodes/operations/AddControls';
 import { createId, isSectionNode, } from '../../utils/NodeUtils';
 import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
 import { data_container_types, DataContainer, FieldData, SectionData, SectionField, FieldNode } from '../../constants/DataTypes';
 import { fieldDefinitions } from '../../hooks/NodeRegistry';
-
-//You need:
-
-//insertNode(parentId, node)
-//removeNode(nodeId)
-//moveNode(nodeId, direction)
-//updateNodeConfig(nodeId)
-
-// in this overarching file to pass to nodes
-
-/**
-│ TEMPLATE EDITOR                              │
-<TextLabel value={"Template Editor"} />
-
-│ Template Name(text input)                  │
-<TextInput value={templateName} />
-<ValidationPreview />
-
-│[Field Node]                                │
-<FieldNode type={type} name={name} config={config} />
-│   - name(input)                             │
-│   - type                                      │
-│   - config panel(conditional)               │
-  <TextInput value={name} />
-  <TypedNode value={defaultValue from config} rest={...config} />
-
-  |[TypedNode]                                       |
-  |   - type
-  |   - type implementation content (ex. mins, maxes, default value, etc)
-  <TextInput value={default} /> ...
-  <ImageFileInput value={null || loaded} />
-│  - Remove/Move Field / + Add Section                │
-<EditorNode />
-
-│[Section Node - Vertical]                   │
-<SectionNode type={"vertical"} />
-│   - section name(input)                     │
-│   ├── child field nodes                      │
-    <TextInput value={sectionName} />
-    <FieldNode type={type} name={name} config={config} />
-    ....
-│  - Remove/Move Field / + Add Section                │
-<EditorNode />
-
-│[Section Node - Horizontal]                 │
-<SectionNode type={"horizontal"} />
-│   - section name(input)                     │
-│   ├── child field nodes                      │
-    <TextInput value={sectionName} />
-    <FieldNode type={type} name={name} config={config} />
-    ....
-│  - Remove/Move Field / + Add Section                │
-<EditorNode />
-
-│  + Add Field / + Add Section                │
-<AdderNode />
-│                                              │
-├──────────────────────────────────────────────┤
-│ Preview                          Save        │
-<ValidateRequestNodes content={pageContent} />
-│ (validates current state) (persist)          │
-└──────────────────────────────────────────────┘
- */
 
 export default function TemplateEditorManager({
   isList,
@@ -90,8 +28,102 @@ export default function TemplateEditorManager({
 }) {
   const { settings } = useSettings();
 
+  function addFieldToEmpty(type: string) {
+    const fieldValue = fieldDefinitions[type]?.();
+    if (!fieldValue || !template) return;
+
+    const fieldNode: FieldNode<FieldData> = {
+      id: createId(),
+      type: 'field',
+      field: fieldValue,
+    };
+
+    const updated = template.insertNodeAfter(template, '', fieldNode);
+    if (updated) onTreeChange?.(updated);
+  }
+
+  function addSectionToEmpty() {
+    let sectionValue: SectionField = new SectionField({
+      id: createId(),
+      type: "section",
+      label: "section-field",
+      orientation: "row",
+      childNodes: {},
+      visible: true,
+    });
+
+    let sectionFieldNode = {
+      field: sectionValue,
+      type: "field",
+      id: createId(),
+    } as FieldNode<SectionData>;
+
+    if (template) {
+      const updated = template.insertNodeAfter(template, '', sectionFieldNode);
+      if (updated) onTreeChange?.(updated);
+    }
+  }
+
+  function addFieldLast(type: string) {
+    const fieldValue = fieldDefinitions[type]?.();
+    if (!fieldValue || !template) return;
+
+    const fieldNode: FieldNode<FieldData> = {
+      id: createId(),
+      type: 'field',
+      field: fieldValue,
+    };
+
+    const updated = template.insertNodeAfter(template, template.getData().metadata.order[template.getData().metadata.order.length - 1], fieldNode);
+    if (updated) onTreeChange?.(updated);
+  }
+
+  function addSectionLast() {
+    let sectionValue: SectionField = new SectionField({
+      id: createId(),
+      type: "section",
+      label: "section-field",
+      orientation: "row",
+      childNodes: {},
+      visible: true,
+    });
+
+    let sectionFieldNode = {
+      field: sectionValue,
+      type: "field",
+      id: createId(),
+    } as FieldNode<SectionData>;
+
+    if (template) {
+      const updated = template.insertNodeAfter(template, template.getData().metadata.order[template.getData().metadata.order.length - 1], sectionFieldNode);
+      if (updated) onTreeChange?.(updated);
+    }
+  }
+
+  const emptyPicker = useAddFieldPicker(addFieldToEmpty);
+  const lastPicker = useAddFieldPicker(addFieldLast);
+  const isEmpty = !!template && template.getData().metadata.order.length === 0;
+
   return (
     <>
+      {edit && isEmpty && (
+        <>
+          <AddControls
+            locked={locked}
+            addSection={addSectionToEmpty}
+            picking={emptyPicker.picking}
+            onStartPicking={emptyPicker.startPicking}
+          />
+          {emptyPicker.picking && template && (
+            <AddFieldPicker
+              template={template}
+              locked={locked}
+              selectorField={emptyPicker.selectorField}
+              onChange={emptyPicker.handleTypeChange}
+            />
+          )}
+        </>
+      )}
       {template &&
         template.getData().metadata.order
           .map((id): [string, FieldNode<FieldData>] | null => {
@@ -100,75 +132,93 @@ export default function TemplateEditorManager({
           })
           .filter((entry): entry is [string, FieldNode<FieldData>] => entry !== null)
           .slice(0, isList ? valueOf(settings?.["**showCount"]) ?? 10 : undefined).map(([nodeKey, node]) => {
-          let actualNode = template?.getData().fields[nodeKey];
-          // Future autosave?
+            let actualNode = template?.getData().fields[nodeKey];
+            // Future autosave?
 
-          function addField(type: string) {
-            // insert this after fieldnode of field
-            const fieldValue = fieldDefinitions[type]?.();
-            if (!fieldValue || !template) return;
+            function addField(type: string) {
+              // insert this after fieldnode of field
+              const fieldValue = fieldDefinitions[type]?.();
+              if (!fieldValue || !template) return;
 
-            const fieldNode: FieldNode<FieldData> = {
-              id: createId(),
-              type: 'field',
-              field: fieldValue,
-            };
+              const fieldNode: FieldNode<FieldData> = {
+                id: createId(),
+                type: 'field',
+                field: fieldValue,
+              };
 
-            const updated = template.insertNodeAfter(template, nodeKey, fieldNode);
-            if (updated) onTreeChange?.(updated);
-          }
-
-          function addSection() {
-            let sectionValue: SectionField = new SectionField({
-              id: createId(),
-              type: "section",
-              label: "section-field",
-              orientation: "row",
-              childNodes: {},
-              visible: true,
-            });
-
-            let sectionFieldNode = {
-              field: sectionValue,
-              type: "field",
-              id: createId(),
-            } as FieldNode<SectionData>;
-
-            if (template) {
-              const updated = template.insertNodeAfter(template, nodeKey, sectionFieldNode);
+              const updated = template.insertNodeAfter(template, nodeKey, fieldNode);
               if (updated) onTreeChange?.(updated);
             }
-          }
 
-          function moveUp() {
-            if (!template) return;
-            const updated = template.moveNodeUp(template, actualNode.id);
-            if (updated) onTreeChange?.(updated);
-          }
+            function addSection() {
+              let sectionValue: SectionField = new SectionField({
+                id: createId(),
+                type: "section",
+                label: "section-field",
+                orientation: "row",
+                childNodes: {},
+                visible: true,
+              });
 
-          function moveDown() {
-            if (!template) return;
-            const updated = template.moveNodeDown(template, actualNode.id);
-            if (updated) onTreeChange?.(updated);
-          }
+              let sectionFieldNode = {
+                field: sectionValue,
+                type: "field",
+                id: createId(),
+              } as FieldNode<SectionData>;
 
-          function deleteNode() {
-            if (!template) return;
-            const updated = template.removeNode(template, actualNode.id);
-            if (updated) onTreeChange?.(updated);
-          }
+              if (template) {
+                const updated = template.insertNodeAfter(template, nodeKey, sectionFieldNode);
+                if (updated) onTreeChange?.(updated);
+              }
+            }
 
-          if (isSectionNode(actualNode)) {
+            function moveUp() {
+              if (!template) return;
+              const updated = template.moveNodeUp(template, actualNode.id);
+              if (updated) onTreeChange?.(updated);
+            }
+
+            function moveDown() {
+              if (!template) return;
+              const updated = template.moveNodeDown(template, actualNode.id);
+              if (updated) onTreeChange?.(updated);
+            }
+
+            function deleteNode() {
+              if (!template) return;
+              const updated = template.removeNode(template, actualNode.id);
+              if (updated) onTreeChange?.(updated);
+            }
+
+            if (isSectionNode(actualNode)) {
+              return (
+                <SectionNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
+              );
+            }
+
             return (
-              <SectionNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
+              <FieldNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} field={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
             );
-          }
-
-          return (
-            <FieldNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} field={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
-          );
-        })
+          })
       }
+      {edit && !isEmpty && (
+        <>
+          <AddControls
+            locked={locked}
+            addSection={addSectionLast}
+            picking={lastPicker.picking}
+            onStartPicking={lastPicker.startPicking}
+          />
+          {lastPicker.picking && template && (
+            <AddFieldPicker
+              template={template}
+              locked={locked}
+              selectorField={lastPicker.selectorField}
+              onChange={lastPicker.handleTypeChange}
+            />
+          )}
+        </>
+      )}
     </>
   );
 }
