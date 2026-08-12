@@ -44,6 +44,7 @@ export default function SelectionInputField({
         fieldKey={fieldKey}
         defaultShown={defaultShown}
         onChange={onChange}
+        submitButtonColor={theme.colors.primary}
       />
     </View>
   );

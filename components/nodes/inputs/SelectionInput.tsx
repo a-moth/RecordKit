@@ -27,6 +27,7 @@ interface Props {
 
   fieldKey: SelectionData["label"];
   defaultShown: boolean;
+  submitButtonColor?: string;
 }
 
 export default class SelectionInput extends Component<Props> {
@@ -100,7 +101,7 @@ export default class SelectionInput extends Component<Props> {
           selectedItemTextColor={baseStyle.color ? baseStyle.color.toString() : "#CCC"}
           selectedItemIconColor={baseStyle.backgroundColor ? baseStyle.backgroundColor.toString() : "#CCC"}
           itemTextColor={baseStyle.color ? baseStyle.color.toString() : "#000"}
-          submitButtonColor={baseStyle.backgroundColor ? baseStyle.backgroundColor.toString() : "#CCC"}
+          submitButtonColor={this.props.submitButtonColor ?? (baseStyle.backgroundColor ? baseStyle.backgroundColor.toString() : "#CCC")}
           styleDropdownMenuSubsection={containerStyle}
           styleDropdownMenu={containerStyle}
           styleInputGroup={containerStyle}
