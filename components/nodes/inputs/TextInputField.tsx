@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { useTheme } from "../../../hooks/use-theme-provider";
+import { useFocusBorderColor } from "../../../hooks/use-focus-border-color";
 
 import {
   StandardFieldProps,
@@ -30,6 +31,8 @@ export default function TextInputField({
   const [text, setText] = useState(
     field.field.data.value ?? ""
   );
+
+  const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
   /**
    * only sync external updates
@@ -59,6 +62,8 @@ export default function TextInputField({
       <TextInput
         value={text}
         editable={!locked}
+        onFocus={focusBorder.onFocus}
+        onBlur={focusBorder.onBlur}
         onChangeText={(newText) => {
 
           setText(newText);
@@ -80,10 +85,10 @@ export default function TextInputField({
           theme.sizes.default.input,
           {
             backgroundColor:
-              theme.colors.card,
+              theme.colors.background,
 
             borderColor:
-              theme.colors.border,
+              focusBorder.borderColor,
 
             color:
               theme.colors.text,

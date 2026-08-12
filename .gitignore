@@ -76,3 +76,5 @@ yarn-error.log
 
 .tmp/
 .expo/dev/logs/start.log
+.claude/launch.json
+.expo/dev/logs/start.log

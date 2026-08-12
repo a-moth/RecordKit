@@ -5,12 +5,13 @@ import {
 } from "react";
 
 import {
-    Button,
     ScrollView,
     Text,
     TextInput,
     View,
 } from "react-native";
+
+import ThemedButton from "../common/ThemedButton";
 
 import {
     getData,
@@ -29,6 +30,7 @@ import {
 
 import { useTheme }
     from "../../hooks/use-theme-provider";
+import { useFocusBorderColor } from "../../hooks/use-focus-border-color";
 import { useRouter } from "expo-router";
 import TemplateEditorManager from "../managers/TemplateEditorManager";
 
@@ -51,6 +53,7 @@ export default function TemplateWriter({
         useState("");
 
     const theme = useTheme();
+    const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
     const router = useRouter();
 
@@ -98,14 +101,11 @@ export default function TemplateWriter({
     }, [templateData]);
 
     function updateName(newText: string) {
+        // Only kept in local state until Save is pressed — mutating the
+        // template object here would let an unsaved rename leak into
+        // anything else still holding a reference to it (e.g. the list
+        // preview), since DataContainer instances are mutated in place.
         setNameText(newText);
-
-        if (templateRef.current) {
-            templateRef.current.metadata = {
-                ...templateRef.current.metadata,
-                name: newText,
-            };
-        }
     }
 
     function updateField(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
@@ -120,6 +120,11 @@ export default function TemplateWriter({
 
     async function handleSave() {
         if (!templateRef.current) return;
+
+        templateRef.current.metadata = {
+            ...templateRef.current.metadata,
+            name: nameText,
+        };
 
         setSaving(true);
 
@@ -166,11 +171,13 @@ export default function TemplateWriter({
                 <TextInput
                     value={nameText}
                     onChangeText={updateName}
+                    onFocus={focusBorder.onFocus}
+                    onBlur={focusBorder.onBlur}
                     style={[
                         theme.sizes.default.input,
                         {
-                            backgroundColor: theme.colors.card,
-                            borderColor: theme.colors.border,
+                            backgroundColor: theme.colors.background,
+                            borderColor: focusBorder.borderColor,
                             color: theme.colors.text,
                             fontFamily: theme.fonts?.regular.fontFamily,
                         },
@@ -196,12 +203,13 @@ export default function TemplateWriter({
                     theme.sizes.default.container
                 }
             >
-                <Button
+                <ThemedButton
                     title={
                         saving
                             ? "Saving..."
                             : "Save Template"
                     }
+                    disabled={saving}
                     onPress={
                         handleSave
                     }

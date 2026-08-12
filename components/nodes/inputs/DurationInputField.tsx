@@ -7,6 +7,7 @@ import {
   field_data,
 } from "../../../constants/DataTypes";
 import { useTheme } from "../../../hooks/use-theme-provider";
+import { useFocusBorderColor } from "../../../hooks/use-focus-border-color";
 
 export default function DurationInputField({
   template,
@@ -18,6 +19,9 @@ export default function DurationInputField({
   onChange,
 }: StandardFieldProps<DurationData>) {
   const theme = useTheme();
+
+  const focusBorderA = useFocusBorderColor(theme.colors.border, theme.colors.caution);
+  const focusBorderB = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
   const fieldData = field.field.data as DurationData;
 
@@ -43,6 +47,8 @@ export default function DurationInputField({
       >
         <TextInput
           value={String(field.field.data.valueA)}
+          onFocus={focusBorderA.onFocus}
+          onBlur={focusBorderA.onBlur}
           onChangeText={(newText) => {
             const newField = field.field.clone();
             newField.setData(Number(newText)); // writes valueA, matches current behavior
@@ -56,8 +62,8 @@ export default function DurationInputField({
           style={[
             theme.sizes.default.input,
             {
-              backgroundColor: theme.colors.card,
-              borderColor: theme.colors.border,
+              backgroundColor: theme.colors.background,
+              borderColor: focusBorderA.borderColor,
               color: theme.colors.text,
               fontFamily: theme.fonts?.regular.fontFamily,
             },
@@ -79,6 +85,8 @@ export default function DurationInputField({
 
         <TextInput
           value={String(field.field.data.valueB)}
+          onFocus={focusBorderB.onFocus}
+          onBlur={focusBorderB.onBlur}
           onChangeText={(newText) => {
             const newField = field.field.clone() as DurationField;
             newField.setDataB(Number(newText)); // writes valueB, matches current behavior
@@ -92,8 +100,8 @@ export default function DurationInputField({
           style={[
             theme.sizes.default.input,
             {
-              backgroundColor: theme.colors.card,
-              borderColor: theme.colors.border,
+              backgroundColor: theme.colors.background,
+              borderColor: focusBorderB.borderColor,
               color: theme.colors.text,
               fontFamily: theme.fonts?.regular.fontFamily,
             },

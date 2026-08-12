@@ -4,10 +4,11 @@ import {
 } from "react";
 
 import {
-  Button,
   ScrollView,
   View,
 } from "react-native";
+
+import ThemedButton from "../common/ThemedButton";
 
 import {
   getData,
@@ -169,12 +170,13 @@ export default function EntryWriter({
           theme.sizes.default.container
         }
       >
-        <Button
+        <ThemedButton
           title={
             saving
               ? "Saving..."
               : "Save Entry"
           }
+          disabled={saving}
           onPress={
             handleSave
           }

@@ -91,7 +91,7 @@ export default function HomeScreen() {
     if (loading) return null;
 
     return (
-        <ScrollView>
+        <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
             <EntryListReader
                 onPress={toggleTemplatePicker}
             >
@@ -102,7 +102,7 @@ export default function HomeScreen() {
                             ...theme.sizes.default.alignCenter,
                             ...theme.sizes.default.container,
                             ...theme.sizes.default.fillContainer,
-                            backgroundColor: theme.colors.card,
+                            backgroundColor: theme.colors.background,
                             borderColor: theme.colors.border,
                             color: theme.colors.text,
                             fontFamily: theme.fonts?.regular.fontFamily,

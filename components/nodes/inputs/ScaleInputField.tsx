@@ -68,6 +68,7 @@ export default function ScaleInputField({
               }
               imageSrc={image}
               imageSrcFalse={image}
+              locked={locked}
             />
           );
         })}

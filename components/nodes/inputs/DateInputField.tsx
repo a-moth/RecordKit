@@ -7,6 +7,7 @@ import {
 } from "date-fns";
 
 import { useTheme } from "../../../hooks/use-theme-provider";
+import { useFocusBorderColor } from "../../../hooks/use-focus-border-color";
 
 import {
   DateData,
@@ -31,6 +32,8 @@ export default function DateInputField({
   const theme = useTheme();
 
   const { settings } = useSettings();
+
+  const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
   /**
    * date-fns tokens:
@@ -144,8 +147,10 @@ export default function DateInputField({
         keyboardType="numeric"
         placeholder={dateFormat}
         placeholderTextColor={
-          theme.colors.primary
+          theme.colors.subtext
         }
+        onFocus={focusBorder.onFocus}
+        onBlur={focusBorder.onBlur}
         onChangeText={(text) => {
 
           const isoValue =
@@ -173,10 +178,10 @@ export default function DateInputField({
           theme.sizes.default.input,
           {
             backgroundColor:
-              theme.colors.card,
+              theme.colors.background,
 
             borderColor:
-              theme.colors.border,
+              focusBorder.borderColor,
 
             color:
               theme.colors.text,

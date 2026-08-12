@@ -1,17 +1,12 @@
-import { Pressable, Text, ScrollView } from "react-native";
+import { View } from "react-native";
+import MiniButton from "../../common/MiniButton";
 
 export default function EditorControls({ moveUp, moveDown, deleteField }: { moveUp: () => void; moveDown: () => void; deleteField: () => void; }) {
     return (
-        <ScrollView style={{ flexDirection: "row", flexWrap: "nowrap" }}>
-            <Pressable onPress={moveUp}>
-                <Text>Move Up</Text>
-            </Pressable>
-            <Pressable onPress={moveDown}>
-                <Text>Move Down</Text>
-            </Pressable>
-            <Pressable onPress={deleteField}>
-                <Text>Delete</Text>
-            </Pressable>
-        </ScrollView>
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+            <MiniButton label="Move Up" color="caution" onPress={moveUp} />
+            <MiniButton label="Move Down" color="caution" onPress={moveDown} />
+            <MiniButton label="Delete" color="danger" onPress={deleteField} />
+        </View>
     );
 }

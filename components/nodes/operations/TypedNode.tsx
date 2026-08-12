@@ -1,4 +1,5 @@
 import { data_container_types, DataContainer, DateData, DurationData, FieldData, FieldNode, ScaleData, SelectionData, TextData, ToggleImageButtonData } from '../../../constants/DataTypes';
+import BooleanImageInputField from '../inputs/BooleanImageInputField';
 import BooleanInputField from '../inputs/BooleanInputField';
 import DateInputField from '../inputs/DateInputField';
 import DurationInputField from '../inputs/DurationInputField';
@@ -86,6 +87,19 @@ export default function TypedNode({ field, template, id, locked, onChange }: {
         case "boolean":
             return (
                 <BooleanInputField
+                    template={template}
+                    id={field.id}
+                    fieldKey={field.field.data.label}
+                    field={field as FieldNode<ToggleImageButtonData>}
+                    defaultShown={field.field.data.visible}
+                    locked={locked}
+                    onChange={onChange}
+                />
+            );
+
+        case "image-boolean":
+            return (
+                <BooleanImageInputField
                     template={template}
                     id={field.id}
                     fieldKey={field.field.data.label}

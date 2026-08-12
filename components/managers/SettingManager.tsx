@@ -1,6 +1,7 @@
 import { SETTING } from "../../constants/setting-enums";
 import { useSettings } from "../../utils/SettingsProvider";
 import SettingInputField from "../nodes/inputs/SettingInputField";
+import SettingSelectionField from "../nodes/inputs/SettingSelectionField";
 import NumberInputField from "../nodes/inputs/NumberInputField";
 import TimeInputField from "../nodes/inputs/TimeInputField";
 import { DataContainer, FieldNode, FieldData, data_container_types } from "../../constants/DataTypes";
@@ -39,6 +40,8 @@ export default function SettingManager({
             return <TimeInputField {...commonProps} />;
         case "number":
             return <NumberInputField {...commonProps} />;
+        case "selection":
+            return <SettingSelectionField {...commonProps} />;
         default:
             return <SettingInputField {...commonProps} />;
     }

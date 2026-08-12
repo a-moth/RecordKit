@@ -7829,3 +7829,647 @@
 {"_e":"metro:client_log","_t":1785961784478,"level":"log","data":["BooleanInput render selected:","false"]}
 {"_e":"metro:client_log","_t":1785961784504,"level":"log","data":["BooleanInput render selected:","true"]}
 {"_e":"metro:client_log","_t":1785961784521,"level":"log","data":["BooleanInput render selected:","true"]}
+{"_e":"root:init","_t":1786539602681,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786539602682,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786539602684,"mode":"development","files":[],"env":{}}
+{"_e":"root:init","_t":1786539603527,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786539603527,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786539603529,"mode":"development","files":[],"env":{}}
+{"_e":"root:init","_t":1786539604368,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786539604369,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786539604372,"mode":"development","files":[],"env":{}}
+{"_e":"root:init","_t":1786539614329,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786539614330,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786539614332,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786539614596,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786539614896,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786539620676,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786539620808,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786539621825,"id":"1","total":1352,"ms":1017.392326}
+{"_e":"metro:client_log","_t":1786539622344,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786539622344,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786539622486,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786539694683,"id":"4","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786539694734,"id":"4","total":1,"ms":50.968252}
+{"_e":"metro:client_log","_t":1786539695029,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786539695034,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786539695058,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786539732680,"id":"8","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786539732749,"id":"8","total":1,"ms":69.079807}
+{"_e":"metro:client_log","_t":1786539733044,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786539733044,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786539733070,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786539733200,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786539746429,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786539806433,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"root:init","_t":1786540028830,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786540028831,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786540028834,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786540029116,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786540029433,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786540035389,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786540035666,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540036673,"id":"1","total":1370,"ms":1007.644545}
+{"_e":"metro:client_log","_t":1786540037152,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540037153,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540037220,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786540041120,"id":"5","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540041196,"id":"5","total":1,"ms":74.109773}
+{"_e":"metro:client_log","_t":1786540041478,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540041479,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540041542,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786540041609,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786540041649,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786540045966,"id":"e","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540046043,"id":"e","total":1,"ms":76.607884}
+{"_e":"metro:client_log","_t":1786540046275,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540046275,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540046299,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786540046421,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786540052467,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786540148192,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"root:init","_t":1786540295033,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786540295033,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786540295035,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786540295309,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786540295610,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786540301346,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786540301441,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540302435,"id":"1","total":1382,"ms":994.56846}
+{"_e":"metro:bundling:started","_t":1786540302916,"id":"3","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540302959,"id":"3","total":1,"ms":42.229705}
+{"_e":"metro:client_log","_t":1786540303250,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540303252,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540303329,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786540303502,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:bundling:started","_t":1786540312353,"id":"c","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540312428,"id":"c","total":1,"ms":74.309996}
+{"_e":"metro:client_log","_t":1786540312689,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540312689,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540312727,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786540312850,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786540317205,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786540403797,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"root:init","_t":1786540782668,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786540782669,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786540782672,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786540782948,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786540783256,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786540789006,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786540789318,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540790306,"id":"1","total":1401,"ms":987.047482}
+{"_e":"metro:client_log","_t":1786540790812,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540790813,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540790879,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786540794661,"id":"4","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540794724,"id":"4","total":1,"ms":60.963895}
+{"_e":"metro:client_log","_t":1786540795010,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540795011,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540795030,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786540804739,"id":"8","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540804795,"id":"8","total":1,"ms":54.251527}
+{"_e":"metro:client_log","_t":1786540805056,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540805056,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540805077,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786540805183,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:bundling:started","_t":1786540822245,"id":"c","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786540822300,"id":"c","total":1,"ms":54.439584}
+{"_e":"metro:client_log","_t":1786540822651,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786540822652,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786540822676,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786540822792,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786540827256,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786541027392,"id":"n","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786541027470,"id":"n","total":1,"ms":77.504217}
+{"_e":"metro:client_log","_t":1786541027954,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786541027956,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786541028026,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786541028250,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786541028288,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786541111458,"id":"w","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786541111511,"id":"w","total":1,"ms":53.052833}
+{"_e":"metro:client_log","_t":1786541111811,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786541111871,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786541111874,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786541112065,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:bundling:started","_t":1786541142889,"id":"10","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786541142935,"id":"10","total":1,"ms":45.604103}
+{"_e":"metro:client_log","_t":1786541143221,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786541143222,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786541143247,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786541143388,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786541148826,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786541211391,"id":"1b","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786541211456,"id":"1b","total":1,"ms":61.583749}
+{"_e":"metro:client_log","_t":1786541211863,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786541211864,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786541211904,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786541212024,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"root:init","_t":1786541733034,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786541733035,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786541733037,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786541733282,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786541733564,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786541739315,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786541739558,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:started","_t":1786541740466,"id":"2","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786541740613,"id":"1","total":1327,"ms":1054.803056}
+{"_e":"metro:bundling:done","_t":1786541740645,"id":"2","total":1,"ms":179.026385}
+{"_e":"metro:client_log","_t":1786541741183,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786541741184,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786541741257,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786541751687,"id":"5","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786541751754,"id":"5","total":1,"ms":66.646443}
+{"_e":"metro:client_log","_t":1786541752032,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786541752033,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786541752054,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"root:init","_t":1786542191226,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786542191226,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786542191229,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786542191494,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786542191810,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786542197486,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786542197593,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542198585,"id":"1","total":1372,"ms":991.976705}
+{"_e":"metro:client_log","_t":1786542199097,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542199099,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542199165,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786542203842,"id":"4","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542203886,"id":"4","total":1,"ms":43.551209}
+{"_e":"metro:client_log","_t":1786542204125,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542204125,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542204143,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"root:init","_t":1786542359267,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786542359268,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786542359271,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786542359539,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786542359842,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786542366498,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786542366779,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542368072,"id":"1","total":1367,"ms":1293.074711}
+{"_e":"metro:client_log","_t":1786542368687,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542368688,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542368759,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786542372044,"id":"4","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542372111,"id":"4","total":1,"ms":66.84691}
+{"_e":"metro:client_log","_t":1786542372495,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542372496,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542372525,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786542400012,"id":"8","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542400083,"id":"8","total":1,"ms":70.265737}
+{"_e":"metro:client_log","_t":1786542400393,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542400393,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542400415,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786542400566,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786542423945,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786542467769,"id":"j","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542467818,"id":"j","total":1,"ms":48.886415}
+{"_e":"metro:client_log","_t":1786542468123,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542468123,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542468148,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786542468294,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786542474367,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786542494264,"id":"u","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786542494326,"id":"u","total":1,"ms":61.464881}
+{"_e":"metro:client_log","_t":1786542494704,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786542494705,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786542494736,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786542494854,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"root:init","_t":1786543070943,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786543070944,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786543070947,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786543071217,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786543071515,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786543077440,"atlas":false,"workers":3,"host":"::","port":8090}
+{"_e":"metro:bundling:started","_t":1786543077590,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786543078602,"id":"1","total":1359,"ms":1011.23956}
+{"_e":"metro:client_log","_t":1786543079196,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786543079196,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786543079251,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:started","_t":1786543084896,"id":"5","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786543084947,"id":"5","total":1,"ms":50.696368}
+{"_e":"metro:client_log","_t":1786543085220,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786543085221,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786543085239,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786543085366,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786543095171,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786543192965,"id":"g","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:done","_t":1786543193023,"id":"g","total":1,"ms":58.182894}
+{"_e":"metro:client_log","_t":1786543193293,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786543193294,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786543193316,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786543193470,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786543193480,"level":"error","data":["Error parsing JSON:","[SyntaxError: \"[object Object]\" is not valid JSON]","\n\n\u001b[1mCode: DataTypes.tsx\u001b[22m\n\u001b[0m \u001b[90m 377 |\u001b[39m     \u001b[36mpublic\u001b[39m \u001b[36mstatic\u001b[39m fromJSON(data\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mDataContainer\u001b[39m\u001b[33m<\u001b[39m\u001b[33mdata_container_types\u001b[39m\u001b[33m>\u001b[39m \u001b[33m|\u001b[39m \u001b[36mnull\u001b[39m {\n \u001b[90m 378 |\u001b[39m         \u001b[36mtry\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 379 |\u001b[39m             \u001b[36mconst\u001b[39m parsedData \u001b[33m=\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(data)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 380 |\u001b[39m\n \u001b[90m 381 |\u001b[39m             \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mparsedData\u001b[33m.\u001b[39mmetadata \u001b[33m||\u001b[39m \u001b[33m!\u001b[39mparsedData\u001b[33m.\u001b[39mfields) {\n \u001b[90m 382 |\u001b[39m                 \u001b[36mreturn\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  DataContainerFactory.fromJSON (constants/DataTypes.tsx:379:37)\u001b[39m\n\u001b[90m  getData (utils/StorageUtil.ts:67:47)\u001b[39m\n\u001b[90m  getTemplate (utils/StorageUtil.ts:153:16)\u001b[39m\n\u001b[90m  load (components/wrappers/TemplateWriter.tsx:65:17)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1786543193518,"level":"error","data":["Error parsing JSON:","[SyntaxError: \"[object Object]\" is not valid JSON]","\n\n\u001b[1mCode: DataTypes.tsx\u001b[22m\n\u001b[0m \u001b[90m 377 |\u001b[39m     \u001b[36mpublic\u001b[39m \u001b[36mstatic\u001b[39m fromJSON(data\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mDataContainer\u001b[39m\u001b[33m<\u001b[39m\u001b[33mdata_container_types\u001b[39m\u001b[33m>\u001b[39m \u001b[33m|\u001b[39m \u001b[36mnull\u001b[39m {\n \u001b[90m 378 |\u001b[39m         \u001b[36mtry\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 379 |\u001b[39m             \u001b[36mconst\u001b[39m parsedData \u001b[33m=\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(data)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 380 |\u001b[39m\n \u001b[90m 381 |\u001b[39m             \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mparsedData\u001b[33m.\u001b[39mmetadata \u001b[33m||\u001b[39m \u001b[33m!\u001b[39mparsedData\u001b[33m.\u001b[39mfields) {\n \u001b[90m 382 |\u001b[39m                 \u001b[36mreturn\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  DataContainerFactory.fromJSON (constants/DataTypes.tsx:379:37)\u001b[39m\n\u001b[90m  getData (utils/StorageUtil.ts:67:47)\u001b[39m\n\u001b[90m  getTemplate (utils/StorageUtil.ts:153:16)\u001b[39m\n\u001b[90m  load (components/wrappers/TemplateWriter.tsx:70:30)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1786543193534,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"root:init","_t":1786543210112,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1786543210113,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786543210115,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786543210427,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786543210733,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1786543216575,"atlas":false,"workers":3,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1786543218010,"id":"1","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1786543218011,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786543218017,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786543218666,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1786543218766,"id":"1","progress":0.04000000000000001,"total":5,"current":2}
+{"_e":"metro:bundling:progress","_t":1786543218868,"id":"1","progress":0.48999999999999994,"total":10,"current":7}
+{"_e":"metro:bundling:progress","_t":1786543219022,"id":"1","progress":0.6400000000000001,"total":10,"current":8}
+{"_e":"metro:bundling:progress","_t":1786543219148,"id":"1","progress":0.6400000000000001,"total":12,"current":8}
+{"_e":"metro:bundling:progress","_t":1786543219310,"id":"1","progress":0.6400000000000001,"total":12,"current":9}
+{"_e":"metro:bundling:progress","_t":1786543219411,"id":"1","progress":0.6400000000000001,"total":18,"current":9}
+{"_e":"metro:bundling:progress","_t":1786543219475,"id":"1","progress":0.6400000000000001,"total":18,"current":10}
+{"_e":"metro:bundling:progress","_t":1786543219575,"id":"1","progress":0.6400000000000001,"total":22,"current":12}
+{"_e":"metro:bundling:progress","_t":1786543219676,"id":"1","progress":0.6400000000000001,"total":28,"current":16}
+{"_e":"metro:bundling:progress","_t":1786543219778,"id":"1","progress":0.6400000000000001,"total":32,"current":19}
+{"_e":"metro:bundling:progress","_t":1786543219878,"id":"1","progress":0.6400000000000001,"total":40,"current":22}
+{"_e":"metro:bundling:progress","_t":1786543219981,"id":"1","progress":0.6400000000000001,"total":59,"current":25}
+{"_e":"metro:bundling:progress","_t":1786543220083,"id":"1","progress":0.6400000000000001,"total":61,"current":28}
+{"_e":"metro:bundling:progress","_t":1786543220183,"id":"1","progress":0.6400000000000001,"total":62,"current":29}
+{"_e":"metro:bundling:progress","_t":1786543220284,"id":"1","progress":0.6400000000000001,"total":78,"current":35}
+{"_e":"metro:bundling:progress","_t":1786543220386,"id":"1","progress":0.6400000000000001,"total":145,"current":38}
+{"_e":"metro:bundling:progress","_t":1786543220489,"id":"1","progress":0.6400000000000001,"total":165,"current":51}
+{"_e":"metro:bundling:progress","_t":1786543220613,"id":"1","progress":0.6400000000000001,"total":187,"current":57}
+{"_e":"metro:bundling:progress","_t":1786543220770,"id":"1","progress":0.6400000000000001,"total":205,"current":61}
+{"_e":"metro:bundling:progress","_t":1786543220872,"id":"1","progress":0.6400000000000001,"total":207,"current":64}
+{"_e":"metro:bundling:progress","_t":1786543220972,"id":"1","progress":0.6400000000000001,"total":210,"current":68}
+{"_e":"metro:bundling:progress","_t":1786543221073,"id":"1","progress":0.6400000000000001,"total":217,"current":76}
+{"_e":"metro:bundling:progress","_t":1786543221178,"id":"1","progress":0.6400000000000001,"total":247,"current":81}
+{"_e":"metro:bundling:progress","_t":1786543221279,"id":"1","progress":0.6400000000000001,"total":257,"current":90}
+{"_e":"metro:bundling:progress","_t":1786543221387,"id":"1","progress":0.6400000000000001,"total":263,"current":100}
+{"_e":"metro:bundling:progress","_t":1786543221491,"id":"1","progress":0.6400000000000001,"total":269,"current":108}
+{"_e":"metro:bundling:progress","_t":1786543221591,"id":"1","progress":0.6400000000000001,"total":277,"current":114}
+{"_e":"metro:bundling:progress","_t":1786543221695,"id":"1","progress":0.6400000000000001,"total":280,"current":120}
+{"_e":"metro:bundling:progress","_t":1786543221796,"id":"1","progress":0.6400000000000001,"total":292,"current":127}
+{"_e":"metro:bundling:progress","_t":1786543221896,"id":"1","progress":0.6400000000000001,"total":302,"current":131}
+{"_e":"metro:bundling:progress","_t":1786543221996,"id":"1","progress":0.6400000000000001,"total":307,"current":139}
+{"_e":"metro:bundling:progress","_t":1786543222098,"id":"1","progress":0.6400000000000001,"total":307,"current":147}
+{"_e":"metro:bundling:progress","_t":1786543222201,"id":"1","progress":0.6400000000000001,"total":308,"current":152}
+{"_e":"metro:bundling:progress","_t":1786543222301,"id":"1","progress":0.6400000000000001,"total":325,"current":164}
+{"_e":"metro:bundling:progress","_t":1786543222403,"id":"1","progress":0.6400000000000001,"total":345,"current":173}
+{"_e":"metro:bundling:progress","_t":1786543222503,"id":"1","progress":0.6400000000000001,"total":351,"current":179}
+{"_e":"metro:bundling:progress","_t":1786543222621,"id":"1","progress":0.6400000000000001,"total":351,"current":185}
+{"_e":"metro:bundling:progress","_t":1786543222722,"id":"1","progress":0.6400000000000001,"total":393,"current":196}
+{"_e":"metro:bundling:progress","_t":1786543222838,"id":"1","progress":0.6400000000000001,"total":412,"current":206}
+{"_e":"metro:bundling:progress","_t":1786543222938,"id":"1","progress":0.6400000000000001,"total":419,"current":216}
+{"_e":"metro:bundling:progress","_t":1786543223043,"id":"1","progress":0.6400000000000001,"total":419,"current":217}
+{"_e":"metro:bundling:progress","_t":1786543223143,"id":"1","progress":0.6400000000000001,"total":435,"current":226}
+{"_e":"metro:bundling:progress","_t":1786543223245,"id":"1","progress":0.6400000000000001,"total":439,"current":238}
+{"_e":"metro:bundling:progress","_t":1786543223350,"id":"1","progress":0.6400000000000001,"total":454,"current":246}
+{"_e":"metro:bundling:progress","_t":1786543223455,"id":"1","progress":0.6400000000000001,"total":458,"current":250}
+{"_e":"metro:bundling:progress","_t":1786543223638,"id":"1","progress":0.6400000000000001,"total":465,"current":253}
+{"_e":"metro:bundling:progress","_t":1786543223700,"id":"1","progress":0.6400000000000001,"total":465,"current":254}
+{"_e":"metro:bundling:progress","_t":1786543223801,"id":"1","progress":0.6400000000000001,"total":468,"current":258}
+{"_e":"metro:bundling:progress","_t":1786543223912,"id":"1","progress":0.6400000000000001,"total":479,"current":265}
+{"_e":"metro:bundling:progress","_t":1786543224014,"id":"1","progress":0.6400000000000001,"total":482,"current":273}
+{"_e":"metro:bundling:progress","_t":1786543224119,"id":"1","progress":0.6400000000000001,"total":489,"current":278}
+{"_e":"metro:bundling:progress","_t":1786543224218,"id":"1","progress":0.6400000000000001,"total":494,"current":288}
+{"_e":"metro:bundling:progress","_t":1786543224321,"id":"1","progress":0.6400000000000001,"total":499,"current":299}
+{"_e":"metro:bundling:progress","_t":1786543224421,"id":"1","progress":0.6400000000000001,"total":501,"current":307}
+{"_e":"metro:bundling:progress","_t":1786543224521,"id":"1","progress":0.6400000000000001,"total":501,"current":311}
+{"_e":"metro:bundling:progress","_t":1786543224639,"id":"1","progress":0.6400000000000001,"total":501,"current":312}
+{"_e":"metro:bundling:progress","_t":1786543224743,"id":"1","progress":0.6400000000000001,"total":516,"current":315}
+{"_e":"metro:bundling:progress","_t":1786543224844,"id":"1","progress":0.6400000000000001,"total":519,"current":318}
+{"_e":"metro:bundling:progress","_t":1786543224943,"id":"1","progress":0.6400000000000001,"total":529,"current":325}
+{"_e":"metro:bundling:progress","_t":1786543225044,"id":"1","progress":0.6400000000000001,"total":531,"current":331}
+{"_e":"metro:bundling:progress","_t":1786543225145,"id":"1","progress":0.6400000000000001,"total":531,"current":335}
+{"_e":"metro:bundling:progress","_t":1786543225246,"id":"1","progress":0.6400000000000001,"total":540,"current":345}
+{"_e":"metro:bundling:progress","_t":1786543225347,"id":"1","progress":0.6400000000000001,"total":541,"current":351}
+{"_e":"metro:bundling:progress","_t":1786543225459,"id":"1","progress":0.6400000000000001,"total":557,"current":358}
+{"_e":"metro:bundling:progress","_t":1786543225560,"id":"1","progress":0.6400000000000001,"total":560,"current":367}
+{"_e":"metro:bundling:progress","_t":1786543225662,"id":"1","progress":0.6400000000000001,"total":561,"current":375}
+{"_e":"metro:bundling:progress","_t":1786543225763,"id":"1","progress":0.6400000000000001,"total":562,"current":378}
+{"_e":"metro:bundling:progress","_t":1786543225863,"id":"1","progress":0.6400000000000001,"total":562,"current":381}
+{"_e":"metro:bundling:progress","_t":1786543225963,"id":"1","progress":0.6400000000000001,"total":586,"current":388}
+{"_e":"metro:bundling:progress","_t":1786543226067,"id":"1","progress":0.6400000000000001,"total":596,"current":394}
+{"_e":"metro:bundling:progress","_t":1786543226169,"id":"1","progress":0.6400000000000001,"total":600,"current":404}
+{"_e":"metro:bundling:progress","_t":1786543226269,"id":"1","progress":0.6400000000000001,"total":604,"current":416}
+{"_e":"metro:bundling:progress","_t":1786543226442,"id":"1","progress":0.6400000000000001,"total":605,"current":420}
+{"_e":"metro:bundling:progress","_t":1786543226543,"id":"1","progress":0.6400000000000001,"total":623,"current":434}
+{"_e":"metro:bundling:progress","_t":1786543226650,"id":"1","progress":0.6400000000000001,"total":631,"current":445}
+{"_e":"metro:bundling:progress","_t":1786543226750,"id":"1","progress":0.6400000000000001,"total":636,"current":461}
+{"_e":"metro:bundling:progress","_t":1786543226850,"id":"1","progress":0.6400000000000001,"total":642,"current":475}
+{"_e":"metro:bundling:progress","_t":1786543226950,"id":"1","progress":0.6400000000000001,"total":660,"current":483}
+{"_e":"metro:bundling:progress","_t":1786543227052,"id":"1","progress":0.6400000000000001,"total":670,"current":495}
+{"_e":"metro:bundling:progress","_t":1786543227154,"id":"1","progress":0.6400000000000001,"total":671,"current":502}
+{"_e":"metro:bundling:progress","_t":1786543227254,"id":"1","progress":0.6400000000000001,"total":675,"current":508}
+{"_e":"metro:bundling:progress","_t":1786543227354,"id":"1","progress":0.6400000000000001,"total":676,"current":517}
+{"_e":"metro:bundling:progress","_t":1786543227454,"id":"1","progress":0.6400000000000001,"total":681,"current":528}
+{"_e":"metro:bundling:progress","_t":1786543227554,"id":"1","progress":0.6400000000000001,"total":685,"current":534}
+{"_e":"metro:bundling:progress","_t":1786543227674,"id":"1","progress":0.6400000000000001,"total":687,"current":544}
+{"_e":"metro:bundling:started","_t":1786543227712,"id":"t","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1786543227778,"id":"1","progress":0.645601723842032,"total":687,"current":552}
+{"_e":"metro:bundling:done","_t":1786543227867,"id":"t","total":1,"ms":152.059352}
+{"_e":"metro:bundling:progress","_t":1786543227878,"id":"1","progress":0.6744038162520282,"total":688,"current":565}
+{"_e":"metro:bundling:progress","_t":1786543227978,"id":"1","progress":0.6924359293877661,"total":691,"current":575}
+{"_e":"metro:bundling:progress","_t":1786543228078,"id":"1","progress":0.7093978608572907,"total":691,"current":582}
+{"_e":"metro:bundling:progress","_t":1786543228182,"id":"1","progress":0.7093978608572907,"total":696,"current":586}
+{"_e":"metro:bundling:progress","_t":1786543228284,"id":"1","progress":0.7245687176244011,"total":699,"current":595}
+{"_e":"metro:bundling:progress","_t":1786543228383,"id":"1","progress":0.7336609161637202,"total":711,"current":609}
+{"_e":"metro:bundling:progress","_t":1786543228483,"id":"1","progress":0.7530626818668265,"total":711,"current":617}
+{"_e":"metro:bundling:progress","_t":1786543228583,"id":"1","progress":0.765625,"total":712,"current":623}
+{"_e":"metro:bundling:progress","_t":1786543228752,"id":"1","progress":0.765625,"total":721,"current":629}
+{"_e":"metro:client_log","_t":1786543228784,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786543228784,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786543228784,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:progress","_t":1786543228852,"id":"1","progress":0.7671178825548262,"total":733,"current":642}
+{"_e":"metro:bundling:progress","_t":1786543228954,"id":"1","progress":0.7820815400990327,"total":735,"current":650}
+{"_e":"metro:bundling:progress","_t":1786543229054,"id":"1","progress":0.8019603475161506,"total":737,"current":660}
+{"_e":"metro:bundling:progress","_t":1786543229161,"id":"1","progress":0.8019603475161506,"total":748,"current":669}
+{"_e":"metro:bundling:progress","_t":1786543229257,"id":"1","progress":0.8126386300733508,"total":751,"current":677}
+{"_e":"metro:bundling:progress","_t":1786543229361,"id":"1","progress":0.8398725805430278,"total":754,"current":691}
+{"_e":"metro:bundling:progress","_t":1786543229461,"id":"1","progress":0.855989211978424,"total":762,"current":705}
+{"_e":"metro:bundling:progress","_t":1786543229567,"id":"1","progress":0.855989211978424,"total":778,"current":716}
+{"_e":"metro:bundling:progress","_t":1786543229669,"id":"1","progress":0.855989211978424,"total":794,"current":726}
+{"_e":"metro:bundling:progress","_t":1786543229772,"id":"1","progress":0.855989211978424,"total":798,"current":733}
+{"_e":"metro:bundling:progress","_t":1786543229872,"id":"1","progress":0.855989211978424,"total":813,"current":752}
+{"_e":"metro:bundling:progress","_t":1786543229975,"id":"1","progress":0.8596710340277124,"total":824,"current":764}
+{"_e":"metro:bundling:progress","_t":1786543230078,"id":"1","progress":0.8596710340277124,"total":846,"current":777}
+{"_e":"metro:bundling:progress","_t":1786543230179,"id":"1","progress":0.8596710340277124,"total":855,"current":791}
+{"_e":"metro:bundling:progress","_t":1786543230279,"id":"1","progress":0.8596710340277124,"total":882,"current":808}
+{"_e":"metro:bundling:progress","_t":1786543230380,"id":"1","progress":0.8596710340277124,"total":904,"current":826}
+{"_e":"metro:bundling:progress","_t":1786543230479,"id":"1","progress":0.8596710340277124,"total":912,"current":840}
+{"_e":"metro:bundling:progress","_t":1786543230579,"id":"1","progress":0.8596710340277124,"total":918,"current":848}
+{"_e":"metro:bundling:progress","_t":1786543230679,"id":"1","progress":0.8596710340277124,"total":954,"current":856}
+{"_e":"metro:bundling:progress","_t":1786543230779,"id":"1","progress":0.8596710340277124,"total":961,"current":867}
+{"_e":"metro:bundling:progress","_t":1786543230883,"id":"1","progress":0.8596710340277124,"total":972,"current":877}
+{"_e":"metro:bundling:progress","_t":1786543230983,"id":"1","progress":0.8596710340277124,"total":978,"current":887}
+{"_e":"metro:bundling:progress","_t":1786543231084,"id":"1","progress":0.8596710340277124,"total":1223,"current":892}
+{"_e":"metro:bundling:progress","_t":1786543231191,"id":"1","progress":0.8596710340277124,"total":1223,"current":902}
+{"_e":"metro:bundling:progress","_t":1786543231293,"id":"1","progress":0.8596710340277124,"total":1227,"current":928}
+{"_e":"metro:bundling:progress","_t":1786543231394,"id":"1","progress":0.8596710340277124,"total":1231,"current":939}
+{"_e":"metro:bundling:progress","_t":1786543231494,"id":"1","progress":0.8596710340277124,"total":1231,"current":954}
+{"_e":"metro:bundling:progress","_t":1786543231601,"id":"1","progress":0.8596710340277124,"total":1246,"current":968}
+{"_e":"metro:bundling:progress","_t":1786543231701,"id":"1","progress":0.8596710340277124,"total":1256,"current":993}
+{"_e":"metro:bundling:progress","_t":1786543231801,"id":"1","progress":0.8596710340277124,"total":1258,"current":1017}
+{"_e":"metro:bundling:progress","_t":1786543231902,"id":"1","progress":0.8596710340277124,"total":1259,"current":1033}
+{"_e":"metro:bundling:progress","_t":1786543232002,"id":"1","progress":0.8596710340277124,"total":1265,"current":1049}
+{"_e":"metro:bundling:progress","_t":1786543232105,"id":"1","progress":0.8596710340277124,"total":1265,"current":1072}
+{"_e":"metro:bundling:progress","_t":1786543232205,"id":"1","progress":0.8596710340277124,"total":1265,"current":1093}
+{"_e":"metro:bundling:progress","_t":1786543232305,"id":"1","progress":0.8596710340277124,"total":1265,"current":1126}
+{"_e":"metro:bundling:progress","_t":1786543232406,"id":"1","progress":0.8596710340277124,"total":1266,"current":1153}
+{"_e":"metro:bundling:progress","_t":1786543232507,"id":"1","progress":0.8596710340277124,"total":1268,"current":1171}
+{"_e":"metro:bundling:progress","_t":1786543232606,"id":"1","progress":0.8956204161649534,"total":1268,"current":1200}
+{"_e":"metro:bundling:progress","_t":1786543232706,"id":"1","progress":0.9319089838179676,"total":1270,"current":1226}
+{"_e":"metro:bundling:progress","_t":1786543232807,"id":"1","progress":0.9477014912316406,"total":1283,"current":1249}
+{"_e":"metro:bundling:progress","_t":1786543232907,"id":"1","progress":0.9477014912316406,"total":1322,"current":1269}
+{"_e":"metro:bundling:progress","_t":1786543233007,"id":"1","progress":0.9477014912316406,"total":1358,"current":1293}
+{"_e":"metro:bundling:progress","_t":1786543233114,"id":"1","progress":0.9477014912316406,"total":1359,"current":1316}
+{"_e":"metro:bundling:progress","_t":1786543233218,"id":"1","progress":0.9508746506240472,"total":1367,"current":1333}
+{"_e":"metro:bundling:progress","_t":1786543233319,"id":"1","progress":0.9570865937954368,"total":1383,"current":1353}
+{"_e":"metro:bundling:progress","_t":1786543233418,"id":"1","progress":0.9814752852646201,"total":1397,"current":1384}
+{"_e":"metro:bundling:progress","_t":1786543233519,"id":"1","progress":0.9900955686333687,"total":1410,"current":1403}
+{"_e":"metro:bundling:progress","_t":1786543233619,"id":"1","progress":0.999,"total":1412,"current":1412}
+{"_e":"metro:bundling:done","_t":1786543233716,"id":"1","total":1412,"ms":15705.320131}
+{"_e":"metro:client_log","_t":1786543234304,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786543234305,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786543234398,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786543249842,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786543249879,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543257850,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543259309,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543262880,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543310144,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543312095,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543312588,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543317074,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543318266,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543319127,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543320147,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543321239,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543322209,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543445954,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543447329,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543448180,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543448267,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543448442,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543448515,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543449299,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543449856,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543450668,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543455441,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543456320,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543457796,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543458199,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543458459,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543458556,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543458624,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543459831,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543459978,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543460407,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543463000,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543463074,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543463144,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543468318,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543470516,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543476164,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543476215,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:started","_t":1786543589571,"id":"a","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1786543589571,"id":"a","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786543589621,"id":"a","total":1,"ms":50.525851}
+{"_e":"metro:client_log","_t":1786543590182,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786543590185,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786543590246,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786543598923,"level":"warn","data":["TouchableWithoutFeedback is deprecated. Please use Pressable."]}
+{"_e":"metro:client_log","_t":1786543598958,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543600676,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543602174,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543603424,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543605946,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543608748,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543612314,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543614143,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543614833,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543615638,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543644682,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543645994,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543648156,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543648221,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543717195,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543718521,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543719019,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543719503,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543721605,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543725350,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543725412,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543732264,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543759541,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543777324,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543778836,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543779767,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543781354,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543799631,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543800622,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543801329,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543825808,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543828019,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543829370,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543830575,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543849972,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543851828,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543865995,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543868192,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543868772,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543869498,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543949045,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786543949152,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544050933,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544052374,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544053179,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544053844,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544054421,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544055008,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544056079,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544056793,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544057475,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544058166,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544058796,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544060665,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544060732,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544068272,"level":"log","data":["9834fa2e-4392-407f-9672-95b82d2868a7"]}
+{"_e":"metro:client_log","_t":1786544068420,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544068479,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544068554,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544068680,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544075028,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544075080,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544075152,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544075341,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544076254,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544077595,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544077793,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544078029,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544081292,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544081348,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544082882,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544086312,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544086375,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544086493,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544086656,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544088714,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544090388,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544090770,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544092554,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544096308,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544098450,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544101538,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544102284,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544102617,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544103722,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544106680,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544107655,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544108369,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544112646,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `5`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544112666,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `4`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544112972,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `5`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544114226,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `4`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544115564,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `d`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544115786,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `k`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544115886,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `j`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544116154,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `s`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544116466,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `9`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544116627,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `8`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544116883,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `3`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544116948,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `4`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544117075,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `0`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544117206,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `9`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544117263,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `8`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544117300,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `2`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544117387,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `3`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544117586,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `1`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544119067,"level":"warn","data":["Use `dd` instead of `DD` (in `DD of MMM YYYY`) for formatting days of the month to the input `/`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"]}
+{"_e":"metro:client_log","_t":1786544288832,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544288886,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544288923,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544288926,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544288971,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544288974,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544289013,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544289014,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786544371886,"level":"warn","data":["An error occurred in the <ToggleButtonField> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1786544372386,"level":"error","data":["[TypeError: Class constructor ToggleButtonField cannot be invoked without 'new']","\n\n\u001b[1mCode: react-dom-client.development.js\u001b[22m\n\u001b[0m \u001b[90m 25902 |\u001b[39m           isRendering \u001b[33m=\u001b[39m \u001b[33m!\u001b[39m\u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 25903 |\u001b[39m           \u001b[36mtry\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25904 |\u001b[39m             \u001b[36mreturn\u001b[39m \u001b[33mComponent\u001b[39m(props\u001b[33m,\u001b[39m secondArg)\u001b[33m;\u001b[39m\n \u001b[90m       |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25905 |\u001b[39m           } \u001b[36mfinally\u001b[39m {\n \u001b[90m 25906 |\u001b[39m             isRendering \u001b[33m=\u001b[39m wasRendering\u001b[33m;\u001b[39m\n \u001b[90m 25907 |\u001b[39m           }\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[2m\u001b[90m  callComponent.react_stack_bottom_frame (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:25904:20\u0007node_modules/react-dom/cjs/react-dom-client.development.js:25904:20\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderWithHooks (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:7662:22\u0007node_modules/react-dom/cjs/react-dom-client.development.js:7662:22\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  updateFunctionComponent (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:10166:19\u0007node_modules/react-dom/cjs/react-dom-client.development.js:10166:19\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  beginWork (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:11778:18\u0007node_modules/react-dom/cjs/react-dom-client.development.js:11778:18\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  runWithFiberInDEV (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:871:30\u0007node_modules/react-dom/cjs/react-dom-client.development.js:871:30\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performUnitOfWork (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:17641:22\u0007node_modules/react-dom/cjs/react-dom-client.development.js:17641:22\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  workLoopSync (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:17469:41\u0007node_modules/react-dom/cjs/react-dom-client.development.js:17469:41\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderRootSync (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:17450:11\u0007node_modules/react-dom/cjs/react-dom-client.development.js:17450:11\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performWorkOnRoot (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:16583:35\u0007node_modules/react-dom/cjs/react-dom-client.development.js:16583:35\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performSyncWorkOnRoot (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:18972:7\u0007node_modules/react-dom/cjs/react-dom-client.development.js:18972:7\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  flushSyncWorkAcrossRoots_impl (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:18814:21\u0007node_modules/react-dom/cjs/react-dom-client.development.js:18814:21\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  flushSyncWork$1 (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:16898:12\u0007node_modules/react-dom/cjs/react-dom-client.development.js:16898:12\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  scheduleRefresh (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:113:9\u0007node_modules/react-dom/cjs/react-dom-client.development.js:113:9\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  mountedRootsSnapshot.forEach$argument_0 (\u001b]8;;node_modules/react-refresh/cjs/react-refresh-runtime.development.js:265:17\u0007node_modules/react-refresh/cjs/react-refresh-runtime.development.js:265:17\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  Set.forEach (\u001b]8;;<anonymous>\u0007<anonymous>\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performReactRefresh (\u001b]8;;node_modules/react-refresh/cjs/react-refresh-runtime.development.js:254:26\u0007node_modules/react-refresh/cjs/react-refresh-runtime.development.js:254:26\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  Refresh.performReactRefresh (\u001b]8;;node_modules/expo/src/async-require/setupFastRefresh.ts:24:25\u0007node_modules/expo/src/async-require/setupFastRefresh.ts:24:25\u001b]8;;\u0007)\u001b[39m\u001b[22m","\n\n\u001b[1mCode: TypedNode.tsx\u001b[22m\n\u001b[0m \u001b[90m 86 |\u001b[39m         \u001b[36mcase\u001b[39m \u001b[32m\"boolean\"\u001b[39m\u001b[33m:\u001b[39m\n \u001b[90m 87 |\u001b[39m             \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 88 |\u001b[39m                 \u001b[33m<\u001b[39m\u001b[33mToggleButtonField\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 89 |\u001b[39m                     template\u001b[33m=\u001b[39m{template}\n \u001b[90m 90 |\u001b[39m                     id\u001b[33m=\u001b[39m{field\u001b[33m.\u001b[39mid}\n \u001b[90m 91 |\u001b[39m                     fieldKey\u001b[33m=\u001b[39m{field\u001b[33m.\u001b[39mfield\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mlabel}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  TypedNode (\u001b]8;;components/nodes/operations/TypedNode.tsx:88:17\u0007components/nodes/operations/TypedNode.tsx:88:17\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  FieldNodeFactory (\u001b]8;;components/nodes/operations/FieldNodeFactory.tsx:48:21\u0007components/nodes/operations/FieldNodeFactory.tsx:48:21\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  template.getData...slice.map$argument_0 (\u001b]8;;components/managers/TemplateEditorManager.tsx:226:13\u0007components/managers/TemplateEditorManager.tsx:226:13\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  TemplateEditorManager (\u001b]8;;components/managers/TemplateEditorManager.tsx:160:84\u0007components/managers/TemplateEditorManager.tsx:160:84\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  TemplateWriter (\u001b]8;;components/wrappers/TemplateWriter.tsx:164:52\u0007components/wrappers/TemplateWriter.tsx:164:52\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  TemplateEditScreen (\u001b]8;;app/templates/edit.tsx:5:16\u0007app/templates/edit.tsx:5:16\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  RootLayout (\u001b]8;;app/_layout.tsx:29:27\u0007app/_layout.tsx:29:27\u001b]8;;\u0007)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1786544385764,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1786544540977,"level":"warn","data":["An error occurred in the <ToggleButtonField> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1786544541377,"level":"error","data":["[TypeError: Class constructor ToggleButtonField cannot be invoked without 'new']","\n\n\u001b[1mCode: react-dom-client.development.js\u001b[22m\n\u001b[0m \u001b[90m 25902 |\u001b[39m           isRendering \u001b[33m=\u001b[39m \u001b[33m!\u001b[39m\u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 25903 |\u001b[39m           \u001b[36mtry\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25904 |\u001b[39m             \u001b[36mreturn\u001b[39m \u001b[33mComponent\u001b[39m(props\u001b[33m,\u001b[39m secondArg)\u001b[33m;\u001b[39m\n \u001b[90m       |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25905 |\u001b[39m           } \u001b[36mfinally\u001b[39m {\n \u001b[90m 25906 |\u001b[39m             isRendering \u001b[33m=\u001b[39m wasRendering\u001b[33m;\u001b[39m\n \u001b[90m 25907 |\u001b[39m           }\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[2m\u001b[90m  callComponent.react_stack_bottom_frame (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:25904:20\u0007node_modules/react-dom/cjs/react-dom-client.development.js:25904:20\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderWithHooks (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:7662:22\u0007node_modules/react-dom/cjs/react-dom-client.development.js:7662:22\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  updateFunctionComponent (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:10166:19\u0007node_modules/react-dom/cjs/react-dom-client.development.js:10166:19\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  beginWork (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:11778:18\u0007node_modules/react-dom/cjs/react-dom-client.development.js:11778:18\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  runWithFiberInDEV (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:871:30\u0007node_modules/react-dom/cjs/react-dom-client.development.js:871:30\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performUnitOfWork (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:17641:22\u0007node_modules/react-dom/cjs/react-dom-client.development.js:17641:22\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  workLoopSync (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:17469:41\u0007node_modules/react-dom/cjs/react-dom-client.development.js:17469:41\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderRootSync (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:17450:11\u0007node_modules/react-dom/cjs/react-dom-client.development.js:17450:11\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performWorkOnRoot (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:16583:35\u0007node_modules/react-dom/cjs/react-dom-client.development.js:16583:35\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performSyncWorkOnRoot (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:18972:7\u0007node_modules/react-dom/cjs/react-dom-client.development.js:18972:7\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  flushSyncWorkAcrossRoots_impl (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:18814:21\u0007node_modules/react-dom/cjs/react-dom-client.development.js:18814:21\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  processRootScheduleInMicrotask (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:18853:9\u0007node_modules/react-dom/cjs/react-dom-client.development.js:18853:9\u001b]8;;\u0007)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  scheduleMicrotask$argument_0 (\u001b]8;;node_modules/react-dom/cjs/react-dom-client.development.js:18991:13\u0007node_modules/react-dom/cjs/react-dom-client.development.js:18991:13\u001b]8;;\u0007)\u001b[39m\u001b[22m","\n\n\u001b[1mCode: TypedNode.tsx\u001b[22m\n\u001b[0m \u001b[90m 86 |\u001b[39m         \u001b[36mcase\u001b[39m \u001b[32m\"boolean\"\u001b[39m\u001b[33m:\u001b[39m\n \u001b[90m 87 |\u001b[39m             \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 88 |\u001b[39m                 \u001b[33m<\u001b[39m\u001b[33mToggleButtonField\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 89 |\u001b[39m                     template\u001b[33m=\u001b[39m{template}\n \u001b[90m 90 |\u001b[39m                     id\u001b[33m=\u001b[39m{field\u001b[33m.\u001b[39mid}\n \u001b[90m 91 |\u001b[39m                     fieldKey\u001b[33m=\u001b[39m{field\u001b[33m.\u001b[39mfield\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mlabel}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  TypedNode (\u001b]8;;components/nodes/operations/TypedNode.tsx:88:17\u0007components/nodes/operations/TypedNode.tsx:88:17\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  FieldNodeFactory (\u001b]8;;components/nodes/operations/FieldNodeFactory.tsx:48:21\u0007components/nodes/operations/FieldNodeFactory.tsx:48:21\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  template.getData...slice.map$argument_0 (\u001b]8;;components/managers/TemplateEditorManager.tsx:226:13\u0007components/managers/TemplateEditorManager.tsx:226:13\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  TemplateEditorManager (\u001b]8;;components/managers/TemplateEditorManager.tsx:160:84\u0007components/managers/TemplateEditorManager.tsx:160:84\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  TemplateWriter (\u001b]8;;components/wrappers/TemplateWriter.tsx:163:53\u0007components/wrappers/TemplateWriter.tsx:163:53\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  load (\u001b]8;;components/wrappers/EntryWriter.tsx:90:37\u0007components/wrappers/EntryWriter.tsx:90:37\u001b]8;;\u0007)\u001b[39m\n\u001b[90m  <global> (\u001b]8;;components/wrappers/EntryWriter.tsx:36:60\u0007components/wrappers/EntryWriter.tsx:36:60\u001b]8;;\u0007)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1786544564766,"level":"warn","data":["Route \"./welcome.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:failed","_t":1786544651576,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (41:15)\n\n  39 |       <BooleanImageInput\n  40 |         selected={field.field.data.value}\n> 41 |         onPress,\n     |                ^\n  42 |       imageSrcFalse,\n  43 |       imageSrc,\n  44 |       locked = false,","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544651594,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (41:15)\n\n  39 |       <BooleanImageInput\n  40 |         selected={field.field.data.value}\n> 41 |         onPress,\n     |                ^\n  42 |       imageSrcFalse,\n  43 |       imageSrc,\n  44 |       locked = false,]"]}
+{"_e":"metro:bundling:failed","_t":1786544651622,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (41:15)\n\n  39 |       <BooleanImageInput\n  40 |         selected={field.field.data.value}\n> 41 |         onPress,\n     |                ^\n  42 |       imageSrcFalse,\n  43 |       imageSrc,\n  44 |       locked = false,","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544651650,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (41:15)\n\n  39 |       <BooleanImageInput\n  40 |         selected={field.field.data.value}\n> 41 |         onPress,\n     |                ^\n  42 |       imageSrcFalse,\n  43 |       imageSrc,\n  44 |       locked = false,]"]}
+{"_e":"metro:bundling:failed","_t":1786544718169,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSrcFalse}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1786544718196,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSrcFalse}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544718201,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSrcFalse}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}]"]}
+{"_e":"metro:client_log","_t":1786544718228,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSrcFalse}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}]"]}
+{"_e":"metro:bundling:failed","_t":1786544760021,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544760028,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}]"]}
+{"_e":"metro:bundling:failed","_t":1786544760058,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544760105,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageSrc}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}]"]}
+{"_e":"metro:bundling:failed","_t":1786544771957,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageUnselected}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1786544772021,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageUnselected}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544771966,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageUnselected}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}]"]}
+{"_e":"metro:client_log","_t":1786544772050,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: JSX value should be either an expression or a quoted JSX text. (43:16)\n\n  41 |         imageSrcFalse={field.field.data.imageSelected}\n  42 |         imageSrc={field.field.data.imageUnselected}\n> 43 |         locked= false,\n     |                 ^\n  44 |       value={displayedValue}\n  45 |       locked={locked}\n  46 |       onPress={handleChange}]"]}
+{"_e":"metro:bundling:failed","_t":1786544840443,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (24:108)\n\n  22 |   function handleChange() {\n  23 |     const newField = field.field.clone();\n> 24 |     newField.setData(field.field.data.value == 0 ? { ...fieldData, value: 1 } : { ...fieldData, value: 0 }););\n     |                                                                                                             ^\n  25 |\n  26 |     onChange?.(template, defaultShown, {\n  27 |       id,","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544840453,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (24:108)\n\n  22 |   function handleChange() {\n  23 |     const newField = field.field.clone();\n> 24 |     newField.setData(field.field.data.value == 0 ? { ...fieldData, value: 1 } : { ...fieldData, value: 0 }););\n     |                                                                                                             ^\n  25 |\n  26 |     onChange?.(template, defaultShown, {\n  27 |       id,]"]}
+{"_e":"metro:bundling:failed","_t":1786544840454,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (24:108)\n\n  22 |   function handleChange() {\n  23 |     const newField = field.field.clone();\n> 24 |     newField.setData(field.field.data.value == 0 ? { ...fieldData, value: 1 } : { ...fieldData, value: 0 }););\n     |                                                                                                             ^\n  25 |\n  26 |     onChange?.(template, defaultShown, {\n  27 |       id,","importStack":null,"filename":"components/nodes/inputs/BooleanImageInputField.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786544840514,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/nodes/inputs/BooleanImageInputField.tsx: Unexpected token (24:108)\n\n  22 |   function handleChange() {\n  23 |     const newField = field.field.clone();\n> 24 |     newField.setData(field.field.data.value == 0 ? { ...fieldData, value: 1 } : { ...fieldData, value: 0 }););\n     |                                                                                                             ^\n  25 |\n  26 |     onChange?.(template, defaultShown, {\n  27 |       id,]"]}
+{"_e":"metro:client_log","_t":1786545113694,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545115921,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545116708,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545117553,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545118351,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545120574,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545121297,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545125694,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545126998,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545127361,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545128197,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545128926,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545139891,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545143691,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545145981,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545151638,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545157787,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545160050,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545162748,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545167323,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545169047,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545188587,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545191797,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545198657,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545198731,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:bundling:failed","_t":1786545385017,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (189:6)\n\n  187 | }\n  188 |\n> 189 |       }\n      |       ^\n  190 |     </>\n  191 |   );\n  192 | }","importStack":null,"filename":"components/managers/TemplateEditorManager.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:failed","_t":1786545385030,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (189:6)\n\n  187 | }\n  188 |\n> 189 |       }\n      |       ^\n  190 |     </>\n  191 |   );\n  192 | }","importStack":null,"filename":"components/managers/TemplateEditorManager.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786545385038,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (189:6)\n\n  187 | }\n  188 |\n> 189 |       }\n      |       ^\n  190 |     </>\n  191 |   );\n  192 | }]"]}
+{"_e":"metro:client_log","_t":1786545385086,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (189:6)\n\n  187 | }\n  188 |\n> 189 |       }\n      |       ^\n  190 |     </>\n  191 |   );\n  192 | }]"]}
+{"_e":"metro:bundling:failed","_t":1786545451057,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (225:6)\n\n  223 | }\n  224 |\n> 225 |       }\n      |       ^\n  226 |     </>\n  227 |   );\n  228 | }","importStack":null,"filename":"components/managers/TemplateEditorManager.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786545451062,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (225:6)\n\n  223 | }\n  224 |\n> 225 |       }\n      |       ^\n  226 |     </>\n  227 |   );\n  228 | }]"]}
+{"_e":"metro:bundling:failed","_t":1786545451065,"id":null,"message":"SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (225:6)\n\n  223 | }\n  224 |\n> 225 |       }\n      |       ^\n  226 |     </>\n  227 |   );\n  228 | }","importStack":null,"filename":"components/managers/TemplateEditorManager.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1786545451083,"level":"error","data":["[TransformError: SyntaxError: /home/herby/Documents/workspace/critterkeeper/components/managers/TemplateEditorManager.tsx: Unexpected token (225:6)\n\n  223 | }\n  224 |\n> 225 |       }\n      |       ^\n  226 |     </>\n  227 |   );\n  228 | }]"]}
+{"_e":"metro:client_log","_t":1786545468890,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545531865,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545538726,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545542529,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545546503,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545549255,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545550438,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545552903,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545555275,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545556398,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545637885,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545640990,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545653881,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545653946,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545676652,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545676729,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545685918,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545686060,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545689829,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545689912,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545694335,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545694843,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545695672,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545696445,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545697181,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545697770,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545698328,"level":"log","data":["BooleanInput render selected:","false"]}
+{"_e":"metro:client_log","_t":1786545698930,"level":"log","data":["BooleanInput render selected:","false"]}

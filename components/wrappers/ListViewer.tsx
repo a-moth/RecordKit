@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { Button, View, Text, TextInput } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { useTheme } from "../../hooks/use-theme-provider";
+import MiniButton from "../common/MiniButton";
 import { useSettings } from "../../utils/SettingsProvider";
 import { deleteEntry, deleteTemplate, getData, getEntries, getTemplates, saveData, } from '../../utils/StorageUtil';
 import { entry, template, DataContainer, data_container_types, FieldData, FieldNode } from '../../constants/DataTypes';
@@ -120,11 +121,11 @@ export default function ListViewer({
         return (
             <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
                 <View style={theme.sizes.default.entryEditButton}>
-                    <Button title="Edit" onPress={() => { openEditor(item.metadata.templateId, item.metadata.templateId) }} />
-                    <Button title="Delete" onPress={() => { deleteId(item.metadata.templateId) }} />
+                    <MiniButton label="Edit" color="primary" onPress={() => { openEditor(item.metadata.templateId, item.metadata.templateId) }} />
+                    <MiniButton label="Delete" color="danger" onPress={() => { deleteId(item.metadata.templateId) }} />
                 </View>
 
-                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.primary }]}>
+                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.card }]}>
                     {
                         <TemplateEditorManager key={createId()} template={item} locked={true} edit={false} isList={true} onChange={onChange} />
                     }
@@ -147,11 +148,11 @@ export default function ListViewer({
         return (
             <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
                 <View style={theme.sizes.default.entryEditButton}>
-                    <Button title="Edit" onPress={() => { openEditor(item.metadata.name, item.metadata.templateId) }} />
-                    <Button title="Delete" onPress={() => { deleteId(item.metadata.name) }} />
+                    <MiniButton label="Edit" color="primary" onPress={() => { openEditor(item.metadata.name, item.metadata.templateId) }} />
+                    <MiniButton label="Delete" color="danger" onPress={() => { deleteId(item.metadata.name) }} />
                 </View>
 
-                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.primary }]}>
+                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.card }]}>
                     <TemplateEditorManager template={item} locked={true} edit={false} isList={true} onChange={onChange} />
                 </View>
             </View>
@@ -211,7 +212,7 @@ export default function ListViewer({
                                     style={[
                                         theme.sizes.default.input,
                                         {
-                                            backgroundColor: theme.colors.card,
+                                            backgroundColor: theme.colors.background,
                                             borderColor: theme.colors.border,
                                             color: theme.colors.text,
                                             fontFamily: theme.fonts?.regular.fontFamily,

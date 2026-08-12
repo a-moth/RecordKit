@@ -22,20 +22,13 @@ export default function SelectionInputField({
     fontFamily: theme.fonts?.regular.fontFamily,
   };
 
-  let baseStyling = style ?? {
+  const baseStyling = style ?? {
     ...theme.sizes.default.input,
-    backgroundColor: theme.colors.card,
+    backgroundColor: theme.colors.background,
     borderColor: theme.colors.border,
     color: theme.colors.text,
     fontFamily: theme.fonts?.regular.fontFamily,
   };
-
-  if (locked) {
-    baseStyling = {
-      ...baseStyling,
-      backgroundColor: theme.colors.background,
-    };
-  }
 
   return (
     <View id={fieldKey} style={theme.sizes.default.container}>

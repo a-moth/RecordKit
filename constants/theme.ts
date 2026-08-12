@@ -5,12 +5,25 @@
 // constants/theme.ts
 
 import { TextStyle, ViewStyle, ImageStyle } from 'react-native';
+
+/**
+ * Shared corner-radius scale ("angles") so every themed element rounds off
+ * consistently instead of each component picking its own number.
+ */
+export const Radius = {
+  sm: 8,
+  md: 12,
+  lg: 18,
+  pill: 999,
+};
+
 //TODO: fix Sizes to make actual sense instead of just old groups of CSS classes that are messy
 export const Sizes = {
   default: {
     container: {
       marginVertical: 8,
       marginLeft: 2,
+      marginRight: 2,
     } as ViewStyle,
 
     row: {
@@ -29,9 +42,9 @@ export const Sizes = {
     } as ViewStyle,
 
     button: {
-      paddingVertical: 15,
-      paddingHorizontal: 30,
-      borderRadius: 10,
+      paddingVertical: 14,
+      paddingHorizontal: 24,
+      borderRadius: Radius.lg,
     } as ViewStyle,
 
     regularButton: {
@@ -39,12 +52,12 @@ export const Sizes = {
     } as ViewStyle,
 
     imageButton: {
-      borderRadius: 10,
+      borderRadius: Radius.md,
     } as ViewStyle,
 
     buttonText: {
-      fontSize: 18,
-      fontWeight: 'bold',
+      fontSize: 16,
+      fontWeight: '600',
     } as TextStyle,
 
     textCenter: {
@@ -63,17 +76,17 @@ export const Sizes = {
 
     image: {
       borderWidth: 0,
-      borderRadius: 6,
+      borderRadius: Radius.sm,
       marginHorizontal: 4,
     } as ImageStyle,
 
     input: {
-      borderWidth: 1,
-      borderRadius: 6,
+      borderWidth: 1.5,
+      borderRadius: Radius.md,
       fontSize: 16,
-      minHeight: 60,
-      paddingLeft: 15,
-      paddingRight: 15,
+      minHeight: 48,
+      paddingLeft: 14,
+      paddingRight: 14,
     } as TextStyle,
 
     text: {
@@ -114,23 +127,28 @@ export const Sizes = {
       alignItems: 'center',
       paddingHorizontal: 12,
     },
+
     dropdownButtonTxtStyle: {
       flex: 1,
       fontSize: 18,
       fontWeight: '500',
       color: '#151E26',
     },
+
     dropdownButtonArrowStyle: {
       fontSize: 28,
     },
+
     dropdownButtonIconStyle: {
       fontSize: 28,
       marginRight: 8,
     },
+
     dropdownMenuStyle: {
       backgroundColor: '#E9ECEF',
       borderRadius: 8,
     },
+
     dropdownItemStyle: {
       width: '100%',
       flexDirection: 'row',
@@ -139,15 +157,40 @@ export const Sizes = {
       alignItems: 'center',
       paddingVertical: 8,
     },
+
     dropdownItemTxtStyle: {
       flex: 1,
       fontSize: 18,
       fontWeight: '500',
       color: '#151E26',
     },
+
     dropdownItemIconStyle: {
       fontSize: 28,
       marginRight: 8,
     },
+
+    section: {
+      marginLeft: 10,
+    } as ViewStyle,
+
+    sectionTitle: {
+      fontSize: 20,
+      fontWeight: '700',
+    } as TextStyle,
+
+    'micro-button': {
+      paddingVertical: 4,
+      paddingHorizontal: 9,
+      borderRadius: Radius.sm,
+      borderWidth: 1,
+      marginRight: 6,
+      marginBottom: 6,
+    } as ViewStyle,
+
+    'micro-button-text': {
+      fontSize: 11,
+      fontWeight: '600',
+    } as TextStyle,
   },
 };

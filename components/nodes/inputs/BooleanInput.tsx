@@ -59,6 +59,7 @@ export default function BooleanInput({
       style={[
         theme.sizes.default.button,
         {
+          alignSelf: "flex-start",
           backgroundColor,
           borderColor,
         },

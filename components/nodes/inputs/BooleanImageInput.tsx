@@ -34,6 +34,7 @@ type BooleanInputProps = {
 
 export default function BooleanImageInput({
   selected,
+  selection,
   onPress,
   imageSrcFalse,
   imageSrc,
@@ -50,14 +51,17 @@ export default function BooleanImageInput({
   }, [selected]);
 
   function toggleSelection() {
+    if (locked) return;
     onPress();
   }
 
   const imageStyle = [
     theme.sizes.default.image,
     {
-      borderColor: isSelected ? theme.colors.card : theme.colors.border,
-      borderWidth: 5
+      borderColor: isSelected ? theme.colors.border : theme.colors.background,
+      borderWidth: isSelected ? 5 : 0,
+      width: 100,
+      height: 100,
     },
   ];
 
@@ -83,7 +87,7 @@ export default function BooleanImageInput({
         theme.sizes.default.image,
         {
           backgroundColor:
-            isSelected ? theme.colors.card : theme.colors.border,
+            isSelected ? theme.colors.card : theme.colors.background,
         },
       ]}
     >
