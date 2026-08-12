@@ -87,7 +87,6 @@ export const Sizes = {
       minHeight: 48,
       paddingLeft: 14,
       paddingRight: 14,
-      outlineWidth: 0,
     } as TextStyle,
 
     text: {

@@ -10,6 +10,6 @@
  * Focus indication is handled by useFocusBorderColor()
  * in the React Native components instead.
  */
-:focus-visible {
+input:focus-visible {
     outline: none;
 }
