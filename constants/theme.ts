@@ -81,12 +81,13 @@ export const Sizes = {
     } as ImageStyle,
 
     input: {
-      borderWidth: 1.5,
+      borderWidth: 1,
       borderRadius: Radius.md,
       fontSize: 16,
       minHeight: 48,
       paddingLeft: 14,
       paddingRight: 14,
+      outlineWidth: 0,
     } as TextStyle,
 
     text: {
@@ -120,7 +121,6 @@ export const Sizes = {
     dropdownButtonStyle: {
       width: 200,
       height: 50,
-      backgroundColor: '#a1a1a1',
       borderRadius: 12,
       flexDirection: 'row',
       justifyContent: 'center',
@@ -132,7 +132,6 @@ export const Sizes = {
       flex: 1,
       fontSize: 18,
       fontWeight: '500',
-      color: '#151E26',
     },
 
     dropdownButtonArrowStyle: {
@@ -145,7 +144,6 @@ export const Sizes = {
     },
 
     dropdownMenuStyle: {
-      backgroundColor: '#E9ECEF',
       borderRadius: 8,
     },
 
@@ -162,7 +160,6 @@ export const Sizes = {
       flex: 1,
       fontSize: 18,
       fontWeight: '500',
-      color: '#151E26',
     },
 
     dropdownItemIconStyle: {

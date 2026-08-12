@@ -1,0 +1,15 @@
+/*
+ * Web-only global styles.
+ *
+ * These styles do not affect Android or iOS.
+ */
+
+/*
+ * Remove the browser's default focus-visible outline.
+ *
+ * Focus indication is handled by useFocusBorderColor()
+ * in the React Native components instead.
+ */
+:focus-visible {
+    outline: none;
+}

@@ -14,7 +14,9 @@ export default function Root({ children }: { children: ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="icon" href="/favicon.ico" />
         <ScrollViewStyleReset />
+        <style type="text/css" rel="stylesheet" href="/global.css" />
       </head>
       <body>{children}</body>
     </html>

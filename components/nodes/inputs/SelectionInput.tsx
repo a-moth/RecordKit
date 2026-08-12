@@ -65,6 +65,7 @@ export default class SelectionInput extends Component<Props> {
     const containerStyle = {
       backgroundColor: this.props.style?.backgroundColor,
       borderColor: this.props.style?.borderColor,
+      color: this.props.textStyle?.color,
     };
 
     const textStyle = {
@@ -75,7 +76,7 @@ export default class SelectionInput extends Component<Props> {
     const isLocked = this.props.locked;
 
     return (
-      <>
+      <View style={baseStyle}>
         <MultiSelect
           hideTags
           items={this.props.field.field.data.options}
@@ -89,7 +90,7 @@ export default class SelectionInput extends Component<Props> {
             this.onSelectedItemsChange(items);
           }}
           selectedItems={this.props.field.field.data.selected}
-          selectText={isLocked ? "Pick items disabled" : "Pick Items"}
+          selectText={isLocked ? "Pick items disabled" : "Pick items"}
           searchInputPlaceholderText="Search Items..."
           displayKey="name"
           submitButtonText="Submit"
@@ -120,7 +121,7 @@ export default class SelectionInput extends Component<Props> {
               </Text>
             ))}
         </View>
-      </>
+      </View>
     );
   }
 }

@@ -43,7 +43,7 @@ export default function BooleanInput({
   const borderColor = selected
     ? theme.colors.primary
     : theme.colors.border;
-  console.log("BooleanInput render selected:", selected);
+
   if (locked) {
     return (
       <Text style={theme.sizes.default.textCenter}>

@@ -14,8 +14,8 @@ const palettes = {
 export const DarkTheme = {
   dark: palettes.dark,
   colors: {
-    primary: palettes.dark.colors.lavender.hex,
-    accent: palettes.dark.colors.blue.hex,
+    primary: palettes.dark.colors.teal.hex,
+    accent: palettes.dark.colors.green.hex,
     background: palettes.dark.colors.base.hex,
     card: palettes.dark.colors.surface0.hex,
     surfaceAlt: palettes.dark.colors.surface1.hex,
