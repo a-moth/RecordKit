@@ -54,7 +54,7 @@ export default function ScaleInputField({
         {fieldKey}
       </Text>
 
-      <View id={fieldKey} style={theme.sizes.default.row}>
+      <View id={fieldKey} style={[theme.sizes.default.row, { backgroundColor: theme.colors.background }]}>
         {images.map((image, index) => {
           const selection = index + 1;
 

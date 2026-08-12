@@ -86,8 +86,7 @@ export default function BooleanImageInput({
       style={[
         theme.sizes.default.image,
         {
-          backgroundColor:
-            isSelected ? theme.colors.card : theme.colors.background,
+          backgroundColor: theme.colors.background,
         },
       ]}
     >

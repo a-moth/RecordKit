@@ -119,13 +119,13 @@ export default function ListViewer({
         }
 
         return (
-            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
+            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter, { backgroundColor: theme.colors.background }]} key={item.metadata.templateId}>
                 <View style={theme.sizes.default.entryEditButton}>
                     <MiniButton label="Edit" color="primary" onPress={() => { openEditor(item.metadata.templateId, item.metadata.templateId) }} />
                     <MiniButton label="Delete" color="danger" onPress={() => { deleteId(item.metadata.templateId) }} />
                 </View>
 
-                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.card }]}>
+                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.background }]}>
                     {
                         <TemplateEditorManager key={createId()} template={item} locked={true} edit={false} isList={true} onChange={onChange} />
                     }
@@ -146,13 +146,13 @@ export default function ListViewer({
         }
 
         return (
-            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter]}>
+            <View style={[theme.sizes.default.row, theme.sizes.default.fillContainer, theme.sizes.default.alignCenter, { backgroundColor: theme.colors.background }]} key={item.metadata.templateId}>
                 <View style={theme.sizes.default.entryEditButton}>
                     <MiniButton label="Edit" color="primary" onPress={() => { openEditor(item.metadata.name, item.metadata.templateId) }} />
                     <MiniButton label="Delete" color="danger" onPress={() => { deleteId(item.metadata.name) }} />
                 </View>
 
-                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.card }]}>
+                <View style={[theme.sizes.default.entryViewer, theme.sizes.default.listMinItem, { backgroundColor: theme.colors.background }]}>
                     <TemplateEditorManager template={item} locked={true} edit={false} isList={true} onChange={onChange} />
                 </View>
             </View>
