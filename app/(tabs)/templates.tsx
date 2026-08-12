@@ -12,8 +12,7 @@ export default function TemplatesScreen() {
     const { updateSetting } = useSettings();
     const theme = useTheme();
 
-    //TODO rename this stupid name to something useful
-    function NewTemplate1() {
+    function createNewTemplate() {
         let currentTemplateId = "template" + uuidv4();
 
         updateSetting({ "**currentTemplate": currentTemplateId });
@@ -28,7 +27,7 @@ export default function TemplatesScreen() {
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
-            <TemplateListReader onPress={() => NewTemplate1()} />
+            <TemplateListReader onPress={() => createNewTemplate()} />
         </ScrollView>
     );
 }

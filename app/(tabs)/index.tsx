@@ -30,7 +30,7 @@ export default function HomeScreen() {
     const [showTemplatePicker, setShowTemplatePicker] = useState(false);
     const [templates, setTemplates] = useState<Record<string, DataContainer<data_container_types>> | null>(null);
 
-    async function NewEntry1(templateId: string) {
+    async function createNewEntry(templateId: string) {
         let currentId = "entry" + uuidv4();
 
         updateSetting({ "**currentEntry": currentId });
@@ -77,7 +77,7 @@ export default function HomeScreen() {
         console.log(selectedTemplateId);
         if (selectedTemplateId) {
             setShowTemplatePicker(false);
-            NewEntry1(selectedTemplateId);
+            createNewEntry(selectedTemplateId);
         }
     }
 
