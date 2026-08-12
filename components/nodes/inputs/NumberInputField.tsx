@@ -5,14 +5,15 @@ import { useSettings } from '../../../utils/SettingsProvider';
 import { Text, TextInput, View } from 'react-native';
 import { CommonProps } from '../../managers/SettingManager';
 
-//TODO: fix to be both for settings and general
-export default function NumberInputField({ template, id, fieldKey, defaultShown, onChange, field }: CommonProps) {
+export default function NumberInputField({ template, id, fieldKey, defaultShown, onChange, field, locked = false }: CommonProps) {
   const theme = useTheme();
   const { settings, updateSetting } = useSettings();
   const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
   if (!defaultShown) return null;
 
-  const value = settings[fieldKey] ?? "";
+  const isEntry = !!(template && field);
+  const settingValue = settings[fieldKey] ?? "";
+  const value = isEntry ? (field!.field.data as NumberData).value : settingValue;
 
   return (
     <View style={theme.sizes.default.container}>
@@ -23,23 +24,25 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
         onFocus={focusBorder.onFocus}
         onBlur={focusBorder.onBlur}
         onChangeText={(text) => {
-          updateSetting({
-            [fieldKey]: text == null ? "" : text === "" ? "" : Number(text) <= 0 ? 1 : Number(text)
-          })
-          if (template && field) {
-            const newField = field.field.clone();
-            newField.setData(Number(text));
+          if (isEntry) {
+            const newField = field!.field.clone();
+            newField.setData(text === "" ? 0 : Number(text));
 
-            onChange?.(template, defaultShown, {
+            onChange?.(template!, defaultShown, {
               id: id,
               type: "field",
               field: newField,
             });
+            return;
           }
+
+          updateSetting({
+            [fieldKey]: text == null ? "" : text === "" ? "" : Number(text) <= 0 ? 1 : Number(text)
+          })
         }}
         keyboardType="numeric"
         returnKeyType="done"
-        editable={fieldKey.startsWith("**") ? true : false}
+        editable={isEntry ? !locked : fieldKey.startsWith("**") ? true : false}
       />
     </View>
   );

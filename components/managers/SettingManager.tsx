@@ -12,6 +12,7 @@ export type CommonProps = { // put this in a constants file?
     field: FieldNode<FieldData> | null;
     fieldKey: string;
     defaultShown: boolean;
+    locked?: boolean;
     onChange?: (template: DataContainer<data_container_types>, defaultShown: boolean, newValue: FieldNode<FieldData>) => void;
 };
 

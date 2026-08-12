@@ -7,13 +7,15 @@ import { CommonProps } from '../../managers/SettingManager';
 
 // TODO: fix time string handling at validation level not within this field
 
-export default function TimeInputField({ template, id, onChange, field, fieldKey, defaultShown }: CommonProps) {
+export default function TimeInputField({ template, id, onChange, field, fieldKey, defaultShown, locked = false }: CommonProps) {
     const theme = useTheme();
     const { settings, updateSetting } = useSettings();
     const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
     if (!defaultShown) return null;
 
-    const value = settings[fieldKey] ?? "";
+    const isEntry = !!(template && field);
+    const settingValue = settings[fieldKey] ?? "";
+    const value = isEntry ? (field!.field.data as TimeData).value : settingValue;
 
     return (
         <View style={theme.sizes.default.container}>
@@ -24,21 +26,25 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
                 onFocus={focusBorder.onFocus}
                 onBlur={focusBorder.onBlur}
                 onChangeText={(text) => {
-                    updateSetting({
-                        [fieldKey]: text == null ? "" : text === "" ? "" : text.includes(":") ? text : text + ":00"
-                    })
-                    if (template && field) {
-                        const newField = field.field.clone();
-                        newField.setData(text == null ? "" : text === "" ? "" : text.includes(":") ? text : text + ":00");
+                    const newValue = text == null ? "" : text === "" ? "" : text.includes(":") ? text : text + ":00";
 
-                        onChange?.(template, defaultShown, {
+                    if (isEntry) {
+                        const newField = field!.field.clone();
+                        newField.setData(newValue);
+
+                        onChange?.(template!, defaultShown, {
                             id,
                             type: "field",
                             field: newField,
                         });
+                        return;
                     }
+
+                    updateSetting({
+                        [fieldKey]: newValue
+                    })
                 }}
-                editable={fieldKey.startsWith("**") ? true : false}
+                editable={isEntry ? !locked : fieldKey.startsWith("**") ? true : false}
             />
         </View>
     );
