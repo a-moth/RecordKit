@@ -16,7 +16,7 @@ export default function FieldNodeFactory({ template, id, edit, nodeKey, locked, 
         defaultShown: boolean,
         value: FieldNode<FieldData>
     ) => void;
-    addField: () => void;
+    addField: (type: string) => void;
     addSection: () => void;
     moveUp: () => void;
     moveDown: () => void;
@@ -45,7 +45,7 @@ export default function FieldNodeFactory({ template, id, edit, nodeKey, locked, 
             />
             <ValidationPreview field={field} />
             <EditorControls moveUp={moveUp} moveDown={moveDown} deleteField={deleteNode} />
-            <AddControls addField={addField} addSection={addSection} />
+            <AddControls template={template} locked={locked} addField={addField} addSection={addSection} />
         </>
     );
 }

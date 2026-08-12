@@ -3,8 +3,8 @@ import SectionNodeFactory from '../nodes/operations/SectionNodeFactory';
 import { createId, isSectionNode, } from '../../utils/NodeUtils';
 import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
-import { data_container_types, DataContainer, field_data, FieldData, SectionData, SectionField, SelectionField, TextField, FieldNode } from '../../constants/DataTypes';
-import { selectionField } from '../../hooks/NodeRegistry';
+import { data_container_types, DataContainer, FieldData, SectionData, SectionField, FieldNode } from '../../constants/DataTypes';
+import { fieldDefinitions } from '../../hooks/NodeRegistry';
 
 //You need:
 
@@ -93,59 +93,29 @@ export default function TemplateEditorManager({
   return (
     <>
       {template &&
-        Object.entries(template?.getData().fields).slice(0, isList ? valueOf(settings?.["**showCount"]) ?? 10 : undefined).map(([nodeKey, node]) => {
+        template.getData().metadata.order
+          .map((id): [string, FieldNode<FieldData>] | null => {
+            const node = template.getData().fields[id];
+            return node ? [id, node] : null;
+          })
+          .filter((entry): entry is [string, FieldNode<FieldData>] => entry !== null)
+          .slice(0, isList ? valueOf(settings?.["**showCount"]) ?? 10 : undefined).map(([nodeKey, node]) => {
           let actualNode = template?.getData().fields[nodeKey];
           // Future autosave?
 
-          function addField() {
+          function addField(type: string) {
             // insert this after fieldnode of field
-            let nodeValue: SelectionField = selectionField;
+            const fieldValue = fieldDefinitions[type]?.();
+            if (!fieldValue || !template) return;
 
-            let fieldValue: field_data<FieldData> | undefined;
-            switch (nodeValue.data.selected[0]) {
-              case "text":
-                fieldValue = new TextField({
-                  label: "text-field",
-                  type: "text",
-                  visible: true,
-                  value: "",
-                });
-                break;
-              case "section":
-                fieldValue = new SectionField({
-                  type: "section",
-                  label: "section-field",
-                  visible: true,
-                  orientation: "row",
-                  id: createId(),
-                  childNodes: {}
-                });
-                break;
-              case "selection":
-                fieldValue = new SelectionField({
-                  type: "selection",
-                  label: "selection-field",
-                  visible: true,
-                  multiple: false,
-                  selected: [],
-                  options: [],
-                });
-                break;
-            }
+            const fieldNode: FieldNode<FieldData> = {
+              id: createId(),
+              type: 'field',
+              field: fieldValue,
+            };
 
-            let fieldNode: FieldNode<FieldData> | undefined;
-            if (fieldValue) {
-              fieldNode = {
-                id: createId(),
-                type: 'field',
-                field: fieldValue
-              }
-            }
-
-            if (fieldValue && template) {
-              const updated = template.insertNodeAfter(template, nodeKey, fieldNode as FieldNode<FieldData>);
-              if (updated) onTreeChange?.(updated);
-            }
+            const updated = template.insertNodeAfter(template, nodeKey, fieldNode);
+            if (updated) onTreeChange?.(updated);
           }
 
           function addSection() {

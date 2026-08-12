@@ -1,19 +1,88 @@
-/**
- * a registry of default node data for adding
-const nodeRegistry = {
-  text: TextInputField,
-  boolean: BooleanInputField,
-  number: NumberInputField,
-};
- */
-
-import { DataContainer, DateField, DurationField, FieldData, FieldNode, ScaleField, SectionField, SelectionField, template, TemplateContainer, TextField, ToggleButtonField, ToggleImageButtonField } from "../constants/DataTypes";
+import { createId } from "../utils/NodeUtils";
+import { DataContainer, DateField, DurationField, field_data, FieldData, FieldNode, NumberField, ScaleField, SectionField, SelectionField, template, TemplateContainer, TextField, TimeField, ToggleButtonField, ToggleImageButtonField } from "../constants/DataTypes";
 
 // the default values for defaultTemplate
 
-// the default values for every node and input
-const fieldDefinitions: Record<string, FieldNode<FieldData>> = {
-
+/**
+ * Registry of field-type id -> factory producing a fresh default field_data
+ * instance of that type. Used by "Add Field" to build a new node once a type
+ * is picked from the `selectionField` picker below.
+ */
+export const fieldDefinitions: Record<string, () => field_data<FieldData>> = {
+  text: () => new TextField({
+    type: "text",
+    label: "Text Field",
+    value: "",
+    visible: true,
+  }),
+  number: () => new NumberField({
+    type: "number",
+    label: "Number Field",
+    value: 0,
+    visible: true,
+  }),
+  time: () => new TimeField({
+    type: "time",
+    label: "Time Field",
+    value: "",
+    visible: true,
+  }),
+  date: () => new DateField({
+    type: "date",
+    label: "Date Field",
+    value: "",
+    visible: true,
+  }),
+  duration: () => new DurationField({
+    type: "duration",
+    label: "Duration Field",
+    valueA: 0,
+    valueB: 0,
+    unitA: "hrs",
+    unitB: "mins",
+    visible: true,
+  }),
+  selection: () => new SelectionField({
+    type: "selection",
+    label: "Selection Field",
+    multiple: false,
+    selected: [],
+    options: [],
+    visible: true,
+  }),
+  scale: () => new ScaleField({
+    type: "scale",
+    label: "Scale Field",
+    imageBased: false,
+    min: 0,
+    max: 5,
+    value: 0,
+    visible: true,
+  }),
+  boolean: () => new ToggleButtonField({
+    type: "boolean",
+    label: "Boolean Field",
+    labelSelected: "On",
+    labelUnselected: "Off",
+    value: false,
+    visible: true,
+  }),
+  "image-boolean": () => new ToggleImageButtonField({
+    type: "image-boolean",
+    label: "Image Boolean Field",
+    value: false,
+    imageSelected: require('../assets/images/4.png'),
+    imageUnselected: require('../assets/images/5.png'),
+    visible: true,
+  }),
+  section: () => new SectionField({
+    type: "section",
+    label: "Section Field",
+    orientation: "row",
+    id: createId(),
+    childNodes: {},
+    visible: true,
+  }),
 };
 
 /**
@@ -30,7 +99,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
   },
 
   fields: {
-    TextInput1: {
+    'text-input-1': {
       id: 'text-input-1',
       type: "field",
       field: new TextField({
@@ -40,7 +109,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    DurationInput1: {
+    'duration-input-1': {
       id: 'duration-input-1',
       type: "field",
       field: new DurationField({
@@ -53,7 +122,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    ScaleInput1: {
+    'scale-input-1': {
       id: 'scale-input-1',
       type: "field",
       field: new ScaleField({
@@ -66,7 +135,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    SelectionInput1: {
+    'selection-input-1': {
       id: 'selection-input-1',
       type: "field",
       field: new SelectionField({
@@ -82,7 +151,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    SelectionInput2: {
+    'selection-input-2': {
       id: 'selection-input-2',
       type: "field",
       field: new SelectionField({
@@ -101,7 +170,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    SelectionInput3: {
+    'selection-input-3': {
       id: 'selection-input-3',
       type: "field",
       field: new SelectionField({
@@ -117,7 +186,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    SelectionInput4: {
+    'selection-input-4': {
       id: 'selection-input-4',
       type: "field",
       field: new SelectionField({
@@ -136,7 +205,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    DateInput1: {
+    'date-input-1': {
       id: 'date-input-1',
       type: "field",
       field: new DateField({
@@ -146,7 +215,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    BooleanInput1: {
+    'boolean-input-1': {
       id: 'boolean-input-1',
       type: "field",
       field: new ToggleButtonField({
@@ -158,7 +227,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         visible: true,
       }),
     },
-    SectionInput1: {
+    'section-input-1': {
       id: 'section-input-1',
       type: "field",
       field: new SectionField({
@@ -168,7 +237,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         id: 'section-input-1',
         visible: true,
         childNodes: {
-          ImageButton1: {
+          'image-button-1': {
             id: 'image-button-1',
             type: "field",
             field: new ToggleImageButtonField({
@@ -190,31 +259,17 @@ export const selectionField: SelectionField = new SelectionField({
   type: 'selection',
   label: 'Add Field',
   multiple: false,
-  selected: [
-    'text',
-    'number',
-    'time',
-    'date',
-    'duration',
-    'selection',
-    'scale',
-    'boolean',
-    'image-boolean',
-    'hc-heart-rate',
-    'hc-blood-pressure',
-    'hc-oxygen-saturation',
-    'hc-body-temperature',
-    'hc-respiratory-rate',
-    'hc-steps',
-    'hc-distance',
-    'hc-active-calories',
-    'hc-floors-climbed',
-    'hc-exercise-session',
-    'hc-sleep-session',
-    'hc-weight',
-    'hc-height',
-    'hc-body-fat',
-  ], // the actual value
-  options: [], // the choices
+  selected: [], // nothing picked until the user chooses a type
+  options: [
+    { id: 'text', name: 'Text' },
+    { id: 'number', name: 'Number' },
+    { id: 'time', name: 'Time' },
+    { id: 'date', name: 'Date' },
+    { id: 'duration', name: 'Duration' },
+    { id: 'selection', name: 'Selection' },
+    { id: 'scale', name: 'Scale' },
+    { id: 'boolean', name: 'Boolean' },
+    { id: 'image-boolean', name: 'Image Boolean' },
+  ],
   visible: true,
 });

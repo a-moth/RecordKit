@@ -109,12 +109,12 @@ export default function TemplateWriter({
     }
 
     function updateField(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
-        setTemplateData((prev: DataContainer<data_container_types> | null) => {
-            if (!prev) return prev;
+        setTemplateData((template) => {
+            if (!template) return template;
 
-            const updated = prev.onHandleChange(prev, defaultShown, newValue);
+            const updated = template.onHandleChange(template, defaultShown, newValue);
 
-            return updated ?? prev;
+            return updated ?? template;
         });
     }
 
