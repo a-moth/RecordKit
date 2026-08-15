@@ -340,25 +340,6 @@ export abstract class DataContainer<T extends data_container_types> {
 
         return new EntryContainer(nextData as entry);
     }
-
-    public validateTree(nodes: container_data["fields"]) {
-        if (!Array.isArray(nodes)) return false;
-
-        const seenIds = new Set();
-
-        for (const node of nodes) {
-            if (!this.validateNode(node)) return false;
-
-            if (seenIds.has(node.id)) return false;
-            seenIds.add(node.id);
-        }
-
-        return true;
-    }
-
-    public validateNode(node: FieldNode<FieldData>) {
-        return false; // TODO implement validation based on types
-    }
 }
 
 export class EntryContainer extends DataContainer<entry> {

@@ -64,7 +64,9 @@ export async function getData(): Promise<AppData> {
     let entries: Record<string, DataContainer<data_container_types>> = {};
 
     for (const template in data.templates) {
-      let templateList = DataContainerFactory.fromJSON(data.templates[template]);
+      let templateList = DataContainerFactory.fromJSON(
+        data.templates[template],
+      );
       if (templateList) {
         templates[templateList.metadata.templateId] = templateList;
       }
@@ -160,6 +162,9 @@ export async function getTemplate(templateId: string) {
 }
 
 // TODO: handle saving images to cache to load as images into code
+// TODO: store image paths within the app itself
+// TODO: store images as data to storage if <5MB
+// TODO: store image paths if >5MB and warn user with notification on load
 // Leftover from file-based saving
 // async function save(filename: string, content: string) {
 //   try {

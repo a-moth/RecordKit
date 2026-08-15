@@ -1,15 +1,15 @@
 import { FieldData, FieldNode } from "../../../constants/DataTypes";
 import { Text } from "react-native";
-import { isValid, parseISO } from "date-fns";
+import { isValid, parseISO, parse } from "date-fns";
 import { useTheme } from "../../../hooks/use-theme-provider";
-
-const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
+import { useSettings } from "../../../utils/SettingsProvider";
 
 function isUnsignedInt(value: number): boolean {
     return Number.isInteger(value) && value >= 0;
 }
 
 function validateFieldData(data: FieldData): string | null {
+    let { settings } = useSettings();
     switch (data.type) {
         case "boolean":
             return null;
@@ -62,9 +62,9 @@ function validateFieldData(data: FieldData): string | null {
 
         case "time":
             if (!data.value) return null;
-            return TIME_PATTERN.test(data.value)
+            return parse(data.value, settings?.["**timeFormat"] ?? "HH:mm", new Date())
                 ? null
-                : "Time must be in HH:MM (24-hour) format.";
+                : "Time must be in " + (settings?.["**timeFormat"] ?? "HH:mm") + " format.";
 
         case "section":
             return Object.keys(data.childNodes).length > 0

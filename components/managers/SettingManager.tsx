@@ -1,19 +1,16 @@
+import { data_container_types, DataContainer, FieldData, FieldNode } from "../../constants/DataTypes";
 import { SETTING } from "../../constants/setting-enums";
-import { useSettings } from "../../utils/SettingsProvider";
-import SettingInputField from "../nodes/inputs/SettingInputField";
-import SettingSelectionField from "../nodes/inputs/SettingSelectionField";
-import NumberInputField from "../nodes/inputs/NumberInputField";
-import TimeInputField from "../nodes/inputs/TimeInputField";
-import { DataContainer, FieldNode, FieldData, data_container_types } from "../../constants/DataTypes";
+import { settingDefinitions } from "../../hooks/NodeRegistry";
 
-export type CommonProps = { // put this in a constants file?
+export type CommonProps = {
     template: DataContainer<data_container_types> | null;
-    id: string;
-    field: FieldNode<FieldData> | null;
+    id: string; field: FieldNode<FieldData> | null;
     fieldKey: string;
     defaultShown: boolean;
     locked?: boolean;
-    onChange?: (template: DataContainer<data_container_types>, defaultShown: boolean, newValue: FieldNode<FieldData>) => void;
+    onChange?: (template: DataContainer<data_container_types>,
+        defaultShown: boolean,
+        newValue: FieldNode<FieldData>) => void;
 };
 
 export default function SettingManager({
@@ -26,25 +23,30 @@ export default function SettingManager({
 }: CommonProps) {
     if (!defaultShown) return null;
 
+    const settingType = SETTING[fieldKey as keyof typeof SETTING];
+
+    if (!settingType) {
+        return null;
+    }
+
+    const SettingComponent = settingDefinitions[settingType as keyof typeof settingDefinitions];
+
+    if (!SettingComponent) {
+        return null;
+    }
+
     const commonProps = {
         template,
         id,
         field,
         fieldKey,
         defaultShown,
-        onChange: (template: DataContainer<data_container_types>, defaultShown: boolean, newValue: FieldNode<FieldData>) => onChange?.(template, defaultShown, newValue),
+        onChange: (
+            template: DataContainer<data_container_types>,
+            defaultShown: boolean,
+            newValue: FieldNode<FieldData>
+        ) => onChange?.(template, defaultShown, newValue),
     };
-    switch (SETTING[fieldKey]) {
-        case "text":
-            return <SettingInputField {...commonProps} />;
-        case "time":
-            return <TimeInputField {...commonProps} />;
-        case "number":
-            return <NumberInputField {...commonProps} />;
-        case "selection":
-            return <SettingSelectionField {...commonProps} />;
-        default:
-            return <SettingInputField {...commonProps} />;
-    }
+
+    return <SettingComponent {...commonProps} />;
 }
-//TODO: decide whether to send this through typednode/fieldnodefactory/sectionnodefactory/etc setup or no

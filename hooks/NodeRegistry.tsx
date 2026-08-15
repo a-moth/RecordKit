@@ -1,88 +1,153 @@
 import { createId } from "../utils/NodeUtils";
 import { DataContainer, DateField, DurationField, field_data, FieldData, FieldNode, NumberField, ScaleField, SectionField, SelectionField, template, TemplateContainer, TextField, TimeField, ToggleButtonField, ToggleImageButtonField } from "../constants/DataTypes";
+import BooleanImageInputField from '../components/nodes/inputs/BooleanImageInputField';
+import BooleanInputField from '../components/nodes/inputs/BooleanInputField';
+import DateInputField from '../components/nodes/inputs/DateInputField';
+import DurationInputField from '../components/nodes/inputs/DurationInputField';
+import NumberInputField from '../components/nodes/inputs/NumberInputField';
+import ScaleInputField from '../components/nodes/inputs/ScaleInputField';
+import SelectionInputField from '../components/nodes/inputs/SelectionInputField';
+import TextInputField from '../components/nodes/inputs/TextInputField';
+import TimeInputField from '../components/nodes/inputs/TimeInputField';
+import SectionComponent from "../components/nodes/operations/Component";
+import SettingInputField from "../components/nodes/inputs/SettingInputField";
+import SettingSelectionField from "../components/nodes/inputs/SettingSelectionField";
+import FileInputField from "../components/nodes/inputs/FileInputField";
 
 // the default values for defaultTemplate
+
+type FieldDefinition<T extends FieldData = FieldData> = {
+  create: () => field_data<T>;
+  component: React.ComponentType<any>;
+};
 
 /**
  * Registry of field-type id -> factory producing a fresh default field_data
  * instance of that type. Used by "Add Field" to build a new node once a type
  * is picked from the `selectionField` picker below.
  */
-export const fieldDefinitions: Record<string, () => field_data<FieldData>> = {
-  text: () => new TextField({
-    type: "text",
-    label: "Text Field",
-    value: "",
-    visible: true,
-  }),
-  number: () => new NumberField({
-    type: "number",
-    label: "Number Field",
-    value: 0,
-    visible: true,
-  }),
-  time: () => new TimeField({
-    type: "time",
-    label: "Time Field",
-    value: "",
-    visible: true,
-  }),
-  date: () => new DateField({
-    type: "date",
-    label: "Date Field",
-    value: "",
-    visible: true,
-  }),
-  duration: () => new DurationField({
-    type: "duration",
-    label: "Duration Field",
-    valueA: 0,
-    valueB: 0,
-    unitA: "hrs",
-    unitB: "mins",
-    visible: true,
-  }),
-  selection: () => new SelectionField({
-    type: "selection",
-    label: "Selection Field",
-    multiple: false,
-    selected: [],
-    options: [],
-    visible: true,
-  }),
-  scale: () => new ScaleField({
-    type: "scale",
-    label: "Scale Field",
-    imageBased: false,
-    min: 0,
-    max: 5,
-    value: 0,
-    visible: true,
-  }),
-  boolean: () => new ToggleButtonField({
-    type: "boolean",
-    label: "Boolean Field",
-    labelSelected: "On",
-    labelUnselected: "Off",
-    value: false,
-    visible: true,
-  }),
-  "image-boolean": () => new ToggleImageButtonField({
-    type: "image-boolean",
-    label: "Image Boolean Field",
-    value: false,
-    imageSelected: require('../assets/images/4.png'),
-    imageUnselected: require('../assets/images/5.png'),
-    visible: true,
-  }),
-  section: () => new SectionField({
-    type: "section",
-    label: "Section Field",
-    orientation: "row",
-    id: createId(),
-    childNodes: {},
-    visible: true,
-  }),
+export const fieldDefinitions: Record<string, FieldDefinition> = {
+  text: {
+    create: () => new TextField({
+      type: "text",
+      label: "Text Field",
+      value: "",
+      visible: true,
+    }),
+    component: TextInputField,
+  },
+
+  number: {
+    create: () => new NumberField({
+      type: "number",
+      label: "Number Field",
+      value: 0,
+      visible: true,
+    }),
+    component: NumberInputField,
+  },
+
+  time: {
+    create: () => new TimeField({
+      type: "time",
+      label: "Time Field",
+      value: "",
+      visible: true,
+    }),
+    component: TimeInputField,
+  },
+
+  date: {
+    create: () => new DateField({
+      type: "date",
+      label: "Date Field",
+      value: "",
+      visible: true,
+    }),
+    component: DateInputField,
+  },
+
+  duration: {
+    create: () => new DurationField({
+      type: "duration",
+      label: "Duration Field",
+      valueA: 0,
+      valueB: 0,
+      unitA: "hrs",
+      unitB: "mins",
+      visible: true,
+    }),
+    component: DurationInputField,
+  },
+
+  selection: {
+    create: () => new SelectionField({
+      type: "selection",
+      label: "Selection Field",
+      multiple: false,
+      selected: [],
+      options: [],
+      visible: true,
+    }),
+    component: SelectionInputField,
+  },
+
+  scale: {
+    create: () => new ScaleField({
+      type: "scale",
+      label: "Scale Field",
+      imageBased: false,
+      min: 0,
+      max: 5,
+      value: 0,
+      visible: true,
+    }),
+    component: ScaleInputField,
+  },
+
+  boolean: {
+    create: () => new ToggleButtonField({
+      type: "boolean",
+      label: "Boolean Field",
+      labelSelected: "On",
+      labelUnselected: "Off",
+      value: false,
+      visible: true,
+    }),
+    component: BooleanInputField,
+  },
+
+  "image-boolean": {
+    create: () => new ToggleImageButtonField({
+      type: "image-boolean",
+      label: "Image Boolean Field",
+      value: false,
+      imageSelected: require('../assets/images/4.png'),
+      imageUnselected: require('../assets/images/5.png'),
+      visible: true,
+    }),
+    component: BooleanImageInputField,
+  },
+
+  section: {
+    create: () => new SectionField({
+      type: "section",
+      label: "Section Field",
+      orientation: "row",
+      id: createId(),
+      childNodes: {},
+      visible: true,
+    }),
+    component: SectionComponent,
+  },
+};
+
+export const settingDefinitions = {
+  text: SettingInputField,
+  time: TimeInputField,
+  number: NumberInputField,
+  selection: SettingSelectionField,
+  image: FileInputField,
 };
 
 /**

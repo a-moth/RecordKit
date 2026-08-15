@@ -26,11 +26,9 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
                 onFocus={focusBorder.onFocus}
                 onBlur={focusBorder.onBlur}
                 onChangeText={(text) => {
-                    const newValue = text == null ? "" : text === "" ? "" : text.includes(":") ? text : text + ":00";
-
                     if (isEntry) {
                         const newField = field!.field.clone();
-                        newField.setData(newValue);
+                        newField.setData(text);
 
                         onChange?.(template!, defaultShown, {
                             id,
@@ -41,7 +39,7 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
                     }
 
                     updateSetting({
-                        [fieldKey]: newValue
+                        [fieldKey]: text
                     })
                 }}
                 editable={isEntry ? !locked : fieldKey.startsWith("**") ? true : false}

@@ -1,6 +1,6 @@
 {
-  "name": "critterkeeper",
-  "version": "0.0.1",
+  "name": "RecordKit",
+  "version": "0.9.0",
   "main": "expo-router/entry",
   "private": true,
   "scripts": {

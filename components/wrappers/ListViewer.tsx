@@ -14,8 +14,6 @@ type ListViewerProps = {
     type: string,
 }; // TODO make listItems list of entries or templates
 
-//TODO: test this entire setup after refactoring into generic type
-
 export default function ListViewer({
     type,
 }: ListViewerProps) {
@@ -230,4 +228,4 @@ export default function ListViewer({
             })}
         </View>
     );
-} // TODO count in map pulled only if type is entry else infinity
+}

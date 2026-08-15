@@ -1,11 +1,10 @@
-import FieldNodeFactory from '../nodes/operations/FieldNodeFactory';
-import SectionNodeFactory from '../nodes/operations/SectionNodeFactory';
 import AddControls, { AddFieldPicker, useAddFieldPicker } from '../nodes/operations/AddControls';
 import { createId, isSectionNode, } from '../../utils/NodeUtils';
 import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
 import { data_container_types, DataContainer, FieldData, SectionData, SectionField, FieldNode } from '../../constants/DataTypes';
 import { fieldDefinitions } from '../../hooks/NodeRegistry';
+import Component from '../nodes/operations/Component';
 
 export default function TemplateEditorManager({
   isList,
@@ -29,13 +28,13 @@ export default function TemplateEditorManager({
   const { settings } = useSettings();
 
   function addFieldToEmpty(type: string) {
-    const fieldValue = fieldDefinitions[type]?.();
+    const fieldValue = fieldDefinitions[type];
     if (!fieldValue || !template) return;
 
     const fieldNode: FieldNode<FieldData> = {
       id: createId(),
       type: 'field',
-      field: fieldValue,
+      field: fieldValue.create(),
     };
 
     const updated = template.insertNodeAfter(template, '', fieldNode);
@@ -65,13 +64,13 @@ export default function TemplateEditorManager({
   }
 
   function addFieldLast(type: string) {
-    const fieldValue = fieldDefinitions[type]?.();
+    const fieldValue = fieldDefinitions[type];
     if (!fieldValue || !template) return;
 
     const fieldNode: FieldNode<FieldData> = {
       id: createId(),
       type: 'field',
-      field: fieldValue,
+      field: fieldValue.create(),
     };
 
     const updated = template.insertNodeAfter(template, template.getData().metadata.order[template.getData().metadata.order.length - 1], fieldNode);
@@ -137,13 +136,13 @@ export default function TemplateEditorManager({
 
             function addField(type: string) {
               // insert this after fieldnode of field
-              const fieldValue = fieldDefinitions[type]?.();
+              const fieldValue = fieldDefinitions[type];
               if (!fieldValue || !template) return;
 
               const fieldNode: FieldNode<FieldData> = {
                 id: createId(),
                 type: 'field',
-                field: fieldValue,
+                field: fieldValue.create(),
               };
 
               const updated = template.insertNodeAfter(template, nodeKey, fieldNode);
@@ -192,12 +191,12 @@ export default function TemplateEditorManager({
 
             if (isSectionNode(actualNode)) {
               return (
-                <SectionNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
+                <Component template={template} locked={locked} edit={edit} key={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
               );
             }
 
             return (
-              <FieldNodeFactory template={template} id={actualNode.id} locked={locked} edit={edit} key={nodeKey} nodeKey={nodeKey} field={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
+              <Component template={template} locked={locked} edit={edit} key={nodeKey} section={actualNode} onChange={onChange} addField={addField} addSection={addSection} moveUp={moveUp} moveDown={moveDown} deleteNode={deleteNode} />
             );
           })
       }

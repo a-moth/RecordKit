@@ -37,7 +37,7 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
           }
 
           updateSetting({
-            [fieldKey]: text == null ? "" : text === "" ? "" : Number(text) <= 0 ? 1 : Number(text)
+            [fieldKey]: text == null ? "" : text === "" ? 0 : Number(text) <= 0 ? 0 : Number(text)
           })
         }}
         keyboardType="numeric"
@@ -47,11 +47,3 @@ export default function NumberInputField({ template, id, fieldKey, defaultShown,
     </View>
   );
 }
-
-// TODO: the text is a "string" instead of a string
-// settingsFolder must be set with a default by-operating-system
-// UUID *must* be randomised on initialisation of app for each user - give warning to not share UUID
-// dayFormat default can be grabbed from OS and if not, this default
-// timeFormat same as day
-// colourScheme only light and dark (both grayscale) for default, default matches OS setting by default
-// if a colour scheme is purchased, add its theme to colourScheme options in settings
