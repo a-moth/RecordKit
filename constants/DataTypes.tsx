@@ -1,5 +1,3 @@
-import { ImageSourcePropType } from 'react-native';
-
 /**
  * This is the default structure of the data, which can be extended for the purpose of Entries or Templates
  * as necessary.
@@ -356,8 +354,11 @@ export class TemplateContainer extends DataContainer<template> {
 
 export class DataContainerFactory {
     public static fromJSON(data: string): DataContainer<data_container_types> | null {
+        let parsedType: string | undefined;
+
         try {
             const parsedData = JSON.parse(data);
+            parsedType = parsedData.metadata?.type;
 
             if (!parsedData.metadata || !parsedData.fields) {
                 return null;
@@ -457,7 +458,7 @@ export class DataContainerFactory {
             return null;
         }
 
-        return null; // TODO: does this even matter
+        throw new Error(`DataContainerFactory.fromJSON: unrecognized metadata.type "${parsedType}"`);
     }
 }
 
@@ -515,6 +516,7 @@ export type ScaleData = BaseData & {
     min: number; // unsigned int, allowed to be 0
     max: number; // unsigned int, allowed to be 0
     label: string;
+    images: string[]; // per-position icon overrides; index i falls back to settings **image(i+1) when unset
 };
 
 export type ToggleButtonData = BaseData & {
@@ -528,8 +530,8 @@ export type ToggleButtonData = BaseData & {
 export type ToggleImageButtonData = BaseData & {
     type: 'image-boolean';
     value: boolean;
-    imageSelected: ImageSourcePropType;
-    imageUnselected: ImageSourcePropType;
+    imageSelected: string; // falls back to settings **image5 when unset - see BooleanImageInputField.tsx
+    imageUnselected: string; // falls back to settings **image1 when unset
 };
 
 export type SettingsData = TextData;
@@ -768,6 +770,7 @@ export class ScaleField extends field_data<ScaleData> {
             min: data.min,
             max: data.max,
             value: data.value,
+            images: data.images ?? [],
         });
     }
 
@@ -779,12 +782,22 @@ export class ScaleField extends field_data<ScaleData> {
         return this.data.value;
     }
 
+    setImage(index: number, uri: string) {
+        const images = [...this.data.images];
+        images[index] = uri;
+        this.data.images = images;
+    }
+
     toJSON(): string {
         return JSON.stringify({
             type: this.data.type,
             label: this.data.label,
             visible: this.data.visible,
             value: this.data.value,
+            imageBased: this.data.imageBased,
+            min: this.data.min,
+            max: this.data.max,
+            images: this.data.images,
         });
     }
 }
@@ -839,6 +852,14 @@ export class ToggleImageButtonField extends field_data<ToggleImageButtonData> {
         return this.data.value;
     }
 
+    setImageSelected(uri: string) {
+        this.data.imageSelected = uri;
+    }
+
+    setImageUnselected(uri: string) {
+        this.data.imageUnselected = uri;
+    }
+
     toJSON(): string {
         return JSON.stringify({
             type: this.data.type,
@@ -869,6 +890,56 @@ export class SectionField extends field_data<SectionData> {
 
     getData() {
         return this.data.childNodes;
+    }
+
+    setOrientation(orientation: 'row' | 'column') {
+        this.data.orientation = orientation;
+    }
+
+    /**
+     * Inserts newNode into childNodes after the child keyed by targetId,
+     * or at the end if targetId is '' or not found. Mirrors
+     * DataContainer.insertNodeAfter, but childNodes has no separate order
+     * array - key insertion order into the rebuilt object is the order.
+     */
+    insertChildAfter(targetId: string, newNode: FieldNode<FieldData>): SectionField {
+        const clone = this.clone() as SectionField;
+        const entries = Object.entries(clone.data.childNodes);
+        const index = entries.findIndex(([key]) => key === targetId);
+
+        entries.splice(index === -1 ? entries.length : index + 1, 0, [newNode.id, newNode]);
+
+        clone.data.childNodes = Object.fromEntries(entries);
+        return clone;
+    }
+
+    removeChild(targetId: string): SectionField {
+        const clone = this.clone() as SectionField;
+        const { [targetId]: _, ...rest } = clone.data.childNodes;
+        clone.data.childNodes = rest;
+        return clone;
+    }
+
+    moveChildUp(targetId: string): SectionField {
+        const clone = this.clone() as SectionField;
+        const entries = Object.entries(clone.data.childNodes);
+        const index = entries.findIndex(([key]) => key === targetId);
+        if (index <= 0) return clone;
+
+        [entries[index - 1], entries[index]] = [entries[index], entries[index - 1]];
+        clone.data.childNodes = Object.fromEntries(entries);
+        return clone;
+    }
+
+    moveChildDown(targetId: string): SectionField {
+        const clone = this.clone() as SectionField;
+        const entries = Object.entries(clone.data.childNodes);
+        const index = entries.findIndex(([key]) => key === targetId);
+        if (index === -1 || index >= entries.length - 1) return clone;
+
+        [entries[index], entries[index + 1]] = [entries[index + 1], entries[index]];
+        clone.data.childNodes = Object.fromEntries(entries);
+        return clone;
     }
 
     toJSON(): string {
@@ -916,6 +987,19 @@ export class SelectionField extends field_data<SelectionData> {
         return this.data.selected;
     }
 
+    addOption(option: { id: string; name: string }): SelectionField {
+        const clone = this.clone() as SelectionField;
+        clone.data.options = [...clone.data.options, option];
+        return clone;
+    }
+
+    removeOption(optionId: string): SelectionField {
+        const clone = this.clone() as SelectionField;
+        clone.data.options = clone.data.options.filter(option => option?.id !== optionId);
+        clone.data.selected = clone.data.selected.filter(id => id !== optionId);
+        return clone;
+    }
+
     toJSON(): string {
         return JSON.stringify({
             type: this.data.type,
@@ -938,6 +1022,7 @@ export type BaseFieldProps = {
     fieldKey: string;
     defaultShown: boolean;
     locked: boolean;
+    edit?: boolean;
 
     onChange?: (
         template: DataContainer<data_container_types>,

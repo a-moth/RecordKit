@@ -9,7 +9,7 @@ import ScaleInputField from '../components/nodes/inputs/ScaleInputField';
 import SelectionInputField from '../components/nodes/inputs/SelectionInputField';
 import TextInputField from '../components/nodes/inputs/TextInputField';
 import TimeInputField from '../components/nodes/inputs/TimeInputField';
-import SectionComponent from "../components/nodes/operations/Component";
+import SectionComponent from "../components/common/Component";
 import SettingInputField from "../components/nodes/inputs/SettingInputField";
 import SettingSelectionField from "../components/nodes/inputs/SettingSelectionField";
 import FileInputField from "../components/nodes/inputs/FileInputField";
@@ -92,6 +92,18 @@ export const fieldDefinitions: Record<string, FieldDefinition> = {
     component: SelectionInputField,
   },
 
+  multiselection: {
+    create: () => new SelectionField({
+      type: "selection",
+      label: "Selection Field",
+      multiple: true,
+      selected: [],
+      options: [],
+      visible: true,
+    }),
+    component: SelectionInputField
+  },
+
   scale: {
     create: () => new ScaleField({
       type: "scale",
@@ -100,6 +112,7 @@ export const fieldDefinitions: Record<string, FieldDefinition> = {
       min: 0,
       max: 5,
       value: 0,
+      images: [],
       visible: true,
     }),
     component: ScaleInputField,
@@ -122,8 +135,8 @@ export const fieldDefinitions: Record<string, FieldDefinition> = {
       type: "image-boolean",
       label: "Image Boolean Field",
       value: false,
-      imageSelected: require('../assets/images/4.png'),
-      imageUnselected: require('../assets/images/5.png'),
+      imageSelected: "",
+      imageUnselected: "",
       visible: true,
     }),
     component: BooleanImageInputField,
@@ -197,6 +210,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
         min: 0,
         max: 5,
         value: 0,
+        images: [],
         visible: true,
       }),
     },
@@ -309,8 +323,8 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
               type: "image-boolean",
               label: 'Image Button 1',
               value: false,
-              imageSelected: require('../assets/images/4.png'),
-              imageUnselected: require('../assets/images/5.png'),
+              imageSelected: "",
+              imageUnselected: "",
               visible: true,
             }),
           },
@@ -331,7 +345,8 @@ export const selectionField: SelectionField = new SelectionField({
     { id: 'time', name: 'Time' },
     { id: 'date', name: 'Date' },
     { id: 'duration', name: 'Duration' },
-    { id: 'selection', name: 'Selection' },
+    { id: 'selection', name: 'Single Selection' },
+    { id: 'multiselection', name: 'Multiple Selection' },
     { id: 'scale', name: 'Scale' },
     { id: 'boolean', name: 'Boolean' },
     { id: 'image-boolean', name: 'Image Boolean' },

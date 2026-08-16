@@ -12,7 +12,7 @@ import TemplateEditorManager from "../managers/TemplateEditorManager";
 
 type ListViewerProps = {
     type: string,
-}; // TODO make listItems list of entries or templates
+};
 
 export default function ListViewer({
     type,
@@ -52,11 +52,9 @@ export default function ListViewer({
         return () => { cancelled = true; };
     }, [type]);
 
-    // TODO make this make sense
     const sortedTemplateData = useMemo(() => {
         if (!data) return [];
 
-        //TODO entries and templates have the same properties. eventually combine them into one object
         return Object.values(data)
             .sort((a, b) => {
                 const bTime = b?.metadata?.lastModified ?? 0;
@@ -105,7 +103,6 @@ export default function ListViewer({
         }
     }
 
-    //TODO make this name make sense with a comment
     function TemplateRow({ item }: { item: DataContainer<data_container_types> }) {
         function onChange(template: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
             if (!template) return;
@@ -132,7 +129,6 @@ export default function ListViewer({
         );
     }
 
-    //TODO make this make sense with a comment
     function EntryRow({ item }: { item: DataContainer<data_container_types> }) {
         function onChange(entry: DataContainer<data_container_types> | null, defaultShown: boolean, newValue: FieldNode<FieldData>) {
             if (!entry) return;

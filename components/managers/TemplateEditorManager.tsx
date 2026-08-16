@@ -4,7 +4,7 @@ import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
 import { data_container_types, DataContainer, FieldData, SectionData, SectionField, FieldNode } from '../../constants/DataTypes';
 import { fieldDefinitions } from '../../hooks/NodeRegistry';
-import Component from '../nodes/operations/Component';
+import Component from '../common/Component';
 
 export default function TemplateEditorManager({
   isList,

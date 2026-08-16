@@ -53,7 +53,8 @@ function validateFieldData(data: FieldData): string | null {
             return null;
 
         case "image-boolean":
-            return data.imageSelected && data.imageUnselected
+            // an unset image falls back to settings **image5/**image1 at render time (see BooleanImageInputField.tsx)
+            return (data.imageSelected || settings?.["**image5"]) && (data.imageUnselected || settings?.["**image1"])
                 ? null
                 : "Both images must be set.";
 

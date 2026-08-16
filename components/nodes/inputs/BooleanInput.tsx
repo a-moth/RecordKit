@@ -1,8 +1,3 @@
-// touchable opacity component for boolean input data
-/**
- * TODO: test component and ensure it works, presents, and is functional in the intended way
- */
-
 import {
   Text,
   TouchableOpacity,

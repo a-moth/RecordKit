@@ -1,6 +1,4 @@
-// touchable opacity component for boolean input data
-/**
- * TODO: test component and ensure it works, presents, and is functional in the intended way
+/**°
  * TODO: load loaded images in from files somehow
  * TODO: load images async with alt text until they load
  */
@@ -29,6 +27,12 @@ type BooleanInputProps = {
 
   locked?: boolean;
 
+  // pixels, or a percentage of the parent (e.g. to fit N-in-a-row) - height follows via aspectRatio
+  size?: number | `${number}%`;
+
+  // caps the rendered size in pixels regardless of `size` - see settings **maxImageSize
+  maxSize?: number;
+
   onPress: () => void;
 };
 
@@ -39,6 +43,8 @@ export default function BooleanImageInput({
   imageSrcFalse,
   imageSrc,
   locked = false,
+  size = 100,
+  maxSize,
 }: BooleanInputProps) {
   const theme = useTheme();
 
@@ -60,14 +66,15 @@ export default function BooleanImageInput({
     {
       borderColor: isSelected ? theme.colors.border : theme.colors.background,
       borderWidth: isSelected ? 5 : 0,
-      width: 100,
-      height: 100,
+      width: size,
+      maxWidth: maxSize,
+      aspectRatio: 1,
     },
   ];
 
   if (locked) {
     return (
-      <View style={theme.sizes.default.container}>
+      <View style={[theme.sizes.default.container, { alignItems: 'center' }]}>
         <Image
           style={imageStyle}
           source={
@@ -87,6 +94,7 @@ export default function BooleanImageInput({
         theme.sizes.default.image,
         {
           backgroundColor: theme.colors.background,
+          alignItems: 'center',
         },
       ]}
     >

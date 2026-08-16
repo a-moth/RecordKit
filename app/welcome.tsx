@@ -6,6 +6,9 @@
 // todo: set up loading each changable setting
 // todo: set up loading exit button
 
+
+//if not exists setupComplete or setupComplete is false, show welcome screen
+
 // RecordKit: name of app
 // "Find your normal, and keep it."
 // Your data is stored only on this device unless you upload it to your own online storage platform.

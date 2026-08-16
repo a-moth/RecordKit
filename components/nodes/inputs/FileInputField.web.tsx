@@ -5,6 +5,11 @@ import { useImagePicker } from '../../../hooks/use-image-picker';
 import { CommonProps } from '../../managers/SettingManager';
 import { field_data, FieldNode, SettingsData } from '../../../constants/DataTypes';
 
+// The data URI alone can't recover the original filename, so it's kept in a
+// companion settings key purely for display in the locked path field.
+const nameSettingKey = (fieldKey: string) => `${fieldKey}::name`;
+
+// TODO: no limit on file size, but load async if too large to load into memory
 export default function FileInputField({ template, id, field, onChange, fieldKey, defaultShown, locked = false }: CommonProps) {
     const theme = useTheme();
     const { settings, updateSetting } = useSettings();
@@ -12,6 +17,7 @@ export default function FileInputField({ template, id, field, onChange, fieldKey
     if (!defaultShown) return null;
 
     const value = settings[fieldKey] ?? "";
+    const displayValue = settings[nameSettingKey(fieldKey)] ?? (value ? "Stored file" : "");
 
     async function handlePick() {
         if (locked) return;
@@ -21,6 +27,7 @@ export default function FileInputField({ template, id, field, onChange, fieldKey
 
         updateSetting({
             [fieldKey]: picked.uri,
+            [nameSettingKey(fieldKey)]: picked.name ?? "Stored file",
         });
 
         if (template && field) {
@@ -47,7 +54,7 @@ export default function FileInputField({ template, id, field, onChange, fieldKey
             <Text style={[theme.sizes.default.text, { color: theme.colors.text, fontFamily: theme.fonts?.regular.fontFamily }]}>{fieldKey}</Text>
             <View style={[theme.sizes.default.row, { alignItems: 'center' }]}>
                 <TextInput
-                    value={value}
+                    value={displayValue}
                     editable={false}
                     placeholder="No file selected"
                     placeholderTextColor={theme.colors.subtext}

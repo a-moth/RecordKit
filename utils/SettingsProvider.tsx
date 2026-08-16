@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
+import { defaultImage1, defaultImage2, defaultImage3, defaultImage4, defaultImage5 } from "../constants/default-images";
 
 interface SettingsDataType {
   settings: Record<string, string>;
@@ -15,6 +16,17 @@ const SettingsData: SettingsDataType = {
     "**selfNickname": "universe",
     "**settingsFolder": "~/Documents",
     "**colourScheme": "dark",
+    "**image1": defaultImage1,
+    "**image1::name": "1.png",
+    "**image2": defaultImage2,
+    "**image2::name": "2.png",
+    "**image3": defaultImage3,
+    "**image3::name": "3.png",
+    "**image4": defaultImage4,
+    "**image4::name": "4.png",
+    "**image5": defaultImage5,
+    "**image5::name": "5.png",
+    "**maxImageSize": "100",
     "**listEntryCount": "2",
     "**showCount": "6",
     "*reloadPurchases": "show",

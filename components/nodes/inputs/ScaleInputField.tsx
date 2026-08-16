@@ -1,18 +1,28 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
 import BooleanImageInput from "./BooleanImageInput";
+import MiniButton from "../../common/MiniButton";
 import { useTheme } from "../../../hooks/use-theme-provider";
-import { field_data, FieldNode, ScaleData, StandardFieldProps } from "../../../constants/DataTypes";
+import { useSettings } from "../../../utils/SettingsProvider";
+import { useImagePicker } from "../../../hooks/use-image-picker";
+import { resolveBundledImage } from "../../../utils/resolve-bundled-image";
+import valueOf from "../../../utils/generic-calls";
+import { ScaleData, ScaleField, StandardFieldProps } from "../../../constants/DataTypes";
+
+const SCALE_ICON_COUNT = 5;
 
 export default function ScaleInputField({
   template,
   id,
   fieldKey,
   field,
+  edit = false,
   onChange,
   locked = false,
 }: StandardFieldProps<ScaleData>) {
   const theme = useTheme();
+  const { settings } = useSettings();
+  const { pickImage } = useImagePicker();
 
   // 0 = nothing selected
   const [which, setWhich] = useState<number>(field.field.data.value);
@@ -32,13 +42,27 @@ export default function ScaleInputField({
     });
   };
 
-  const images = [
-    require("../../../assets/images/1.png"),
-    require("../../../assets/images/2.png"),
-    require("../../../assets/images/3.png"),
-    require("../../../assets/images/4.png"),
-    require("../../../assets/images/5.png"),
-  ];
+  async function handleReplaceImage(index: number) {
+    const picked = await pickImage();
+    if (!picked) return;
+
+    const newField = field.field.clone() as ScaleField;
+    newField.setImage(index, picked.uri);
+
+    onChange?.(template, locked, {
+      id: id,
+      type: "field",
+      field: newField,
+    });
+  }
+
+  const maxImageSize = valueOf(settings["**maxImageSize"]) ?? 100;
+
+  const images = Array.from({ length: SCALE_ICON_COUNT }, (_, index) => {
+    const override = field.field.data.images?.[index];
+    const fallback = settings[`**image${index + 1}`] ?? `assets/images/${index + 1}.png`;
+    return resolveBundledImage(override || fallback);
+  });
 
   return (
     <>
@@ -54,22 +78,30 @@ export default function ScaleInputField({
         {fieldKey}
       </Text>
 
-      <View id={fieldKey} style={[theme.sizes.default.row, { backgroundColor: theme.colors.background }]}>
+      <View id={fieldKey} style={[theme.sizes.default.row, { backgroundColor: theme.colors.background, flexWrap: 'nowrap' }]}>
         {images.map((image, index) => {
           const selection = index + 1;
 
           return (
-            <BooleanImageInput
-              key={selection}
-              selection={selection}
-              selected={which === selection}
-              onPress={() =>
-                handleSelect(selection)
-              }
-              imageSrc={image}
-              imageSrcFalse={image}
-              locked={locked}
-            />
+            <View key={selection} style={{ flex: 1 }}>
+              <BooleanImageInput
+                selection={selection}
+                selected={which === selection}
+                onPress={() => handleSelect(selection)}
+                imageSrc={image}
+                imageSrcFalse={image}
+                locked={locked}
+                size="100%"
+                maxSize={maxImageSize}
+              />
+              {edit && (
+                <MiniButton
+                  label="Change Image"
+                  color="primary"
+                  onPress={() => handleReplaceImage(index)}
+                />
+              )}
+            </View>
           );
         })}
       </View>
