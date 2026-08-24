@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DataContainer, data_container_types } from '../constants/DataTypes';
-import { defaultTemplate } from '../hooks/NodeRegistry';
+import { defaultTemplate } from '../hooks/node-registry';
 import { DataContainerFactory } from '../constants/DataTypes';
 
 type AppData = {

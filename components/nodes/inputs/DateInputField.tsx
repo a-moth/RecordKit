@@ -1,23 +1,15 @@
 import { Text, TextInput, View } from "react-native";
 
-import {
-  parse,
-  format,
-  isValid,
-} from "date-fns";
-
 import { useTheme } from "../../../hooks/use-theme-provider";
 import { useFocusBorderColor } from "../../../hooks/use-focus-border-color";
 
 import {
   DateData,
-  DateField,
-  field_data,
-  FieldNode,
   StandardFieldProps,
 } from "../../../constants/DataTypes";
 
 import { useSettings } from "../../../utils/SettingsProvider";
+import { useState } from "react";
 
 export default function DateInputField({
   template,
@@ -32,6 +24,10 @@ export default function DateInputField({
   const theme = useTheme();
 
   const { settings } = useSettings();
+
+  const [text, setText] = useState(
+    field.field.data.value ?? ""
+  );
 
   const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
@@ -50,78 +46,9 @@ export default function DateInputField({
     settings["**dayFormat"] ??
     "dd-MM-yyyy";
 
-  /**
-   * Convert stored ISO value
-   * into display string
-   */
-
-  function buildDisplayValue() {
-
-    if (!field.field.data.value) {
-      return "";
-    }
-
-    try {
-
-      const parsed =
-        new Date(field.field.data.value);
-
-      if (!isValid(parsed)) {
-        return "";
-      }
-
-      return format(
-        parsed,
-        dateFormat
-      );
-
-    } catch {
-
-      return "";
-    }
-  }
-
-  const displayValue =
-    buildDisplayValue();
-
-  /**
-   * Parse typed input
-   * into ISO storage format
-   */
-
-  function parseInput(
-    value: string
-  ) {
-
-    try {
-
-      const parsed =
-        parse(
-          value,
-          dateFormat,
-          new Date()
-        );
-
-      if (!isValid(parsed)) {
-        return null;
-      }
-
-      return format(
-        parsed,
-        "yyyy-MM-dd"
-      );
-
-    } catch {
-
-      return null;
-    }
-  }
-
   if (!defaultShown) {
     return null;
   }
-
-  const fieldData = field.field.data as DateData;
 
   return (
     <View style={theme.sizes.default.container}>
@@ -142,9 +69,8 @@ export default function DateInputField({
       </Text>
 
       <TextInput
-        value={displayValue}
+        value={text}
         editable={!locked}
-        keyboardType="numeric"
         placeholder={dateFormat}
         placeholderTextColor={
           theme.colors.subtext
@@ -152,21 +78,10 @@ export default function DateInputField({
         onFocus={focusBorder.onFocus}
         onBlur={focusBorder.onBlur}
         onChangeText={(text) => {
-
-          const isoValue =
-            parseInput(text);
-
-          /**
-           * allow partial typing
-           * without corrupting state
-           */
-
-          if (!isoValue) {
-            return;
-          }
+          setText(text);
 
           const newField = field.field.clone();
-          newField.setData(text === "" ? null : isoValue);
+          newField.setData(text === "" ? "" : text);
 
           onChange?.(template, defaultShown, {
             id,

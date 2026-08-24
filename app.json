@@ -2,6 +2,7 @@
   "expo": {
     "name": "critterkeeper",
     "slug": "critterkeeper",
+    "version": "1.0.0",
     "plugins": ["expo-router"]
   }
 }

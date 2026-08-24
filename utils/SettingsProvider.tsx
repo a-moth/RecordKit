@@ -9,9 +9,9 @@ interface SettingsDataType {
 const SettingsData: SettingsDataType = {
   settings: {
     "**customGreeting": "Welcome to ",
-    "**dayStartTime": "5:00AM",
-    "**dayFormat": "DD of MMM YYYY",
-    "**timeFormat": "HH:MMTT",
+    "**dayStartTime": "05:00 AM",
+    "**dayFormat": "dd 'of' MMM, yyyy",
+    "**timeFormat": "hh:mm a",
     "**appNickname": "your journal",
     "**selfNickname": "universe",
     "**settingsFolder": "~/Documents",

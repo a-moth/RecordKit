@@ -3,7 +3,7 @@ import { createId, isSectionNode, } from '../../utils/NodeUtils';
 import { useSettings } from '../../utils/SettingsProvider';
 import valueOf from '../../utils/generic-calls';
 import { data_container_types, DataContainer, FieldData, SectionData, SectionField, FieldNode } from '../../constants/DataTypes';
-import { fieldDefinitions } from '../../hooks/NodeRegistry';
+import { fieldDefinitions } from '../../hooks/node-registry';
 import Component from '../common/Component';
 
 export default function TemplateEditorManager({

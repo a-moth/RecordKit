@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { selectionField } from "../../../hooks/NodeRegistry";
+import { addFieldSelector } from "../../../hooks/node-registry";
 import { DataContainer, data_container_types, FieldData, FieldNode, SelectionData } from "../../../constants/DataTypes";
 import SelectionInputField from "../inputs/SelectionInputField";
 import MiniButton from "../../common/MiniButton";
@@ -9,7 +9,7 @@ function newSelectorField(): FieldNode<SelectionData> {
     return {
         id: "add-field-selector",
         type: "field",
-        field: selectionField.clone(),
+        field: addFieldSelector.clone(),
     };
 }
 

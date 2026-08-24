@@ -33,7 +33,9 @@ import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "expo-router";
 import TemplateEditorManager from "../managers/TemplateEditorManager";
-import { defaultTemplate } from "../../hooks/NodeRegistry";
+import { defaultTemplate } from "../../hooks/node-registry";
+import { hasValidationErrors } from "../nodes/operations/ValidationPreview";
+import { useSettings } from "../../utils/SettingsProvider";
 
 type Props = {
   base?: string;
@@ -44,7 +46,7 @@ export default function EntryWriter({
   base,
   template,
 }: Props) {
-
+  const { settings } = useSettings();
   const [entryData, setEntryData] =
     useState<DataContainer<data_container_types> | null>(null);
 
@@ -113,11 +115,19 @@ export default function EntryWriter({
     }
   }
 
+  if (!entryData) {
+    return null;
+  }
+
+  const hasErrors = hasValidationErrors(entryData.fields, settings);
+
   async function handleSave() {
 
     if (!entryData) {
       return;
     }
+
+    if (hasErrors) return;
 
     setSaving(true);
 
@@ -137,10 +147,6 @@ export default function EntryWriter({
     setSaving(false);
 
     router.push("/");
-  }
-
-  if (!entryData) {
-    return null;
   }
 
   return (
@@ -176,7 +182,7 @@ export default function EntryWriter({
               ? "Saving..."
               : "Save Entry"
           }
-          disabled={saving}
+          disabled={saving || hasErrors}
           onPress={
             handleSave
           }

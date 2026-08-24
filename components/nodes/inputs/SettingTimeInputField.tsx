@@ -2,41 +2,38 @@ import { useTheme } from '../../../hooks/use-theme-provider';
 import { useFocusBorderColor } from '../../../hooks/use-focus-border-color';
 import { useSettings } from '../../../utils/SettingsProvider';
 import { Text, TextInput, View } from 'react-native';
-import { useState } from 'react';
-import { StandardFieldProps, TimeData } from '../../../constants/DataTypes';
+import { CommonProps } from '../../managers/SettingManager';
 
-export default function TimeInputField({ template, id, onChange, field, fieldKey, defaultShown, locked = false }: StandardFieldProps<TimeData>) {
+export default function SettingTimeInputField({ fieldKey, defaultShown, locked = false }: CommonProps) {
     const theme = useTheme();
-    const { settings } = useSettings();
-
-    const [text, setText] = useState(field.field.data.value ?? "");
+    const { settings, updateSetting } = useSettings();
 
     const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
     /**
        * date-fns tokens:
        *
-       * HH
-       * hh
-       * mm
-       * a
+       * dd
+       * MM
+       * MMM
+       * yyyy
+       * yy
        */
 
-    const timeFormat =
-        field?.field.data.format ??
-        settings["**timeFormat"] ??
-        "HH:mm";
+    const timeFormat = settings["**timeFormat"] ?? "HH:mm";
 
     if (!defaultShown) {
         return null;
     }
+
+    const settingValue = settings[fieldKey] ?? "";
 
     return (
         <View style={theme.sizes.default.container}>
             <Text style={[theme.sizes.default.text, { color: theme.colors.text, fontFamily: theme.fonts?.regular.fontFamily }]}>{fieldKey}</Text>
             <TextInput
                 style={[theme.sizes.default.input, { backgroundColor: theme.colors.background, borderColor: focusBorder.borderColor, color: theme.colors.text, fontFamily: theme.fonts?.regular.fontFamily }]}
-                value={text}
+                value={settingValue}
                 placeholder={timeFormat}
                 placeholderTextColor={
                     theme.colors.subtext
@@ -44,19 +41,11 @@ export default function TimeInputField({ template, id, onChange, field, fieldKey
                 onFocus={focusBorder.onFocus}
                 onBlur={focusBorder.onBlur}
                 onChangeText={(text) => {
-                    setText(text);
-
-                    const newField = field.field.clone();
-                    newField.setData(text);
-
-                    onChange?.(template, defaultShown, {
-                        id,
-                        type: "field",
-                        field: newField,
-                    });
-                    return;
+                    updateSetting({
+                        [fieldKey]: text
+                    })
                 }}
-                editable={!locked}
+                editable={!locked && fieldKey.startsWith("**")}
             />
         </View>
     );

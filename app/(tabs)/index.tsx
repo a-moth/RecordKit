@@ -9,7 +9,7 @@ import { useSettings } from "../../utils/SettingsProvider";
 
 import { useRouter } from 'expo-router';
 import { getTemplates } from "../../utils/StorageUtil";
-import { defaultTemplate } from "../../hooks/NodeRegistry";
+import { defaultTemplate } from "../../hooks/node-registry";
 import {
     data_container_types,
     DataContainer,

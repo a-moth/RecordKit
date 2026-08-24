@@ -17,7 +17,7 @@ import {
     saveData,
 } from "../../utils/StorageUtil";
 
-import { defaultTemplate } from "../../hooks/NodeRegistry";
+import { defaultTemplate } from "../../hooks/node-registry";
 import {
     DataContainer,
     data_container_types,
@@ -32,6 +32,8 @@ import { useRouter } from "expo-router";
 import TemplateEditorManager from "../managers/TemplateEditorManager";
 import ThemedButton from "../common/ThemedButton";
 import { useFocusBorderColor } from "../../hooks/use-focus-border-color";
+import { useSettings } from "../../utils/SettingsProvider";
+import { hasValidationErrors } from "../nodes/operations/ValidationPreview";
 
 
 type Props = {
@@ -54,6 +56,8 @@ export default function TemplateWriter({
     const theme = useTheme();
 
     const router = useRouter();
+
+    const { settings } = useSettings();
 
     const focusBorder = useFocusBorderColor(theme.colors.border, theme.colors.caution);
 
@@ -121,8 +125,16 @@ export default function TemplateWriter({
         });
     }
 
+    if (!templateData) {
+        return null;
+    }
+
+    const hasErrors = hasValidationErrors(templateData.fields, settings);
+
     async function handleSave() {
-        if (!templateRef.current) return;
+        if (!templateData) return;
+
+        if (hasErrors) return;
 
         setSaving(true);
 
@@ -132,16 +144,12 @@ export default function TemplateWriter({
             ...appData,
             templates: {
                 ...appData.templates,
-                [templateId]: templateRef.current,
+                [templateId]: templateData,
             },
         });
 
         setSaving(false);
         router.push("/templates");
-    }
-
-    if (!templateData) {
-        return null;
     }
 
     return (
@@ -208,7 +216,7 @@ export default function TemplateWriter({
                             ? "Saving..."
                             : "Save Template"
                     }
-                    disabled={saving}
+                    disabled={saving || hasErrors}
                     onPress={
                         handleSave
                     }

@@ -1,10 +1,11 @@
 import { data_container_types, DataContainer, FieldData, FieldNode } from "../../constants/DataTypes";
 import { SETTING } from "../../constants/setting-enums";
-import { settingDefinitions } from "../../hooks/NodeRegistry";
+import { settingDefinitions } from "../../hooks/node-registry";
 
 export type CommonProps = {
     template: DataContainer<data_container_types> | null;
-    id: string; field: FieldNode<FieldData> | null;
+    id: string;
+    field: FieldNode<FieldData> | null;
     fieldKey: string;
     defaultShown: boolean;
     locked?: boolean;
@@ -18,6 +19,7 @@ export default function SettingManager({
     id,
     field,
     fieldKey,
+    locked = false,
     defaultShown,
     onChange,
 }: CommonProps) {
@@ -40,6 +42,7 @@ export default function SettingManager({
         id,
         field,
         fieldKey,
+        locked,
         defaultShown,
         onChange: (
             template: DataContainer<data_container_types>,

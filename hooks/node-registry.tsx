@@ -13,6 +13,7 @@ import SectionComponent from "../components/common/Component";
 import SettingInputField from "../components/nodes/inputs/SettingInputField";
 import SettingSelectionField from "../components/nodes/inputs/SettingSelectionField";
 import FileInputField from "../components/nodes/inputs/FileInputField";
+import SettingTimeInputField from "../components/nodes/inputs/SettingTimeInputField";
 
 // the default values for defaultTemplate
 
@@ -157,7 +158,7 @@ export const fieldDefinitions: Record<string, FieldDefinition> = {
 
 export const settingDefinitions = {
   text: SettingInputField,
-  time: TimeInputField,
+  time: SettingTimeInputField,
   number: NumberInputField,
   selection: SettingSelectionField,
   image: FileInputField,
@@ -334,7 +335,7 @@ export let defaultTemplate: DataContainer<template> = new TemplateContainer({
   },
 });
 
-export const selectionField: SelectionField = new SelectionField({
+export const addFieldSelector: SelectionField = new SelectionField({
   type: 'selection',
   label: 'Add Field',
   multiple: false,

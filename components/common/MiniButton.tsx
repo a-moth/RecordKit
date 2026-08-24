@@ -23,7 +23,7 @@ export default function MiniButton({ label, onPress, disabled, color = "neutral"
             onPress={onPress}
             disabled={disabled}
             style={[
-                theme.sizes.default["micro-button"],
+                theme.sizes.default.microButton,
                 {
                     borderColor: accent,
                     backgroundColor: theme.colors.card,
@@ -33,7 +33,7 @@ export default function MiniButton({ label, onPress, disabled, color = "neutral"
         >
             <Text
                 style={[
-                    theme.sizes.default["micro-button-text"],
+                    theme.sizes.default.microButtonText,
                     { color: accent, fontFamily: theme.fonts?.regular.fontFamily },
                 ]}
             >

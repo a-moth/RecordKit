@@ -15,7 +15,7 @@ import {
 } from "../../constants/DataTypes";
 import { useTheme } from "../../hooks/use-theme-provider";
 import { useState } from "react";
-import { fieldDefinitions } from "../../hooks/NodeRegistry";
+import { fieldDefinitions } from "../../hooks/node-registry";
 import { createId } from "../../utils/NodeUtils";
 
 /**
@@ -164,7 +164,8 @@ function SectionChildRow({
                     id={node.id}
                     edit={edit}
                     locked={locked}
-                    nodeKey={title}
+                    fieldKey={node.field.data.label}
+                    defaultShown={node.field.data.visible}
                     field={node}
                     section={node}
                     onChange={onChange}
@@ -174,6 +175,7 @@ function SectionChildRow({
                     moveDown={moveDown}
                     deleteNode={deleteNode}
                 />
+                <ValidationPreview field={node} />
             </View>
         )
     }
@@ -190,7 +192,8 @@ function SectionChildRow({
                         id={node.id}
                         edit={edit}
                         locked={locked}
-                        nodeKey={title}
+                        fieldKey={node.field.data.label}
+                        defaultShown={node.field.data.visible}
                         field={node}
                         section={node}
                         onChange={onChange}
@@ -271,22 +274,26 @@ function renderFieldNode(
 
     if (!edit) {
         return (
-            <Component
-                key={node.id}
-                template={template}
-                id={node.id}
-                edit={edit}
-                locked={locked}
-                nodeKey={node.id}
-                field={node}
-                section={node}
-                onChange={onChange}
-                addField={addField}
-                addSection={addSection}
-                moveUp={moveUp}
-                moveDown={moveDown}
-                deleteNode={deleteNode}
-            />
+            <>
+                <Component
+                    key={node.id}
+                    template={template}
+                    id={node.id}
+                    edit={edit}
+                    locked={locked}
+                    fieldKey={node.field.data.label}
+                    defaultShown={node.field.data.visible}
+                    field={node}
+                    section={node}
+                    onChange={onChange}
+                    addField={addField}
+                    addSection={addSection}
+                    moveUp={moveUp}
+                    moveDown={moveDown}
+                    deleteNode={deleteNode}
+                />
+                <ValidationPreview field={node} />
+            </>
         )
     }
     return (
@@ -303,7 +310,8 @@ function renderFieldNode(
                         id={node.id}
                         edit={edit}
                         locked={locked}
-                        nodeKey={node.id}
+                        fieldKey={node.field.data.label}
+                        defaultShown={node.field.data.visible}
                         field={node}
                         section={node}
                         onChange={onChange}
@@ -555,8 +563,6 @@ export default function Component({
                         childActions,
                         childNodes
                     )}
-
-                    <ValidationPreview field={section} />
                 </View>
             )}
         </ScrollView>

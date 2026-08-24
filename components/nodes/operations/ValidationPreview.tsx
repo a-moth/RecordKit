@@ -1,24 +1,27 @@
-import { FieldData, FieldNode } from "../../../constants/DataTypes";
-import { Text } from "react-native";
-import { isValid, parseISO, parse } from "date-fns";
-import { useTheme } from "../../../hooks/use-theme-provider";
-import { useSettings } from "../../../utils/SettingsProvider";
+import { FieldData, FieldNode } from '../../../constants/DataTypes';
+import { isValid, parse } from 'date-fns';
+import { Text } from 'react-native';
+import { useSettings } from '../../../utils/SettingsProvider';
+import { useTheme } from '../../../hooks/use-theme-provider';
 
 function isUnsignedInt(value: number): boolean {
     return Number.isInteger(value) && value >= 0;
 }
 
-function validateFieldData(data: FieldData): string | null {
-    let { settings } = useSettings();
+export function validateFieldData(data: FieldData, settings: Record<string, string>): string | null {
     switch (data.type) {
         case "boolean":
             return null;
 
         case "date":
             if (!data.value) return null;
-            return isValid(parseISO(data.value))
-                ? null
-                : "Date is not a valid calendar date.";
+            try {
+                return isValid(parse(data.value, data.format ?? settings?.["**dayFormat"] ?? "dd/MM/yyyy", new Date()))
+                    ? null
+                    : "Date is not a valid calendar date or is not in format " + (data.format ?? settings?.["**dayFormat"] ?? "dd/MM/yyyy");
+            } catch (e) {
+                return "Date is not a valid calendar date or is not in format " + (data.format ?? settings?.["**dayFormat"] ?? "dd/MM/yyyy");
+            }
 
         case "duration":
             return isUnsignedInt(data.valueA) && isUnsignedInt(data.valueB)
@@ -63,9 +66,13 @@ function validateFieldData(data: FieldData): string | null {
 
         case "time":
             if (!data.value) return null;
-            return parse(data.value, settings?.["**timeFormat"] ?? "HH:mm", new Date())
-                ? null
-                : "Time must be in " + (settings?.["**timeFormat"] ?? "HH:mm") + " format.";
+            try {
+                return isValid(parse(data.value, data.format ?? settings?.["**timeFormat"] ?? "HH:mm", new Date()))
+                    ? null
+                    : "Time must be in " + (data.format ?? settings?.["**timeFormat"] ?? "HH:mm") + " format.";
+            } catch (e) {
+                return "Time must be in " + (data.format ?? settings?.["**timeFormat"] ?? "HH:mm") + " format.";
+            }
 
         case "section":
             return Object.keys(data.childNodes).length > 0
@@ -77,12 +84,27 @@ function validateFieldData(data: FieldData): string | null {
     }
 }
 
+export function hasValidationErrors(data: Record<string, FieldNode<FieldData>>, settings: Record<string, string>): boolean {
+    for (const node of Object.values(data)) {
+        if (validateFieldData(node.field.data, settings) != null) {
+            return true;
+        }
+        if (node.field.data.type === "section" &&
+            hasValidationErrors(node.field.data.childNodes, settings)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 export default function ValidationPreview({ field }: { field: FieldNode<FieldData> }) {
     const theme = useTheme();
 
+    const { settings } = useSettings();
+
     if (field.type !== "field") return <></>;
 
-    const error = validateFieldData(field.field.data);
+    const error = validateFieldData(field.field.data, settings);
     if (!error) return <></>;
 
     return (

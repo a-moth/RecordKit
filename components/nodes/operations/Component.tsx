@@ -13,7 +13,7 @@ import {
 } from "../../../constants/DataTypes";
 import { useTheme } from "../../../hooks/use-theme-provider";
 import { useState } from "react";
-import { fieldDefinitions } from "../../../hooks/NodeRegistry";
+import { fieldDefinitions } from "../../../hooks/node-registry";
 
 
 function renderFieldNodes(

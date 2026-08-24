@@ -17,7 +17,6 @@ export const Radius = {
   pill: 999,
 };
 
-//TODO: fix Sizes to make actual sense instead of just old groups of CSS classes that are messy
 export const Sizes = {
   default: {
     container: {
@@ -99,25 +98,25 @@ export const Sizes = {
       fontWeight: 'bold',
     } as TextStyle,
 
-    currentContainerStyle: {
+    pageContainer: {
       padding: 16,
       minHeight: '100%',
     } as ViewStyle,
 
-    entryListContainer: {
+    sidebar: {
       flex: 0.3 / 2,
       minHeight: 'auto',
     } as ViewStyle,
 
-    entryEditButton: {
+    actionColumn: {
       flex: 0.1,
     } as ViewStyle,
 
-    entryViewer: {
+    contentColumn: {
       flex: 0.5,
     },
 
-    dropdownButtonStyle: {
+    dropdownButton: {
       width: 200,
       height: 50,
       borderRadius: 12,
@@ -127,26 +126,26 @@ export const Sizes = {
       paddingHorizontal: 12,
     },
 
-    dropdownButtonTxtStyle: {
+    dropdownButtonText: {
       flex: 1,
       fontSize: 18,
       fontWeight: '500',
     },
 
-    dropdownButtonArrowStyle: {
+    dropdownButtonArrow: {
       fontSize: 28,
     },
 
-    dropdownButtonIconStyle: {
+    dropdownButtonIcon: {
       fontSize: 28,
       marginRight: 8,
     },
 
-    dropdownMenuStyle: {
+    dropdownMenu: {
       borderRadius: 8,
     },
 
-    dropdownItemStyle: {
+    dropdownItem: {
       width: '100%',
       flexDirection: 'row',
       paddingHorizontal: 12,
@@ -155,13 +154,13 @@ export const Sizes = {
       paddingVertical: 8,
     },
 
-    dropdownItemTxtStyle: {
+    dropdownItemText: {
       flex: 1,
       fontSize: 18,
       fontWeight: '500',
     },
 
-    dropdownItemIconStyle: {
+    dropdownItemIcon: {
       fontSize: 28,
       marginRight: 8,
     },
@@ -175,7 +174,7 @@ export const Sizes = {
       fontWeight: '700',
     } as TextStyle,
 
-    'micro-button': {
+    microButton: {
       paddingVertical: 4,
       paddingHorizontal: 9,
       borderRadius: Radius.sm,
@@ -184,7 +183,7 @@ export const Sizes = {
       marginBottom: 6,
     } as ViewStyle,
 
-    'micro-button-text': {
+    microButtonText: {
       fontSize: 11,
       fontWeight: '600',
     } as TextStyle,

@@ -1,8 +1,8 @@
 export const SETTING: Record<string, string> = {
   '**customGreeting': 'text',
   '**dayStartTime': 'time',
-  '**dayFormat': 'text',
-  '**timeFormat': 'text',
+  '**dayFormat': 'selection',
+  '**timeFormat': 'selection',
   '**appNickname': 'text',
   '**selfNickname': 'text',
   '**settingsFolder': 'text',
@@ -26,13 +26,13 @@ export const SETTING_OPTIONS: Record<string, { id: string; name: string }[]> = {
     { id: 'light', name: 'Light' },
   ],
   '**timeFormat': [
-    { id: 'HH:MM', name: '24 hour' },
-    { id: 'HH:MMmm', name: '12 hour' },
+    { id: 'HH:mm', name: '24 hour' },
+    { id: 'hh:mm a', name: '12 hour' },
   ],
   '**dayFormat': [
-    { id: 'DD/MM/YYYY', name: 'DD/MM/YYYY' },
-    { id: 'MM/DD/YYYY', name: 'MM/DD/YYYY' },
-    { id: 'DD of MMM, YYYY', name: 'DD of MMM, YYYY' },
+    { id: 'dd/MM/yyyy', name: 'dd/MM/yyyy' },
+    { id: 'MM/dd/yyyy', name: 'MM/dd/yyyy' },
+    { id: "dd 'of' MMM, yyyy", name: 'dd of MMM, yyyy' },
   ],
 };
 
