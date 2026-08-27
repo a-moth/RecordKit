@@ -64,10 +64,10 @@ Future-version entries describe direction; they are not permission to implement 
 - **[1.4 — Welcome experience](PLANNING-1.4.md):** implement the first-run experience.
 - **[1.5 — Decoration objects](PLANNING-1.5.md):** add non-data template nodes used for presentation and organisation.
 - **[1.6 — Custom theming](PLANNING-1.6.md):** add user-facing theme customisation.
-- **[2.0 — Analytics](PLANNING-2.0.md):** analyse collected entries and migrate to a React + Vite PWA before this release.
+- **[2.0 — Analytics](PLANNING-2.0.md):** analyse collected entries and migrate to a PWA before this release; confirm React + Vite against the earlier XSLT/XHTML alternative during migration planning.
 - **[3.0 — Local API](PLANNING-3.0.md):** allow users to access their own data programmatically over a local-host-only API.
 
-Detailed version plans live in `PLANNING-X.Y.md` files. Completed plans move to [past-planning/](past-planning/README.md). Do not pull React/Vite work, analytics, storage migration, image expansion, or theming into an earlier target unless an approved plan explicitly changes the roadmap.
+Detailed version plans live in `PLANNING-X.Y.md` files. Completed plans move to [past-planning/](past-planning/README.md). Do not pull PWA migration work, analytics, storage migration, image expansion, or theming into an earlier target unless an approved plan explicitly changes the roadmap.
 
 ## Documentation routes
 

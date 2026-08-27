@@ -10,8 +10,8 @@ Allow users to select and durably store their own images for supported fields wi
 
 ## Scope
 
-- Complete the image-handling work identified in `FileInputField.tsx` and `StorageUtil.ts`.
-- Extend uploaded-image support to image-boolean fields and scale-field icons.
+- Complete the image-handling work identified in the picker components and `StorageUtil.ts`.
+- Harden the existing uploaded-image support for settings, image-boolean fields, and scale-field icons.
 - Continue using `@react-native-documents/picker` for selection.
 - Keep images under approximately 5 MB inline as data URIs.
 - Copy larger images into durable application storage and store their paths.
@@ -22,6 +22,5 @@ Allow users to select and durably store their own images for supported fields wi
 ## Dependencies and constraints
 
 - Depends on the 1.2 storage shape and its `@images/` namespace.
-- Native and web selection currently produce data URIs; this version adds the durable size-sensitive policy.
+- Native and web selection, including image-boolean and scale overrides, currently produces data URIs; this version adds the durable size-sensitive policy.
 - Sensitive images must not be transmitted or logged.
-

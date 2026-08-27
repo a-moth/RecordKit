@@ -34,3 +34,4 @@ Cover successful behaviour, invalid input, boundaries, missing data, and recursi
 
 Global mocks live in `jest.setup.js`. The current setup provides AsyncStorage and native-component boundaries needed by the existing home-screen test. Add global mocks only for dependencies shared broadly; keep scenario-specific behaviour inside the relevant test file.
 
+The current React 19 test stack emits `act(...)` environment warnings around asynchronous provider and list-loading updates even though the home-screen interaction test passes. Treat removal of those warnings as 1.1 test-infrastructure work; do not hide them by suppressing `console.error` globally.

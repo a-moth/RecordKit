@@ -26,7 +26,7 @@ Import and export are intended to keep RecordKit data usable outside RecordKit. 
 
 ## Portability and future direction
 
-RecordKit currently uses Expo and React Native. The roadmap calls for migration to a React + Vite progressive web application before version 2.0, followed by local-first analytics. A later local-host-only API is intended to support programmatic management of user-owned data.
+RecordKit currently uses Expo and React Native. The roadmap calls for migration to a progressive web application before version 2.0, followed by local-first analytics. React + Vite is the current planned route, while the earlier XSLT/XHTML direction remains an alternative to evaluate when the migration is designed. A later local-host-only API is intended to support programmatic management of user-owned data.
 
 See [PLANNING.md](PLANNING.md) for version ownership and current scope; future plans are direction, not permission to implement features early.
 
@@ -44,4 +44,3 @@ See [PLANNING.md](PLANNING.md) for version ownership and current scope; future p
 - [Testing](docs/testing/README.md)
 - [Programmatic reference](docs/api-reference/README.md)
 - [Roadmap and project direction](PLANNING.md)
-

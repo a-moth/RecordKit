@@ -18,7 +18,7 @@ Plans describe intended direction and may change before implementation. Near-ter
 
 ## Longer-term
 
-- **2.0:** local-first analytics over configurable records, after migration to a React + Vite PWA.
+- **2.0:** local-first analytics over configurable records, after migration to a PWA. React + Vite is currently planned, with the earlier XSLT/XHTML direction still to be evaluated during migration design.
 - **3.0:** an explicitly controlled, local-host-only API for programmatic data access.
 
 The authoritative developer roadmap and detailed version plans live in the repository's root `PLANNING.md` file.

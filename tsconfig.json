@@ -4,5 +4,6 @@
     "strict": true,
     "types": ["jest"]
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["old code"]
 }

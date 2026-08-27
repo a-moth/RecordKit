@@ -23,6 +23,6 @@ RecordKit displays field validation feedback while editing. A template or entry 
 
 ## Images
 
-Image-boolean fields currently use bundled images. User-uploaded, durably stored images are planned after the storage migration.
+Image settings, image-boolean fields, and image-based scales can use bundled images or images selected by the user. Selected images are currently stored as data URIs. Version 1.3 will add the durable size-sensitive policy needed to keep large images outside entry and template records.
 
 See [Planned Functionality](../planned-functionality/) for future work and [Limitations](../limitations/) for current boundaries.

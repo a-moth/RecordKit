@@ -14,3 +14,4 @@ Current registry keys are `text`, `number`, `time`, `date`, `duration`, `selecti
 
 Field-component tests should cover raw input handling, change callbacks, edit/locked states, type-specific controls, and accessibility labels or roles where relevant. Image-related tests use fixtures or mocks and must never load personal images.
 
+Serialization tests should capture current omissions as well as intended values. In particular, `ToggleButtonField` carries selected/unselected labels at runtime but currently omits them from `toJSON`; a test should either preserve that compatibility fact or accompany an approved fix.

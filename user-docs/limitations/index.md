@@ -13,7 +13,7 @@ RecordKit stores core data locally and does not currently provide automatic devi
 
 ## Images
 
-Image-boolean fields currently use bundled images. Durable user-uploaded image handling is planned after the storage migration.
+User-selected images are currently read entirely into data URIs, regardless of size. Large images are not yet copied to separate durable application storage, so image-heavy data can put pressure on the current storage blob. The size-sensitive policy is planned after the storage migration.
 
 ## Analytics and programmatic access
 

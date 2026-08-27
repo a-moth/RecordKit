@@ -11,7 +11,7 @@ Current serialized types are:
 - `duration`: two non-negative values and their units;
 - `selection`: selected identifiers, options, and a `multiple` flag;
 - `scale`: minimum, maximum, value, image mode, and image list;
-- `boolean`: boolean value and selected/unselected labels;
+- `boolean`: boolean value; the runtime data type also carries selected/unselected labels, but the current `ToggleButtonField.toJSON` output does not persist them;
 - `image-boolean`: boolean value and selected/unselected image references;
 - `section`: orientation, identifier, and nested child nodes.
 
@@ -19,3 +19,4 @@ The add-field registry key `multiselection` creates serialized type `selection` 
 
 Refer to `constants/DataTypes.tsx` for current TypeScript definitions. A generated schema is not yet available.
 
+Image references may currently be bundled asset paths or user-selected data URIs. Scale fields store per-position overrides in `images`; image-boolean fields store selected and unselected references directly.

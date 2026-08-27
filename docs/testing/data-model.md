@@ -22,5 +22,4 @@ Round-trip every field type through `toJSON` and `DataContainerFactory.fromJSON`
 
 ## Fields
 
-For every `field_data` subclass, test cloning, data mutation, movement/deletion delegation, and any type-specific setter. Verify that cloning does not accidentally share nested mutable structures when independent data is required.
-
+For every `field_data` subclass, test cloning, data mutation, serialization, and type-specific setters. The base `moveUp`, `moveDown`, and `deleteNode` methods are currently no-ops and are not the active tree-operation path; top-level operations belong to `DataContainer`, while section-child operations belong to `SectionField`. Verify that shallow cloning does not accidentally share nested mutable structures when independent data is required.

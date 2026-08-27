@@ -13,5 +13,6 @@ The active source is organised by technical role:
 - `utils/` contains storage, settings, and operations that do not belong to a model instance;
 - `old code/` is historical reference and is not part of the active application.
 
-The intended migration from Expo/React Native to a React + Vite PWA must occur before 2.0. Do not introduce migration-specific architecture into earlier work unless an approved version plan authorises it.
+Files elsewhere that have no active imports are also non-authoritative even if they have not yet been removed. In particular, the active generic node renderer is `components/common/Component.tsx`; the duplicate under `components/nodes/operations/` is unused.
 
+The intended migration from Expo/React Native to a PWA must occur before 2.0. React + Vite is the current plan, while the earlier XSLT/XHTML direction remains an alternative that requires an explicit architecture decision. Do not introduce migration-specific architecture into earlier work unless an approved version plan authorises it.
