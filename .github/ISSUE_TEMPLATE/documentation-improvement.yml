@@ -1,0 +1,30 @@
+name: Documentation improvement
+description: Suggest an improvement to documentation that is already substantially correct.
+title: "[Documentation improvement]: "
+labels: [documentation]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      description: Provide the file, page, heading, or URL.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: What could be improved?
+    validations:
+      required: true
+  - type: textarea
+    id: reader-benefit
+    attributes:
+      label: How this helps readers
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested example, diagram, or reorganisation
+      description: Optional, if a specific improvement is known.
+

@@ -1,0 +1,37 @@
+name: Documentation bug
+description: Report documentation that is incorrect, stale, conflicting, broken, or unusable.
+title: "[Documentation bug]: "
+labels: [documentation, bug]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      description: Provide the file, page, heading, or URL.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is incorrect, stale, or broken?
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Authoritative source
+      description: What source or implemented behaviour should the documentation match?
+    validations:
+      required: true
+  - type: textarea
+    id: effect
+    attributes:
+      label: Effect on the reader
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+      description: Optional, if the correction is known.
+

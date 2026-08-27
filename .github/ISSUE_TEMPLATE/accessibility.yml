@@ -1,0 +1,45 @@
+name: Accessibility issue
+description: Report an accessibility barrier without requiring personal or diagnostic information.
+title: "[Accessibility]: "
+labels: [accessibility]
+body:
+  - type: input
+    id: area
+    attributes:
+      label: Affected area
+    validations:
+      required: true
+  - type: textarea
+    id: barrier
+    attributes:
+      label: Accessibility barrier
+      description: Describe the interaction, content, or presentation barrier.
+    validations:
+      required: true
+  - type: textarea
+    id: effect
+    attributes:
+      label: Who or how this affects use
+      description: Explain the functional impact; no diagnosis or private medical information is required.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired accessible behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Technical context or possible approach
+      description: Include technical context, a possible approach, or write "Open to discussion."
+    validations:
+      required: true
+

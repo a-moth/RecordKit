@@ -1,0 +1,42 @@
+name: Feature proposal
+description: Propose a new capability or meaningful behaviour change.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What should a user be able to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Who this helps
+      description: Which users would benefit, and how would it help them?
+    validations:
+      required: true
+  - type: textarea
+    id: philosophy
+    attributes:
+      label: Alignment with RecordKit
+      description: How does this align with RecordKit's local-first, user-controlled philosophy?
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Suggested approach
+      description: Describe an implementation, process, style, or external technology, or write "Open to discussion."
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Suggested version
+      description: Name the version that should own this work, or write "Open to discussion."
+      placeholder: "1.2"
+    validations:
+      required: true
+
