@@ -1,0 +1,7 @@
+title: RecordKit Documentation
+description: User documentation for the local-first, template-driven data journal.
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
+
